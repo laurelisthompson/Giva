@@ -22,12 +22,13 @@ export const receiveErrors = errors => ({
 //thunk action creators
 export const login = user => dispatch => {
     return APIUtil.login(user)
-        .then((user) => dispatch(receiveCurrentUser(user)))
+        .then((user) => dispatch(receiveCurrentUser(user)),
+        error => (dispatch(receiveErrors(error.responseJSON))))
 };
 
-export const logout = user => dispatch => {
-    return APIUtil.logout(user)
-        .then(() => dispatch(logoutCurrentUser(user)))
+export const logout = () => dispatch => {
+    return APIUtil.logout()
+        .then((user) => dispatch(logoutCurrentUser()))
 };
 
 export const signup = user => dispatch => {
