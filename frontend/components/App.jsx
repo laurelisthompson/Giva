@@ -16,7 +16,7 @@ import { AuthRoute } from '../util/route_util';
 const App = () => (
     <div>
         <header>
-            <h1>Giva</h1>
+            
         </header>
         <Switch>
             <Route exact path="/" component={GreetingContainer} />
