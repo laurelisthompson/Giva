@@ -16,9 +16,9 @@ const App = () => (
     <div>
         <header>
             <h1>Giva</h1>
-            <GreetingContainer />
         </header>
         <Switch>
+            <Route exact path="/" component={GreetingContainer} />
             <Route exact path="/signin" component={LogInFormContainer}/>
             <Route exact path="/signup" component={SignUpFormContainer}/>
         </Switch>

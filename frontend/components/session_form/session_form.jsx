@@ -34,12 +34,11 @@ class SessionForm extends React.Component {
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    Sign in below
+                    {this.props.formType === 'sign in' ? 'Sign in below' : 'Create a new account below'}
                     <br/>
                     or {this.props.navLink}
                     {this.renderErrors()}
                     <div>
-                        
                         <label>Username
                             <br/>
                             <input type="text"
