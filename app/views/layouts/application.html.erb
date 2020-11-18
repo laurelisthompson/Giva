@@ -4,9 +4,14 @@
     <title>Giva</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script>
+      window.dottedBackground = "<%= image_url("dotted-background.png") %>"
+      window.choose = "<%= image_url("choose.png") %>"
+      window.check = "<%= image_url("check.png") %>"
+      window.grow = "<%= image_url("grow.png") %>"
+    </script>
   </head>
 
   <body>
