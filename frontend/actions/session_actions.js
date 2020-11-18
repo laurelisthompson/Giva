@@ -25,12 +25,12 @@ export const login = user => dispatch => {
         .then((user) => dispatch(receiveCurrentUser(user)))
 };
 
-export const logout = () => dispatch => {
-    return APIUtil.logout()
-        .then((user) => dispatch(logoutCurrentUser()))
+export const logout = user => dispatch => {
+    return APIUtil.logout(user)
+        .then(() => dispatch(logoutCurrentUser(user)))
 };
 
 export const signup = user => dispatch => {
     return APIUtil.signup(user)
-        .then((user) => dispatch(receiveCurrentUser(user)))
+        .then((newUser) => dispatch(receiveCurrentUser(newUser)))
 };

@@ -35,37 +35,91 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    {this.props.formType === 'sign in' ? 'Sign in below' : 'Create a new account below'}
-                    <br/>
-                    or {this.props.navLink}
-                    {this.renderErrors()}
-                    <div>
-                        <label>Email
-                            <br/>
-                            <input type="text"
-                                value={this.state.email}
-                                onChange={this.update('email')}
-                            />
-                        </label>
-                        <br/>
-                        <label>Password
+        if (this.props.formType === 'sign in') {
+            return (
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <p>{'Sign in below'}</p>
+                        <p>or {this.props.navLink}</p>
+                        {this.renderErrors()}
+                        <p>{'Sign in the same way you did last time'}</p>
+                        <p>{'to avoid creating a second Kiva account.'}</p>
+                        <div>
+                            <label>Email
                             <br />
-                            <input type="password"
-                                value={this.state.password}
-                                onChange={this.update('password')}
+                                <input type="text"
+                                    value={this.state.email}
+                                    onChange={this.update('email')}
+                                />
+                            </label>
+                            <br />
+                            <label>Password
+                            <br />
+                                <input type="password"
+                                    value={this.state.password}
+                                    onChange={this.update('password')}
+                                />
+                            </label>
+                            <br />
+                            <input type="submit"
+                                value={'Sign in'}
                             />
-                        </label>
-                        <br/>
-                        <input type="submit" 
-                            value={this.props.formType === 'sign in' ? 'Sign in' : 'Create new account'}
-                        />
-                    </div>
-                </form>
-            </div>
-        )
+                            <br/>
+                            <input type="submit"
+                                value={'Demo User'}
+                            />
+                        </div>
+                    </form>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <p>{'Create a new account below'}</p>
+                        <p>or {this.props.navLink}</p>
+                        {this.renderErrors()}
+                        <div>
+                            <label>First name
+                            <br />
+                                <input type="text"
+                                    value={this.state.first_name}
+                                    onChange={this.update('first_name')}
+                                />
+                            </label>
+                            <br/>
+                            <label>Last name
+                            <br />
+                                <input type="text"
+                                    value={this.state.last_name}
+                                    onChange={this.update('last_name')}
+                                />
+                            </label>
+                            <br />
+                            <label>Email
+                            <br />
+                                <input type="text"
+                                    value={this.state.email}
+                                    onChange={this.update('email')}
+                                />
+                            </label>
+                            <br />
+                            <label>Create password
+                            <br />
+                                <input type="password"
+                                    value={this.state.password}
+                                    onChange={this.update('password')}
+                                />
+                            </label>
+                            <br />
+                            <input type="submit"
+                                value={'Create new account'}
+                            />
+                        </div>
+                    </form>
+                </div>
+            )
+        }
     }
 };
 
