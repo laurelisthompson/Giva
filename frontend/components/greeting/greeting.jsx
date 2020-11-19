@@ -27,20 +27,20 @@ const Greeting = ({ currentUser, logout }) => {
                 </section>
                 <section>
                     <div>
-                        {/* <img src={choose} alt="choose-icon" class="icon" /> */}
+                        <img src={choose} alt="choose-icon" class="icon" />
                         <h1>Choose</h1>
                         <p>Choose a monthly amount to go</p>
                         <p>toward COVID-19 relief that works</p>
                         <p>for you.</p>
                     </div>
                     <div>
-                        {/* <img src={check} alt="check-icon" class="icon" /> */}
+                        <img src={check} alt="check-icon" class="icon" />
                         <h1>Check</h1>
                         <p>Receive a monthly impact report</p>
                         <p>explaining how your money helped.</p>
                     </div>
                     <div>
-                        {/* <img src={grow} alt="grow-icon" class="icon"/> */}
+                        <img src={grow} alt="grow-icon" class="icon"/>
                         <h1>Grow</h1>
                         <p>As you get repaid, Kiva will re-lend</p>
                         <p>your money and multiply</p>

@@ -1,49 +1,47 @@
 .main-page {
     background: #EEEFE9;
     height: 570px;
+}
 
-    .site-nav {
-        display: flex;
-        margin: 0 auto;
-        padding: 10px;
-        justify-content: space-between;
-        background: rgb(80,175,79);
-        color: #FFFFFF;
-        height: 55px;
-        text-align: center;
-        align-items: center;
-        font-family: PostGrotesk,Arial,Helvetica,sans-serif;
-        font-size: 18px;
+.site-nav {
+    display: flex;
+    margin: 0 auto;
+    padding: 10px;
+    justify-content: space-between;
+    background: rgb(80,175,79);
+    color: #FFFFFF;
+    height: 55px;
+    text-align: center;
+    align-items: center;
+    font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+    font-size: 18px;
+}
 
-        .giva-button {
-        }
+.impact-steps {
+    position: relative;
+    color: #484848;
+    font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+}
 
-        .lend-button {
-        }
-    }
+.impact-steps.dots img {
+    position: absolute;
+    bottom: 0;
+    height: 300px;
+}
 
-    .impact-steps {
-        background: #FDF7EB;
-        position: relative;
-        color: #484848;
-        font-family: PostGrotesk,Arial,Helvetica,sans-serif;
-    }
+.why-kiva {
+    background: #FFFFFF;
+    height: 1000px;
+}
 
-    .impact-steps.dots img {
-        position: absolute;
-        bottom: 0;
-        height: 300px;
-    }
+.video-link {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    padding: 90px;
+}
 
-    .why-kiva {
-        background: #FFFFFF;
-        height: 1000px;
-    }
-
-    .video-link {
-        display: flex;
-        margin: 0 auto;
-        align-items: center;
-        padding: 90px;
-    }
+.icon {
+    height: 150px;
+    width: 100px;
 }

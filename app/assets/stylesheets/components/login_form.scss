@@ -1,5 +1,5 @@
 .content-background {
-    background: #EEEFE9
+    background: #e7e7e6
 }
 
 .login-form {
@@ -7,7 +7,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #fafafaef;
 }
 
 .login-nav {
@@ -26,12 +25,12 @@
 
 .login-form-box {
     background-color: white;
-    border-radius: 3px;
     border: 1px solid lightgray;
+    border-radius: 3px;
     width: 400px;
     height: 590px;
-    position: absolute;
     top: 100px;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,7 +75,7 @@
 }
 
 p {
-    font-size: 12px;
+    font-size: 14px;
     font-family: PostGrotesk,Arial,Helvetica,sans-serif;
     margin: 5px 15px;
     margin-bottom: 15px;
@@ -86,4 +85,5 @@ p {
 label {
     font-family: PostGrotesk,Arial,Helvetica,sans-serif;
     font-size: 16px;
+    margin-left: 15px;
 }
