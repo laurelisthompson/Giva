@@ -21,8 +21,10 @@ export const receiveErrors = errors => ({
 
 //thunk action creators
 export const login = user => dispatch => {
-    return APIUtil.login(user)
-        .then((user) => dispatch(receiveCurrentUser(user)))
+    return APIUtil.login(user).then(
+        user => dispatch(receiveCurrentUser(user)),
+        error => dispatch(receiveErrors(error.responseJSON))
+    )
 };
 
 export const logout = () => dispatch => {
@@ -31,6 +33,8 @@ export const logout = () => dispatch => {
 };
 
 export const signup = user => dispatch => {
-    return APIUtil.signup(user)
-        .then((newUser) => dispatch(receiveCurrentUser(newUser)))
+    return APIUtil.signup(user).then(
+        newUser => dispatch(receiveCurrentUser(newUser)),
+        error => dispatch(receiveErrors(error.responseJSON))
+    )
 };
