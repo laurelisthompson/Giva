@@ -48,42 +48,53 @@ class SessionForm extends React.Component {
         if (this.props.formType === 'sign in') {
             return (
                 <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <p>{'Sign in below'}</p>
-                        <p>or {this.props.navLink}</p>
-                        {this.renderErrors()}
-                        <p>{'Sign in the same way you did last time'}</p>
-                        <p>{'to avoid creating a second Kiva account.'}</p>
-                        <div>
-                            <label>Email
-                            <br />
-                                <input type="text"
-                                    value={this.state.email}
-                                    onChange={this.update('email')}
+                    <nav class="login-nav">
+                        <h1>Giva</h1>
+                    </nav>
+                    <div class="login-form">
+                        <form onSubmit={this.handleSubmit} class="login-form-box">
+                            <p class="login-title">{'Sign in below'}</p>
+                            <p class="login-title">or {this.props.navLink}</p>
+                            {this.renderErrors()}
+                            <p>{'Sign in the same way you did last time'}</p>
+                            <p>{'to avoid creating a second Kiva account.'}</p>
+                            <div>
+                                <label>Email
+                                <br />
+                                    <input type="text"
+                                        value={this.state.email}
+                                        onChange={this.update('email')}
+                                        class="login-input-box"
+                                    />
+                                </label>
+                                <br />
+                                <label>Password
+                                <br />
+                                    <input type="password"
+                                        value={this.state.password}
+                                        onChange={this.update('password')}
+                                        class="login-input-box"
+                                    />
+                                </label>
+                                <br />
+                                <input type="submit"
+                                    value={'Sign in'}
+                                    class="submit-button"
                                 />
-                            </label>
-                            <br />
-                            <label>Password
-                            <br />
-                                <input type="password"
-                                    value={this.state.password}
-                                    onChange={this.update('password')}
-                                />
-                            </label>
-                            <br />
-                            <input type="submit"
-                                value={'Sign in'}
-                            />
-                            <br/>
-                            <button onClick={this.handleDemoUserSubmit}>Demo User</button>
-                        </div>
-                    </form>
+                                <br/>
+                                <button onClick={this.handleDemoUserSubmit} class="submit-button">Demo User</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             )
         } else {
             return (
-                <div>
+                <div class="signup-form">
                     <form onSubmit={this.handleSubmit}>
+                        <nav class="signup-nav">
+                            <h1>Giva</h1>
+                        </nav>
                         <p>{'Create a new account below'}</p>
                         <p>or {this.props.navLink}</p>
                         {this.renderErrors()}
