@@ -10,4 +10,6 @@ class Loan < ApplicationRecord
         #through lenders
         #source users
 
+    has_one_attached :loan_photo
+
 end
