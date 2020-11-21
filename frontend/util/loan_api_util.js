@@ -1,10 +1,9 @@
 import { $CombinedState } from "redux"
 
-export const fetchAllLoans = data => {
+export const fetchAllLoans = () => {
     return $.ajax({
         method: 'GET',
         url: 'api/loans',
-        data
     })
 };
 

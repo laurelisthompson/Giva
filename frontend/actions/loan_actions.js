@@ -13,12 +13,12 @@ export const receiveLoan = loan => ({
     loan
 });
 
-export const fetchAllLoans = categories => dispatch => {
-    return APIUtil.fetchAllLoans(categories)
+export const fetchAllLoans = () => dispatch => {
+    return APIUtil.fetchAllLoans()
         .then(loans => dispatch(receiveLoans(loans)))
 };
 
 export const fetchLoan = id => dispatch => {
     return APIUtil.fetchLoan(id)
-        .then(bench => dispatch(receiveLoan(bench)))
+        .then(loan => dispatch(receiveLoan(loan)))
 };
