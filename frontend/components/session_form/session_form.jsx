@@ -33,7 +33,7 @@ class SessionForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
-    }
+    };
 
     handleDemoUserSubmit(e) {
         e.preventDefault();
@@ -42,7 +42,7 @@ class SessionForm extends React.Component {
             password: "password"
         };
         this.props.processForm(user);
-    }
+    };
 
     render() {
         if (this.props.formType === 'sign in') {

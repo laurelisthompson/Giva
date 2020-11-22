@@ -52,12 +52,24 @@ const Greeting = ({ currentUser, logout }) => {
             <div class="why-kiva">
 
             </div>
+            <div>
+                <div><Link to={'/loans/women'}>Women</Link></div>
+                <div><Link to={'/loans/agriculture'}>Agriculture</Link></div>
+                <div><Link to={'/loans/education'}>Education</Link></div>
+                <div><Link to={'/loans/refugee'}>Refugee</Link></div>
+                <div><Link to={'/loans/eco'}>Eco-friendly</Link></div>
+                <div><Link to={'/loans/domestic'}>Kiva U.S.</Link></div>
+                <div><Link to={'/loans/livestock'}>Livestock</Link></div>
+                <div><Link to={'/loans/arts'}>Arts</Link></div>
+                <div><Link to={'/loans'}>View All</Link></div>
+            </div>
         </div>
     );
 
     const profileLink = () => (
         <nav>
             <Link to={`/users/${currentUser.id}`}>Profile</Link>
+            <Link to={'/loans'}>View All</Link>
             <button onClick={logout}>Log Out</button>
         </nav>
     );

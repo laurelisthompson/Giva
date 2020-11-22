@@ -25,3 +25,69 @@ Loan.create(
     loan_length: 6,
     deadline: "2020-12-01"
 )
+
+
+Loan.create(
+    loan_name: "agriculture_example",
+    location: "agriculture_example",
+    type_category: "Agriculture",
+    loan_description: "agriculture_example",
+    total_amount: 1500,
+    loan_length: 6,
+    deadline: "2020-12-01"
+)
+Loan.create(
+    loan_name: "education_example",
+    location: "education_example",
+    type_category: "Education",
+    loan_description: "education_example",
+    total_amount: 1500,
+    loan_length: 6,
+    deadline: "2020-12-01"
+)
+Loan.create(
+    loan_name: "refugees_example",
+    location: "refugees_example",
+    type_category: "Refugees",
+    loan_description: "refugees_example",
+    total_amount: 1500,
+    loan_length: 6,
+    deadline: "2020-12-01"
+)
+Loan.create(
+    loan_name: "eco_example",
+    location: "eco_example",
+    type_category: "Eco-friendly",
+    loan_description: "eco_example",
+    total_amount: 1500,
+    loan_length: 6,
+    deadline: "2020-12-01"
+)
+Loan.create(
+    loan_name: "domestic_example",
+    location: "domestic_example",
+    type_category: "Domestic",
+    loan_description: "domestic_example",
+    total_amount: 1500,
+    loan_length: 6,
+    deadline: "2020-12-01"
+)
+Loan.create(
+    loan_name: "livestock_example",
+    location: "livestock_example",
+    type_category: "Livestock",
+    loan_description: "livestock_example",
+    total_amount: 1500,
+    loan_length: 6,
+    deadline: "2020-12-01"
+)
+Loan.create(
+    loan_name: "art_example",
+    location: "art_example",
+    type_category: "Arts",
+    loan_description: "art_example",
+    total_amount: 1500,
+    loan_length: 6,
+    deadline: "2020-12-01"
+)
+            
