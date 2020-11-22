@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_191743) do
+ActiveRecord::Schema.define(version: 2020_11_22_023433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_11_20_191743) do
     t.date "deadline", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "loan_photo", default: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.geeksraisinggeeks.com%2Fwp-content%2Fuploads%2F2013%2F09%2FHermione-Granger.jpg&f=1&nofb=1", null: false
     t.index ["location"], name: "index_loans_on_location"
     t.index ["type_category"], name: "index_loans_on_type_category"
   end

@@ -1,4 +1,4 @@
-import * as APIUtil from '../util.loans_api.util';
+import * as APIUtil from '../util/loan_api_util';
 
 export const RECEIVE_LOANS = 'RECEIVE_LOANS';
 export const RECEIVE_LOAN = 'RECEIVE_LOAN';

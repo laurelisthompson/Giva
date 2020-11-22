@@ -11,6 +11,7 @@ import {
 import GreetingContainer from "./greeting/greeting_container";
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
+import LoanIndexContainer from './loan/loan_index_container';
 import { AuthRoute } from '../util/route_util';
 
 const App = () => (
@@ -22,6 +23,7 @@ const App = () => (
             <Route exact path="/" component={GreetingContainer} />
             <AuthRoute exact path="/signin" component={LogInFormContainer}/>
             <AuthRoute exact path="/signup" component={SignUpFormContainer}/>
+            <Route exact path="/loans" component={LoanIndexContainer} />
         </Switch>
     </div>
 );
