@@ -13,6 +13,7 @@ class AgricultureLoanIndex extends React.Component {
         const { loans } = this.props;
         return (
             <div>
+                <div>
                 {loans.map(loan => {
                     if (loan.type_category == "Agriculture") return (
                         <div>
@@ -28,6 +29,7 @@ class AgricultureLoanIndex extends React.Component {
                         </div>
                     )
                 })}
+                </div>
             </div>
         )
     };

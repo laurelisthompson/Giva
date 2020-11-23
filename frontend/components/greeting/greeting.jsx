@@ -6,13 +6,17 @@ const Greeting = ({ currentUser, logout }) => {
         <div class="main-page">
             <nav class="site-nav">
                 <div>
-                    <button class="giva-button">Giva</button>
-                    <button class="lend-button">Lend</button>
+                    <div>
+                        <button class="giva-button">Giva</button>
+                    </div>
+                    <div>
+                        <button class="lend-button">Lend</button>
+                    </div>
                 </div>
                 <div>
                     <button>Borrow</button>
                     <button>About</button>
-                    <Link class="signin" to="/signin">Sign in</Link>
+                    {currentUser ? <Link to={`/users/${currentUser.id}`}>Profile</Link> : <Link class="signin" to="/signin">Sign in</Link>}
                 </div>
             </nav>
             <section>
@@ -47,10 +51,9 @@ const Greeting = ({ currentUser, logout }) => {
                         <p>your impact.</p>
                     </div>
                 </section>
-                <img src={dottedBackground} alt="dots" class="dots" />
+                <img src={dotted-background} alt="dots" class="dots" />
             </div>
             <div class="why-kiva">
-
             </div>
             <div>
                 <div><Link to={'/loans/women'}>Women</Link></div>
@@ -66,15 +69,32 @@ const Greeting = ({ currentUser, logout }) => {
         </div>
     );
 
-    const profileLink = () => (
-        <nav>
-            <Link to={`/users/${currentUser.id}`}>Profile</Link>
-            <Link to={'/loans'}>View All</Link>
-            <button onClick={logout}>Log Out</button>
-        </nav>
-    );
+    // const profileLink = () => (
+    //     <div class="main-page">
+    //         <nav class="site-nav">
+    //             <div>
+    //                 <button class="giva-button">Giva</button>
+    //                 <button class="lend-button">Lend</button>
+    //             </div>
+    //             <div>
+    //                 <button>Borrow</button>
+    //                 <button>About</button>
+    //                 <Link to={`/users/${currentUser.id}`}>Profile</Link>
+    //                 <button onClick={logout}>Log Out</button>
+    //             </div>
+    //         </nav>
+    //     </div>
+    // );
 
-    return currentUser ? profileLink() : sessionLinks();
+    // const profileLink = () => (
+    //     <nav>
+    //         <Link to={`/users/${currentUser.id}`}>Profile</Link>
+    //         <button onClick={logout}>Log Out</button>
+    //     </nav>
+    // );
+
+    // return currentUser ? profileLink() : sessionLinks();
+    return sessionLinks();
 };
 
 export default Greeting;
