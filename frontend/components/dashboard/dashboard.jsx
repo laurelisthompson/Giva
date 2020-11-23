@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Greeting = ({ currentUser, logout }) => {
+const Dashboard = ({ currentUser, logout }) => {
     const sessionLinks = () => (
         <div class="main-page">
             <nav class="site-nav">
@@ -15,7 +15,7 @@ const Greeting = ({ currentUser, logout }) => {
                 </div>
                 <div>
                     <button>About</button>
-                    <Link class="signin" to="/signin">Sign in</Link>
+                    <button onClick={logout}>Log Out</button>
                 </div>
             </nav>
             <section>
@@ -71,4 +71,4 @@ const Greeting = ({ currentUser, logout }) => {
     return sessionLinks();
 };
 
-export default Greeting;
+export default Dashboard;

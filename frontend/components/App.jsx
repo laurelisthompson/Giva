@@ -4,7 +4,7 @@ import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
 import GreetingContainer from "./greeting/greeting_container";
 import ProfileContainer from "./profile/profile_container";
-import ProfileContainer from "./profile/greeting_container";
+import DashboardContainer from "./dashboard/dashboard_container";
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import LoanIndexContainer from './loan/loan_index_container';
@@ -16,7 +16,7 @@ import EcoIndexContainer from './categories/eco_loan_container';
 import DomesticIndexContainer from './categories/domestic_loan_container';
 import LivestockIndexContainer from './categories/livestock_loan_container';
 import ArtsIndexContainer from './categories/arts_loan_container';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
     <div>
@@ -24,7 +24,8 @@ const App = () => (
             
         </header>
         <Switch>
-            <Route exact path="/profile" component={ProfileContainer} />
+            <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+            <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
             <Route exact path="/" component={GreetingContainer} />
             <AuthRoute exact path="/signin" component={LogInFormContainer}/>
             <AuthRoute exact path="/signup" component={SignUpFormContainer}/>

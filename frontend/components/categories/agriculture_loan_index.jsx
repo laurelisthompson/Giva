@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class AgricultureLoanIndex extends React.Component {
     constructor(props) {
@@ -10,9 +11,23 @@ class AgricultureLoanIndex extends React.Component {
     };
 
     render() {
-        const { loans } = this.props;
+        const { loans, logout } = this.props;
         return (
             <div>
+                <nav class="site-nav">
+                    <div>
+                        <div>
+                            <button class="giva-button">Giva</button>
+                        </div>
+                        <div>
+                            <button class="lend-button">Lend</button>
+                        </div>
+                    </div>
+                    <div>
+                        <button>About</button>
+                        <Link to="/profile">Profile</Link>
+                    </div>
+                </nav>
                 <div>
                 {loans.map(loan => {
                     if (loan.type_category == "Agriculture") return (
