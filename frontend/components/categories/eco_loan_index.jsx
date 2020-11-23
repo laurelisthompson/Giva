@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class DomesticLoanIndex extends React.Component {
+class EcoLoanIndex extends React.Component {
     constructor(props) {
         super(props);
     };
@@ -30,7 +30,7 @@ class DomesticLoanIndex extends React.Component {
                 </nav>
                 <div>
                     {loans.map(loan => {
-                        if (loan.type_category == "Domestic") return (
+                        if (loan.type_category == "Eco-friendly") return (
                             <div>
                                 <img src={loan.thumbnailUrl} />
                                 <div>
@@ -50,4 +50,4 @@ class DomesticLoanIndex extends React.Component {
     };
 }
 
-export default DomesticLoanIndex;
+export default EcoLoanIndex;

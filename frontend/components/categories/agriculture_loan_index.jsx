@@ -17,7 +17,7 @@ class AgricultureLoanIndex extends React.Component {
                 <nav class="site-nav">
                     <div>
                         <div>
-                            <button class="giva-button">Giva</button>
+                            <Link class="header-button" to="/dashboard">Giva</Link>
                         </div>
                         <div>
                             <button class="lend-button">Lend</button>
