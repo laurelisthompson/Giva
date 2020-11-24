@@ -24,5 +24,5 @@ loan1 = Loan.create(
     total_amount: 1500,
     loan_length: 6,
     deadline: "2020-12-01")
-loan1photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/hermoine.jpeg')
+loan1photo = open('https://giva-dev.s3.amazonaws.com/harrypotter/hermoine.jpeg')
 loan1.loan_photo.attach(io: loan1photo, filename:'hermoine.jpeg')           
