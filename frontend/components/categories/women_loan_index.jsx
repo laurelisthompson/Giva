@@ -29,7 +29,7 @@ class WomenLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
-                    <p><Link to={'/loans'}>All Loans</Link> > Women</p>
+                    <p><Link to={'/loans'}>All Loans</Link> - Women</p>
                     <h1>Women</h1>
                     <p>
                         Worldwide, women have much less economic opportunity, security, and freedom. 

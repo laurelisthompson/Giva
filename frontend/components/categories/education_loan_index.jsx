@@ -29,7 +29,7 @@ class EducationLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
-                    <p><Link to={'/loans'}>All Loans</Link> > Education</p>
+                    <p><Link to={'/loans'}>All Loans</Link> - Education</p>
                     <h1>Education</h1>
                     <p>
                         Help underprivileged and marginalized students attend vocational school, 

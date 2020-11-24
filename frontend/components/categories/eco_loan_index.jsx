@@ -29,7 +29,7 @@ class EcoLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
-                    <p><Link to={'/loans'}>All Loans</Link> > Eco-friendly</p>
+                    <p><Link to={'/loans'}>All Loans</Link> - Eco-friendly</p>
                     <h1>Eco-friendly</h1>
                     <p>
                         Protecting the environment and creating economic growth don’t always 

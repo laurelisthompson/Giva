@@ -29,7 +29,7 @@ class RefugeeLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
-                    <p><Link to={'/loans'}>All Loans</Link> > Refugees and IDPs</p>
+                    <p><Link to={'/loans'}>All Loans</Link> - Refugees and IDPs</p>
                     <h1>Refugees and IDPs</h1>
                     <p>
                         More than 79 million people have been forced to leave their homes in 

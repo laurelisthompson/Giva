@@ -29,7 +29,7 @@ class ArtsLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
-                    <p><Link to={'/loans'}>All Loans</Link> > Arts</p>
+                    <p><Link to={'/loans'}>All Loans</Link> - Arts</p>
                     <h1>Arts</h1>
                     <p>
                         With your support, artisans can buy more materials, grow their 

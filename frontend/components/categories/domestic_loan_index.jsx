@@ -29,7 +29,7 @@ class DomesticLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
-                    <p><Link to={'/loans'}>All Loans</Link> > Kiva U.S.</p>
+                    <p><Link to={'/loans'}>All Loans</Link> - Kiva U.S.</p>
                     <h1>Kiva U.S.</h1>
                     <p>
                         Small businesses create 2 out of every 3 new jobs in the U.S. Support 

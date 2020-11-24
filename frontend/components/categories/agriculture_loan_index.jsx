@@ -29,7 +29,7 @@ class AgricultureLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
-                    <p><Link to={'/loans'}>All Loans</Link> > Agriculture</p>
+                    <p><Link to={'/loans'}>All Loans</Link> - Agriculture</p>
                     <h1>Agriculture</h1>
                     <p>
                         Farmers face many challenges like unpredictable weather and 

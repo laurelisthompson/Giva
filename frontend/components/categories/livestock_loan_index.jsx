@@ -29,7 +29,7 @@ class LivestockLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
-                    <p><Link to={'/loans'}>All Loans</Link> > Livestock</p>
+                    <p><Link to={'/loans'}>All Loans</Link> - Livestock</p>
                     <h1>Livestock</h1>
                     <p>
                         Cows, pigs and other animals have the potential to dramatically increase 
