@@ -29,6 +29,16 @@ class AgricultureLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
+                    <p><Link to={'/loans'}>All Loans</Link> > Agriculture</p>
+                    <h1>Agriculture</h1>
+                    <p>
+                        Farmers face many challenges like unpredictable weather and 
+                        market prices, and are often forced to choose between investing 
+                        in their crops and fulfilling basic needs for their families. Your 
+                        support keeps their crops growing and their livelihoods stable.
+                    </p>
+                </div>
+                <div>
                 {loans.map(loan => {
                     if (loan.type_category == "Agriculture") return (
                         <div>

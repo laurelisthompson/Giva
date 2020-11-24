@@ -29,6 +29,16 @@ class EducationLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
+                    <p><Link to={'/loans'}>All Loans</Link> > Education</p>
+                    <h1>Education</h1>
+                    <p>
+                        Help underprivileged and marginalized students attend vocational school, 
+                        university or other higher education institutions and give them a chance 
+                        to reach their full potential. The economic returns for higher education 
+                        graduates are a 17% increase in earnings.
+                    </p>
+                </div>
+                <div>
                     {loans.map(loan => {
                         if (loan.type_category == "Education") return (
                             <div>

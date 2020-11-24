@@ -29,10 +29,19 @@ class WomenLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
+                    <p><Link to={'/loans'}>All Loans</Link> > Women</p>
+                    <h1>Women</h1>
+                    <p>
+                        Worldwide, women have much less economic opportunity, security, and freedom. 
+                        Support women starting their own businesses, going to school, and investing 
+                        in the health of their communities and families.
+                    </p>
+                </div>
+                <div>
                     {loans.map(loan => {
                         if (loan.type_category == "Women") return (
                             <div>
-                                <img src={loan.thumbnailUrl} />
+                                <div class="loan-photo"><img src={loan.thumbnailUrl} /></div>
                                 <div>
                                     <h1>{loan.loan_name}</h1>
                                     <p>{loan.location}</p>

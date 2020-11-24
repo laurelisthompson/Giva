@@ -29,6 +29,16 @@ class RefugeeLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
+                    <p><Link to={'/loans'}>All Loans</Link> > Refugees and IDPs</p>
+                    <h1>Refugees and IDPs</h1>
+                    <p>
+                        More than 79 million people have been forced to leave their homes in 
+                        the wake of human or natural disasters, and most can’t return for many 
+                        years, if ever. Refugees, internally displaced people and host communities 
+                        need our support.
+                    </p>
+                </div>
+                <div>
                     {loans.map(loan => {
                         if (loan.type_category == "Refugees") return (
                             <div>

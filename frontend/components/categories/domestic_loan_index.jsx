@@ -29,6 +29,15 @@ class DomesticLoanIndex extends React.Component {
                     </div>
                 </nav>
                 <div>
+                    <p><Link to={'/loans'}>All Loans</Link> > Kiva U.S.</p>
+                    <h1>Kiva U.S.</h1>
+                    <p>
+                        Small businesses create 2 out of every 3 new jobs in the U.S. Support 
+                        financially excluded and socially impactful borrowers with these 0% 
+                        interest loans.
+                    </p>
+                </div>
+                <div>
                     {loans.map(loan => {
                         if (loan.type_category == "Domestic") return (
                             <div>

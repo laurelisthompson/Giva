@@ -32,7 +32,7 @@ class LoanIndex extends React.Component {
                     {loans.map(loan => {
                         return (
                             <div>
-                                <img src={loan.thumbnailUrl}/>
+                                <div class="loan-photo"><img src={loan.thumbnailUrl} /></div>
                                 <div>
                                     <h1>{loan.loan_name}</h1>
                                     <p>{loan.location}</p>

@@ -1,0 +1,16 @@
+.loan-photo {
+    position: relative;
+    width: 380px;     
+    height: 285px;
+    overflow: hidden;
+}
+
+img {
+    position: absolute;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    top: 50%;     
+    left: 50%;
+    transform: translate( -50%, -50%);
+}
