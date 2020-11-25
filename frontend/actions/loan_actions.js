@@ -8,9 +8,10 @@ export const receiveLoans = loans => ({
     loans
 });
 
-export const receiveLoan = loan => ({
+export const receiveLoan = payload => ({
     type: RECEIVE_LOAN,
-    loan
+    loan: payload.loan,
+    lenders: payload.lenders
 });
 
 export const fetchAllLoans = () => dispatch => {
@@ -20,5 +21,5 @@ export const fetchAllLoans = () => dispatch => {
 
 export const fetchLoan = id => dispatch => {
     return APIUtil.fetchLoan(id)
-        .then(loan => dispatch(receiveLoan(loan)))
+        .then(payload => dispatch(receiveLoan(payload)))
 };

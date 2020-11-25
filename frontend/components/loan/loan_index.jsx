@@ -59,6 +59,7 @@ class LoanIndex extends React.Component {
                                     <p>{loan.location}</p>
                                     <p>{loan.loan_description}</p>
                                     <p>${loan.total_amount}</p>
+                                    {/* <p>{loan.receivedAmount}</p> */}
                                     <button>$25</button>
                                     <button>Lend Now</button>
                                 </div>
