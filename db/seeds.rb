@@ -20,7 +20,7 @@ loan1 = Loan.create(
     loan_name: "Hermoine Granger",
     location: "Hogwarts",
     type_category: "Women",
-    loan_description: "'Are you planning to follow a career in Magical Law, Miss Granger?' asked Scrimgeour. 'No, I’m not,' retorted Hermione. 'I’m hoping to do some good in the world!'",
+    loan_description: "But from that moment on, Hermione Granger became their friend. Because there are somethings you can't go through in life and become friends, and knocking out a twelve-foot mountain troll is one of them.",
     total_amount: 1500,
     loan_length: 6,
     deadline: "2020-12-01")

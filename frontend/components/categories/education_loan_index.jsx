@@ -63,7 +63,7 @@ class EducationLoanIndex extends React.Component {
                     {loans.map(loan => {
                         if (loan.type_category == "Education") return (
                             <div>
-                                <img src={loan.thumbnailUrl} />
+                                <div class="loan-photo"><img src={loan.thumbnailUrl} /></div>
                                 <div>
                                     <h1>{loan.loan_name}</h1>
                                     <p>{loan.location}</p>
