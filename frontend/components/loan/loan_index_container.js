@@ -4,7 +4,9 @@ import LoanIndex from './loan_index';
 
 const mSTP = state => ({
     loans: Object.values(state.entities.loans)//.map(loan => {
-        //loan.receivedAmount = 
+        //loan.receivedAmount = {
+            
+        //}
         //map over lenders and and filter by loan id equal to loan.id, sum up total amount, return loan at end
     //})
 });

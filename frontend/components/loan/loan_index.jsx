@@ -49,6 +49,10 @@ class LoanIndex extends React.Component {
                         </div>
                     </div>
                 </nav>
+                <div class="page-description">
+                    <h1>Make a loan, change a life</h1>
+                    <p>Each Giva loan helps people build a better future for themselves and their families.</p>
+                </div>
                 <div>
                     {loans.map(loan => {
                         return (
@@ -58,8 +62,9 @@ class LoanIndex extends React.Component {
                                     <h1>{loan.loan_name}</h1>
                                     <p>{loan.location}</p>
                                     <p>{loan.loan_description}</p>
-                                    <p>${loan.total_amount}</p>
-                                    {/* <p>{loan.receivedAmount}</p> */}
+                                    <p>${loan.total_amount} Total</p>
+                                    <p>${loan.receivedAmount}</p>
+                                    <p>{loan.total_amount - loan.receivedAmount}</p>
                                     <button>$25</button>
                                     <button>Lend Now</button>
                                 </div>
