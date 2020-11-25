@@ -92,7 +92,7 @@ class SessionForm extends React.Component {
         } else {
             return (
                 <div>
-                    <nav class="signup-nav">
+                    <nav class="login-nav">
                         <h1>Giva</h1>
                     </nav>
                     <div class="signup-form">

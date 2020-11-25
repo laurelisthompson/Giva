@@ -7,15 +7,32 @@ const Dashboard = ({ currentUser, logout }) => {
             <nav class="site-nav">
                 <div>
                     <div>
-                        <button class="giva-button">Giva</button>
-                    </div>
-                    <div>
-                        <button class="lend-button">Lend</button>
+                        <div class="nav-button">
+                            <button class="giva-btn">Giva</button>
+                        </div>
+                        <div class="lend-dropdown">
+                            <button class="lend-dropbtn">Lend</button>
+                            <div class="dropdown-content">
+                                <h1>Categories</h1>
+                                <Link to={'/loans/women'}>Women</Link>
+                                <Link to={'/loans/agriculture'}>Agriculture</Link>
+                                <Link to={'/loans/education'}>Education</Link>
+                                <Link to={'/loans/refugee'}>Refugee</Link>
+                                <Link to={'/loans/eco'}>Eco-friendly</Link>
+                                <Link to={'/loans/domestic'}>Kiva U.S.</Link>
+                                <Link to={'/loans/livestock'}>Livestock</Link>
+                                <Link to={'/loans/arts'}>Arts</Link>
+                                <Link to={'/loans'}>View All</Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <button>About</button>
-                    <button onClick={logout}>Log Out</button>
+                <div class="lend-dropdown">
+                    <button class="lend-dropbtn">Profile</button>
+                    <div class="dropdown-content">
+                        <Link to={'/profile'}>Profile</Link>
+                        <button onClick={logout}>Sign Out</button>
+                    </div>
                 </div>
             </nav>
             <section>
