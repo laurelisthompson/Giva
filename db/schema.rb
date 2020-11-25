@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_220910) do
+ActiveRecord::Schema.define(version: 2020_11_25_180912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_220910) do
     t.integer "loan_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "loan_amount", null: false
     t.index ["loan_id"], name: "index_lenders_on_loan_id"
     t.index ["user_id"], name: "index_lenders_on_user_id"
   end

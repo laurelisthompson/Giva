@@ -2,11 +2,12 @@
 #
 # Table name: lenders
 #
-#  id         :bigint           not null, primary key
-#  user_id    :integer          not null
-#  loan_id    :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint           not null, primary key
+#  user_id     :integer          not null
+#  loan_id     :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  loan_amount :integer          not null
 #
 
 # This model initially had no columns defined. If you add columns to the

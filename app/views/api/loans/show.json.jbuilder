@@ -10,4 +10,10 @@ json.lenders do
     end
 end
 
-#users
+json.users do
+    @user.lenders.each do |lender|
+        json.set! lender.id do 
+            json.partial! 'api/users/show', user: lender
+        end
+    end
+end
