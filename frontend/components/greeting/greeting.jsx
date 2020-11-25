@@ -45,7 +45,11 @@ const Greeting = ({ currentUser, logout }) => {
                         </div>
                     </div>
                     <div class="nav-button-right">
-                        <Link class="giva-btn" to="/signin">Sign in</Link>
+                        <Link to={"/signin"}>
+                            <button class="giva-btn" type="button">
+                                Sign in
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </nav>

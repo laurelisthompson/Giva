@@ -15,6 +15,11 @@
     font-family: PostGrotesk,Arial,Helvetica,sans-serif;
     font-size: 18px;
     margin: 0;
+
+    a {
+        text-align: center;
+        padding: 10px;
+    }
 }
 
 .lend-dropdown:hover .lend-dropbtn {

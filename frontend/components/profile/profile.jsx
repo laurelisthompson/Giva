@@ -7,8 +7,12 @@ const Profile = ({ currentUser, logout }) => {
         <div class="main-page">
             <nav class="site-nav">
                 <div>
-                    <div class="nav-button">
-                        <Link to={'/dashboard'}>Giva</Link>
+                    <div class="lend-dropdown">
+                        <Link to={"/dashboard"}>
+                            <button class="lend-dropbtn" type="button">
+                                Giva
+                            </button>
+                        </Link>
                     </div>
                     <div class="lend-dropdown">
                         <button class="lend-dropbtn">Lend</button>
