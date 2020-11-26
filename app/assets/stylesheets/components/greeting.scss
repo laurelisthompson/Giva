@@ -16,10 +16,63 @@
     font-size: 18px;
 }
 
+.impact-steps-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    h1 {
+        font-size: 36px;
+        font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+        font-weight: 700;
+        color: #484848;
+        margin-bottom: 20px;
+        margin-top: 90px;
+    }
+
+    span {
+        font-size: 20px;
+        font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+        color: #484848;
+        line-height: 28px;
+    }
+}
+
 .impact-steps {
-    position: relative;
-    color: #484848;
-    font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+    margin-top: 45px;
+    display: flex;
+    width: 1062px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px 50px;
+
+        img {
+            width: 119px;
+            height: 150px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+            font-weight: 700;
+            color: #484848;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        span {
+            font-size: 16px;
+            font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+            color: #484848;
+            line-height: 24px;
+        }
+    }
 }
 
 .impact-steps.dots img {

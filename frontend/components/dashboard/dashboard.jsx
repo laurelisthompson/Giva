@@ -40,35 +40,35 @@ const Dashboard = ({ currentUser, logout }) => {
             <section>
                 <iframe class="video-link" width="560" height="315" src="https://www.youtube.com/embed/WCraaM6PAos?autoplay=1?mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </section>
-            <div class="impact-steps">
-                <section>
+            <div>
+                <div class="impact-steps-title">
                     <h1>Three Steps to Impact</h1>
-                    <p>Set your commitment once, Kiva will make sure</p>
-                    <p>every dollar is lent to COVID-19 impacted</p>
-                    <p>individuals and businesses.</p>
-                </section>
-                <section>
-                    <div>
-                        <img src={choose} alt="choose-icon" class="icon" />
+                    <span>Set your commitment once, Kiva will make sure</span>
+                    <span>every dollar is lent to COVID-19 impacted</span>
+                    <span>individuals and businesses.</span>
+                </div>
+                <div class="impact-steps">
+                    <div class="step">
+                        <img src={choose} alt="choose-icon" />
                         <h1>Choose</h1>
-                        <p>Choose a monthly amount to go</p>
-                        <p>toward COVID-19 relief that works</p>
-                        <p>for you.</p>
+                        <span>Choose a monthly amount to go</span>
+                        <span>toward COVID-19 relief that works</span>
+                        <span>for you.</span>
                     </div>
-                    <div>
-                        <img src={check} alt="check-icon" class="icon" />
+                    <div class="step">
+                        <img src={check} alt="check-icon" />
                         <h1>Check</h1>
-                        <p>Receive a monthly impact report</p>
-                        <p>explaining how your money helped.</p>
+                        <span>Receive a monthly impact report</span>
+                        <span>explaining how your money helped.</span>
                     </div>
-                    <div>
-                        <img src={grow} alt="grow-icon" class="icon" />
+                    <div class="step">
+                        <img src={grow} alt="grow-icon" />
                         <h1>Grow</h1>
-                        <p>As you get repaid, Kiva will re-lend</p>
-                        <p>your money and multiply</p>
-                        <p>your impact.</p>
+                        <span>As you get repaid, Kiva will re-lend</span>
+                        <span>your money and multiply</span>
+                        <span>your impact.</span>
                     </div>
-                </section>
+                </div>
                 {/* <img src={dotted-background} alt="dots" class="dots" /> */}
             </div>
             <div class="why-kiva">
