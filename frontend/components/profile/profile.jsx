@@ -30,16 +30,16 @@ const Profile = ({ currentUser, logout }) => {
                         </div>
                     </div>
                 </div>
-                <div class="nav-button-right">
+                <div class="profile-dropdown">
                     <button onClick={logout}>Log Out</button>
                 </div>
             </nav>
             <nav class="profile-nav">
-                <div>
-                    <button class="header-button">Profile</button>
-                    <button class="header-button">My teams</button>
-                    <button class="header-button">Messages</button>
-                    <button class="header-button">Settings</button>
+                <div class="profile-upper-tabs">
+                    <button>Profile</button>
+                    <button>My teams</button>
+                    <button>Messages</button>
+                    <button>Settings</button>
                 </div>
             </nav>
             <div>

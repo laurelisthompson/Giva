@@ -28,7 +28,7 @@ const Dashboard = ({ currentUser, logout }) => {
                         </div>
                     </div>
                 </div>
-                <div class="lend-dropdown">
+                <div class="profile-dropdown">
                     <button class="lend-dropbtn">Profile</button>
                     {/* <button class="lend-dropbtn"><CgProfile size={50}/></button> */}
                     <div class="dropdown-content">

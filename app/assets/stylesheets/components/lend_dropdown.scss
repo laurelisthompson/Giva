@@ -5,6 +5,13 @@
     z-index: 2;
 }
 
+.profile-dropdown {
+    float: left;
+    overflow: hidden;
+    border-left: 1px solid #489540;
+    z-index: 2;
+}
+
 .lend-dropdown .lend-dropbtn {
     font-size: 16px;  
     border: none;
@@ -22,7 +29,28 @@
     }
 }
 
+.profile-dropdown .lend-dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 22px 22px;
+    background-color: inherit;
+    font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+    font-size: 18px;
+    margin: 0;
+
+    a {
+        text-align: center;
+        padding: 10px;
+    }
+}
+
 .lend-dropdown:hover .lend-dropbtn {
+    background-color: #489540;
+}
+
+.profile-dropdown:hover .lend-dropbtn {
     background-color: #489540;
 }
 
@@ -64,5 +92,9 @@
 }
 
 .lend-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.profile-dropdown:hover .dropdown-content {
     display: block;
 }
