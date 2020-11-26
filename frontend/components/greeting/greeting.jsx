@@ -85,9 +85,6 @@ const Greeting = ({ currentUser, logout }) => {
                         <span>your impact.</span>
                     </div>
                 </div>
-                {/* <img src={dotted-background} alt="dots" class="dots" /> */}
-            </div>
-            <div class="why-kiva">
             </div>
             <div>
                 <div><Link to={'/loans/women'}>Women</Link></div>
