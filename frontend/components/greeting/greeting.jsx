@@ -59,7 +59,7 @@ const Greeting = ({ currentUser, logout }) => {
             <div class="impacts-section">
                 <div class="impact-steps-title">
                     <h1>Three Steps to Impact</h1>
-                    <span>Set your commitment once, Kiva will make sure</span>
+                    <span>Set your commitment once, Giva will make sure</span>
                     <span>every dollar is lent to COVID-19 impacted</span>
                     <span>individuals and businesses.</span>
                 </div>
@@ -80,22 +80,79 @@ const Greeting = ({ currentUser, logout }) => {
                     <div class="step">
                         <img src={grow} alt="grow-icon"/>
                         <h1>Grow</h1>
-                        <span>As you get repaid, Kiva will re-lend</span>
+                        <span>As you get repaid, Giva will re-lend</span>
                         <span>your money and multiply</span>
                         <span>your impact.</span>
                     </div>
                 </div>
             </div>
             <div>
-                <div><Link to={'/loans/women'}>Women</Link></div>
-                <div><Link to={'/loans/agriculture'}>Agriculture</Link></div>
-                <div><Link to={'/loans/education'}>Education</Link></div>
-                <div><Link to={'/loans/refugee'}>Refugee</Link></div>
-                <div><Link to={'/loans/eco'}>Eco-friendly</Link></div>
-                <div><Link to={'/loans/domestic'}>Kiva U.S.</Link></div>
-                <div><Link to={'/loans/livestock'}>Livestock</Link></div>
-                <div><Link to={'/loans/arts'}>Arts</Link></div>
-                <div><Link to={'/loans'}>View All</Link></div>
+                <img src={map} alt="map of impact" />
+            </div>
+            <div class="browse-loans">
+                <div>
+                    <h1>Browse loans by category</h1>
+                </div>
+                <div class="loan-links">
+                    <div class="container">
+                        <Link to={'/loans/women'}>
+                            <img src={women}/>
+                            <div>
+                                <h2>Women</h2> 
+                            </div>
+                        </Link>
+                    </div>
+                    <div class="container">
+                        <Link to={'/loans/agriculture'}>
+                            <img src={agriculture} />
+                            <h2>Agriculture</h2>
+                        </Link>
+                    </div>
+                    <div class="container">
+                        <Link to={'/loans/education'}>
+                            <img src={education} />
+                            <h2>Education</h2>
+                        </Link>
+                    </div>
+                    <div class="container">
+                        <Link to={'/loans/refugee'}>
+                            <img src={refugees} />
+                            <h2>Refugees</h2>
+                        </Link>
+                    </div>
+                    <div class="container">
+                        <Link to={'/loans/eco'}>
+                            <img src={ecofriendly} />
+                            <h2>Eco-friendly</h2>
+                        </Link>
+                    </div>
+                    <div class="container">
+                        <Link to={'/loans/domestic'}>
+                            <img src={kivadomestic} />
+                            <h2>Giva U.S.</h2>
+                        </Link>
+                    </div>
+                    <div class="container">
+                        <Link to={'/loans/livestock'}>
+                            <img src={livestock} />
+                            <h2>Livestock</h2>
+                        </Link>
+                    </div>
+                    <div class="container">
+                        <Link to={'/loans/arts'}>
+                            <img src={arts} />
+                            <h2>Arts</h2>
+                        </Link>
+                    </div>
+                    <div class="container">
+                        <Link to={'/loans'}>
+                            <img src={all} />
+                            <h3>View All</h3>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+            <div>
             </div>
         </div>
     );
