@@ -56,7 +56,7 @@ const Greeting = ({ currentUser, logout }) => {
             <section>
                 <iframe class="video-link" width="560" height="315" src="https://www.youtube.com/embed/WCraaM6PAos?autoplay=1?mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </section>
-            <div>
+            <div class="impacts-section">
                 <div class="impact-steps-title">
                     <h1>Three Steps to Impact</h1>
                     <span>Set your commitment once, Kiva will make sure</span>
