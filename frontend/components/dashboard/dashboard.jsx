@@ -136,6 +136,8 @@ const Dashboard = ({ currentUser, logout }) => {
                     </div>
                 </div>
             </div>
+            <div class="white-space">
+            </div>
         </div>
     );
 

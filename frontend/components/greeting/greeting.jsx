@@ -87,6 +87,9 @@ const Greeting = ({ currentUser, logout }) => {
                 </div>
             </div>
             <div>
+                <div class="why-giva">
+                    <h1>Why Giva?</h1>
+                </div>
                 <img src={map} alt="map of impact" />
             </div>
             <div class="browse-loans">
@@ -152,7 +155,7 @@ const Greeting = ({ currentUser, logout }) => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="white-space">
             </div>
         </div>
     );

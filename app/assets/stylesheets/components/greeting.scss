@@ -3,6 +3,10 @@
     height: 570px;
 }
 
+.white-space {
+    height: 100px;
+}
+
 .site-nav {
     display: flex;
     margin: 0 auto;
@@ -27,7 +31,7 @@
         font-family: PostGrotesk,Arial,Helvetica,sans-serif;
         color: #484848;
         margin-bottom: 50px;
-        margin-top: 40px;
+        margin-top: 70px;
         letter-spacing: 1px;
     }
 
@@ -158,9 +162,19 @@
     height: 650px;
 }
 
-.why-kiva {
-    background: #FFFFFF;
-    height: 1000px;
+.why-giva {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    h1 {
+        font-size: 38px;
+        font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+        margin-bottom: 35px;
+        margin-top: 60px;
+        color: #50AF4F;
+    }
 }
 
 .video-link {
