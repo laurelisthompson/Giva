@@ -58,14 +58,13 @@ class WomenLoanIndex extends React.Component {
                         in the health of their communities and families.
                     </span>
                 </div>
-                <div>
+                <div class="loan-flex">
                     {loans.map(loan => {
                         if (loan.type_category == "Women") return (
-                            <div class="loans">
-                                <div class="loan-img">
-                                    <img src={loan.thumbnailUrl} />
-                                </div>
-                                <div>
+                                <div class="loans">
+                                    <div class="loan-img">
+                                        <img src={loan.thumbnailUrl} />
+                                    </div>
                                     <h1>{loan.loan_name}</h1>
                                     <p class="loan-loc">{loan.location}</p>
                                     <p class="loan-des">{loan.loan_description}</p>
@@ -78,7 +77,6 @@ class WomenLoanIndex extends React.Component {
                                         <button class="lend-btn">Lend Now</button>
                                     </div>
                                 </div>
-                            </div>
                         )
                     })}
                 </div>

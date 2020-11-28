@@ -41,7 +41,7 @@ class RefugeeLoanIndex extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div class="lend-dropdown">
+                    <div class="profile-dropdown">
                         <button class="lend-dropbtn">Profile</button>
                         <div class="dropdown-content">
                             <Link to={'/profile'}>Profile</Link>
@@ -49,28 +49,33 @@ class RefugeeLoanIndex extends React.Component {
                         </div>
                     </div>
                 </nav>
-                <div>
+                <div class="loan-headings">
                     <p><Link to={'/loans'}>All Loans</Link> - Refugees and IDPs</p>
                     <h1>Refugees and IDPs</h1>
-                    <p>
+                    <span>
                         More than 79 million people have been forced to leave their homes in 
                         the wake of human or natural disasters, and most can’t return for many 
                         years, if ever. Refugees, internally displaced people and host communities 
                         need our support.
-                    </p>
+                    </span>
                 </div>
-                <div>
+                <div class="loan-flex">
                     {loans.map(loan => {
                         if (loan.type_category == "Refugees") return (
-                            <div>
-                                <div class="loan-photo"><img src={loan.thumbnailUrl} /></div>
-                                <div>
-                                    <h1>{loan.loan_name}</h1>
-                                    <p>{loan.location}</p>
-                                    <p>{loan.loan_description}</p>
-                                    <p>{loan.total_amount}</p>
-                                    <button>$25</button>
-                                    <button>Lend Now</button>
+                            <div class="loans">
+                                <div class="loan-img">
+                                    <img src={loan.thumbnailUrl} />
+                                </div>
+                                <h1>{loan.loan_name}</h1>
+                                <p class="loan-loc">{loan.location}</p>
+                                <p class="loan-des">{loan.loan_description}</p>
+                                <div class="progress-container">
+                                    <div class="current-progress"></div>
+                                </div>
+                                <p class="loan-amt">${loan.total_amount}</p>
+                                <div class="btn">
+                                    <button class="price-btn">$25</button>
+                                    <button class="lend-btn">Lend Now</button>
                                 </div>
                             </div>
                         )

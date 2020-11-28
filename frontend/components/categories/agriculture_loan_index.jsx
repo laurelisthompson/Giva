@@ -41,7 +41,7 @@ class AgricultureLoanIndex extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div class="lend-dropdown">
+                    <div class="profile-dropdown">
                         <button class="lend-dropbtn">Profile</button>
                         <div class="dropdown-content">
                             <Link to={'/profile'}>Profile</Link>
@@ -49,32 +49,37 @@ class AgricultureLoanIndex extends React.Component {
                         </div>
                     </div>
                 </nav>
-                <div>
+                <div class="loan-headings">
                     <p><Link to={'/loans'}>All Loans</Link> - Agriculture</p>
                     <h1>Agriculture</h1>
-                    <p>
+                    <span>
                         Farmers face many challenges like unpredictable weather and 
                         market prices, and are often forced to choose between investing 
                         in their crops and fulfilling basic needs for their families. Your 
                         support keeps their crops growing and their livelihoods stable.
-                    </p>
+                    </span>
                 </div>
-                <div>
-                {loans.map(loan => {
-                    if (loan.type_category == "Agriculture") return (
-                        <div>
-                            <div class="loan-photo"><img src={loan.thumbnailUrl} /></div>
-                            <div>
+                <div class="loan-flex">
+                    {loans.map(loan => {
+                        if (loan.type_category == "Agriculture") return (
+                            <div class="loans">
+                                <div class="loan-img">
+                                    <img src={loan.thumbnailUrl} />
+                                </div>
                                 <h1>{loan.loan_name}</h1>
-                                <p>{loan.location}</p>
-                                <p>{loan.loan_description}</p>
-                                <p>{loan.total_amount}</p>
-                                <button>$25</button>
-                                <button>Lend Now</button>
+                                <p class="loan-loc">{loan.location}</p>
+                                <p class="loan-des">{loan.loan_description}</p>
+                                <div class="progress-container">
+                                    <div class="current-progress"></div>
+                                </div>
+                                <p class="loan-amt">${loan.total_amount}</p>
+                                <div class="btn">
+                                    <button class="price-btn">$25</button>
+                                    <button class="lend-btn">Lend Now</button>
+                                </div>
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
                 </div>
             </div>
         )

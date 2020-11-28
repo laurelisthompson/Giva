@@ -41,7 +41,7 @@ class ArtsLoanIndex extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div class="lend-dropdown">
+                    <div class="profile-dropdown">
                         <button class="lend-dropbtn">Profile</button>
                         <div class="dropdown-content">
                             <Link to={'/profile'}>Profile</Link>
@@ -49,26 +49,31 @@ class ArtsLoanIndex extends React.Component {
                         </div>
                     </div>
                 </nav>
-                <div>
+                <div class="loan-headings">
                     <p><Link to={'/loans'}>All Loans</Link> - Arts</p>
                     <h1>Arts</h1>
-                    <p>
+                    <span>
                         With your support, artisans can buy more materials, grow their 
                         businesses and preserve local traditions.
-                    </p>
+                    </span>
                 </div>
-                <div>
+                <div class="loan-flex">
                     {loans.map(loan => {
                         if (loan.type_category == "Arts") return (
-                            <div>
-                                <div class="loan-photo"><img src={loan.thumbnailUrl} /></div>
-                                <div>
-                                    <h1>{loan.loan_name}</h1>
-                                    <p>{loan.location}</p>
-                                    <p>{loan.loan_description}</p>
-                                    <p>{loan.total_amount}</p>
-                                    <button>$25</button>
-                                    <button>Lend Now</button>
+                            <div class="loans">
+                                <div class="loan-img">
+                                    <img src={loan.thumbnailUrl} />
+                                </div>
+                                <h1>{loan.loan_name}</h1>
+                                <p class="loan-loc">{loan.location}</p>
+                                <p class="loan-des">{loan.loan_description}</p>
+                                <div class="progress-container">
+                                    <div class="current-progress"></div>
+                                </div>
+                                <p class="loan-amt">${loan.total_amount}</p>
+                                <div class="btn">
+                                    <button class="price-btn">$25</button>
+                                    <button class="lend-btn">Lend Now</button>
                                 </div>
                             </div>
                         )
