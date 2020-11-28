@@ -69,10 +69,10 @@ class WomenLoanIndex extends React.Component {
                                     <h1>{loan.loan_name}</h1>
                                     <p class="loan-loc">{loan.location}</p>
                                     <p class="loan-des">{loan.loan_description}</p>
-                                    <p class="loan-amt">${loan.total_amount}</p>
                                     <div class="progress-container">
                                         <div class="current-progress"></div>
                                     </div>
+                                    <p class="loan-amt">${loan.total_amount}</p>
                                     <div class="btn">
                                         <button class="price-btn">$25</button>
                                         <button class="lend-btn">Lend Now</button>
