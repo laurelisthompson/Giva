@@ -1,17 +1,151 @@
-.loan-photo {
-    position: relative;
-    width: 380px;     
-    height: 285px;
-    overflow: hidden;
-    z-index: -50;
+.loans {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 1px solid lightgray;
+    width: 300px;
+    height: 600px;
 
-    img {
-        position: absolute;
-        max-width: 100%;
-        width: 100%;
-        height: auto;
-        top: 50%;     
-        left: 50%;
-        transform: translate( -50%, -50%);
+    .progress-container { 
+        background-color: #D8D8D8; 
+        width: 80%; 
+        border-radius: 15px;
+        justify-content: center;
+    } 
+      
+    .current-progress { 
+        background-color: rgb(80,175,79); 
+        color: white; 
+        padding: 4px; 
+        text-align: right; 
+        font-size: 20px; 
+        border-radius: 15px; 
+        width: 30%; 
+        justify-content: center;
+    }
+
+    h1 {
+        color: #118BEC;
+        text-align: center;
+        font-size: 22px;
+        font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+        margin-top: 15px;
+    }
+
+    .loan-loc {
+        font-size: 16px;
+        text-align: center;
+        font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        color: #9d9c9e;
+    }
+
+    .loan-des {
+        font-size: 16px;
+        text-align: center;
+        font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+        color: #484848;
+        margin-top: 10px;
+        margin-left: 15px;
+        margin-right: 15px;
+        height: 115px;
+    }
+
+    .loan-amt {
+        text-align: center;
+        color: rgb(80,175,79);
+        font-style: italic;
+    }
+
+    .btn {
+        text-align: center;
+        margin: 15px 5px;
+        justify-content: center;
+    }
+
+    .price-btn {
+        box-sizing: border-box;
+        border: #E8E7E9 solid 1px;
+        border-radius: 2px;
+        height: 55px;
+        width: 80px;
+        font-size: 14px;
+        font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+        background-color: #ffffff;
+        box-shadow: 1px #073153;
+        color: #484848;
+        text-align: center;
+    }
+
+    .lend-btn {
+        box-sizing: border-box;
+        border: #E8E7E9 solid 1px;
+        border-radius: 2px;
+        height: 55px;
+        width: 170px;
+        font-size: 20px;
+        font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+        background-color: #118BEC;
+        box-shadow: 1px #073153;
+        color: #FFFFFF;
+        text-align: center;
+    }
+
+    .loan-img {
+        position: relative;
+        width: 300px;     
+        height: 225px;
+        overflow: hidden;
+        z-index: -50;
+
+        img {
+            position: absolute;
+            max-width: 100%;
+            width: 100%;
+            height: 220px;
+            top: 50%;     
+            left: 50%;
+            transform: translate( -50%, -50%);
+        }
+    }
+}
+
+.loan-headings {
+    margin-left: 40px;
+    font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+    margin-right: 300px;
+    margin-bottom: 40px;
+
+    p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #484848;
+    }
+    
+    a {
+        color: #118aec;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #056ed3;
+    }
+
+    h1 {
+        font-size: 34px;
+        color: #484848;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    span {
+        line-height: 30px;
+        color: rgb(92, 92, 92);
     }
 }

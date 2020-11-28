@@ -57,7 +57,7 @@ class SessionForm extends React.Component {
                             <p class="login-title">{'Sign in below'}</p>
                             <p class="login-title">or {this.props.navLink}</p>
                             <ul class="error-messages">{this.renderErrors()}</ul>
-                            <p>{'Sign in the same way you did last time'}<br/>
+                            <p class="login-txt">{'Sign in the same way you did last time'}<br/>
                             {'to avoid creating a second Kiva account.'}</p>
                             <div>
                                 <label>Email

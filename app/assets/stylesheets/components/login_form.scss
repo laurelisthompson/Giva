@@ -50,14 +50,14 @@
 }
 
 .login-input-box {
-  box-sizing: border-box;
-  border: #E8E7E9 solid 1px;
-  height: 45px;
-  width: 350px;
-  padding: 20px 0px 14px 20px;
-  margin: 15px 15px;
-  font-size: 16px;
-  font-family: PostGrotesk,Arial,Helvetica,sans-serif;
+    box-sizing: border-box;
+    border: #E8E7E9 solid 1px;
+    height: 45px;
+    width: 350px;
+    padding: 20px 0px 14px 20px;
+    margin: 15px 15px;
+    font-size: 16px;
+    font-family: PostGrotesk,Arial,Helvetica,sans-serif;
 }
 
 .submit-button {
@@ -74,14 +74,13 @@
     box-shadow: 1px #073153;
     color: #FFFFFF;
     text-align: center;
-}
+} 
 
-
-p {
+.login-txt {
     font-size: 14px;
     font-family: PostGrotesk,Arial,Helvetica,sans-serif;
-    margin: 5px 15px;
-    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-bottom: 25px;
     color: #484848;
 }
 
