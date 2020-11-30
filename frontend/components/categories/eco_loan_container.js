@@ -3,7 +3,8 @@ import { fetchAllLoans } from '../../actions/loan_actions';
 import EcoLoanIndex from './eco_loan_index';
 
 const mSTP = state => ({
-    loans: Object.values(state.entities.loans)
+    loans: Object.values(state.entities.loans),
+    session: state.session,
 });
 
 const mDTP = dispatch => ({
