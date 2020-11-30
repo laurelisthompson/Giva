@@ -47,7 +47,7 @@ class WomenLoanIndex extends React.Component {
                         <button class="lend-dropbtn">Profile</button>
                         <div class="dropdown-content">
                             <Link to={'/profile'}>Profile</Link>
-                            <button onClick={logout}>Sign Out</button>
+                            <button onClick={window.logout}>Sign Out</button>
                         </div>
                     </div>
                 </nav>

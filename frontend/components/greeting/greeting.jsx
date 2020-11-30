@@ -160,6 +160,11 @@ const Greeting = ({ currentUser, logout }) => {
         </div>
     );
 
+    // const dashboardLinks = () => (
+
+    // )
+
+    // return currentUser ? dashboardLinks() : sessionLinks
     return sessionLinks();
 };
 
