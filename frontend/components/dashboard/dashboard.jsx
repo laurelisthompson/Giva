@@ -69,12 +69,6 @@ const Dashboard = ({ currentUser, logout }) => {
                     </div>
                 </div>
             </div>
-            <div>
-                <div class="why-giva">
-                    <h1>Why Giva?</h1>
-                </div>
-                <img src={map} alt="map of impact" />
-            </div>
             <div class="browse-loans">
                 <div>
                     <h1>Browse loans by category</h1>
