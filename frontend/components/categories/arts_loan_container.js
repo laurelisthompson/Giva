@@ -8,7 +8,8 @@ const mSTP = state => ({
 });
 
 const mDTP = dispatch => ({
-    fetchAllLoans: () => dispatch(fetchAllLoans())
+    fetchAllLoans: () => dispatch(fetchAllLoans()),
+    logout: () => dispatch(logout()),
 });
 
 export default connect(mSTP, mDTP)(ArtsLoanIndex);

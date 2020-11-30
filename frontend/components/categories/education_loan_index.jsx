@@ -11,7 +11,7 @@ class EducationLoanIndex extends React.Component {
     };
 
     render() {
-        const { loans } = this.props;
+        const { loans, logout } = this.props;
         const loggedIn = Boolean(this.props.session.id);
 
         return loggedIn ? (

@@ -11,7 +11,7 @@ class WomenLoanIndex extends React.Component {
     };
 
     render() {
-        const { loans } = this.props;
+        const { loans, logout } = this.props;
         const loggedIn = Boolean(this.props.session.id);
 
         return loggedIn ? (
@@ -47,7 +47,7 @@ class WomenLoanIndex extends React.Component {
                         <button class="lend-dropbtn">Profile</button>
                         <div class="dropdown-content">
                             <Link to={'/profile'}>Profile</Link>
-                            <button onClick={window.logout}>Sign Out</button>
+                            <button onClick={logout}>Sign Out</button>
                         </div>
                     </div>
                 </nav>
