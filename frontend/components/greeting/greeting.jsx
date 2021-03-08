@@ -34,14 +34,10 @@ const Greeting = ({ currentUser, logout }) => {
                     <div class="about-dropdown">
                         <button class="about-dropbtn">About</button>
                         <div class="dropdown-content">
-                            <button>About Us</button>
-                            <button>How Kiva Works</button>
-                            <button>Where Kiva Works</button>
-                            <button>Impact</button>
-                            <button>Leadership</button>
-                            <button>Finances</button>
-                            <button>Press</button>
-                            <button>Due diligence</button>
+                            <a href="https://laurelisthompson.github.io/" target="_blank">Portfolio</a>
+                            <a href="https://github.com/laurelisthompson" target="_blank">Github</a>
+                            <a href="https://www.linkedin.com/in/laurelisthompson/" target="_blank">LinkedIn</a>
+                            <a href="https://angel.co/u/laurelisthompson" target="_blank">AngelList</a>
                         </div>
                     </div>
                     <div class="nav-button-right">
