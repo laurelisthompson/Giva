@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Giva</title>
+
+    <meta property='og:title' content='giva' />
+    <meta property='og:description' content='giva is a single page web app clone of the loan website kiva' />
+    
+    <meta
+      name="giva"
+      content="giva is a single page web app clone of the loan website kiva that allows users to contribute to crowdfunded loans."
+    />
+
+    <title>Loans that change lives</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag asset_path('favicon.ico')  %>
     <script>
       window.dottedBackground = "<%= image_url("dotted-background.png") %>"
       window.choose = "<%= image_url("choose.png") %>"
