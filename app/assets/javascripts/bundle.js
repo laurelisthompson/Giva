@@ -232,6 +232,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _categories_livestock_loan_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./categories/livestock_loan_container */ "./frontend/components/categories/livestock_loan_container.js");
 /* harmony import */ var _categories_arts_loan_container__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./categories/arts_loan_container */ "./frontend/components/categories/arts_loan_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _about_about_container__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./about/about_container */ "./frontend/components/about/about_container.js");
+
 
 
 
@@ -308,10 +310,61 @@ var App = function App() {
     exact: true,
     path: "/loans/arts",
     component: _categories_arts_loan_container__WEBPACK_IMPORTED_MODULE_16__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/about",
+    component: _about_about_container__WEBPACK_IMPORTED_MODULE_19__["default"]
   })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/about/about.jsx":
+/*!*********************************************!*\
+  !*** ./frontend/components/about/about.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var About = function About() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (About);
+
+/***/ }),
+
+/***/ "./frontend/components/about/about_container.js":
+/*!******************************************************!*\
+  !*** ./frontend/components/about/about_container.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _about__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./about */ "./frontend/components/about/about.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_about__WEBPACK_IMPORTED_MODULE_0__["default"]));
 
 /***/ }),
 
@@ -2740,23 +2793,11 @@ var Greeting = function Greeting(_ref) {
       "class": "giva-btn"
     }, "Borrow")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       "class": "about-dropdown"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: '/about'
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       "class": "about-dropbtn"
-    }, "About"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      "class": "dropdown-content"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "https://laurelisthompson.github.io/",
-      target: "_blank"
-    }, "Portfolio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "https://github.com/laurelisthompson",
-      target: "_blank"
-    }, "Github"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "https://www.linkedin.com/in/laurelisthompson/",
-      target: "_blank"
-    }, "LinkedIn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "https://angel.co/u/laurelisthompson",
-      target: "_blank"
-    }, "AngelList"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "About"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       "class": "nav-button-right"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/signin"

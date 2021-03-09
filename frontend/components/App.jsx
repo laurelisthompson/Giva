@@ -17,6 +17,7 @@ import DomesticIndexContainer from './categories/domestic_loan_container';
 import LivestockIndexContainer from './categories/livestock_loan_container';
 import ArtsIndexContainer from './categories/arts_loan_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import AboutContainer from './about/about_container';
 
 const App = () => (
     <div>
@@ -38,6 +39,7 @@ const App = () => (
             <Route exact path="/loans/domestic" component={DomesticIndexContainer} />
             <Route exact path="/loans/livestock" component={LivestockIndexContainer} />
             <Route exact path="/loans/arts" component={ArtsIndexContainer} />
+            <Route exact path="/about" component={AboutContainer} />
         </Switch>
     </div>
 );
