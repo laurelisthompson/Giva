@@ -432,10 +432,10 @@ var AboutContainer = /*#__PURE__*/function (_React$Component) {
         href: "https://laurelisthompson.github.io/",
         target: "_blank"
       }, "Portfolio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://laurelisthompson.github.io/",
+        href: "https://github.com/laurelisthompson",
         target: "_blank"
       }, "GitHub"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://laurelisthompson.github.io/",
+        href: "https://www.linkedin.com/in/laurelisthompson/",
         target: "_blank"
       }, "LinkedIn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://angel.co/u/laurelisthompson",
@@ -496,10 +496,10 @@ var AboutContainer = /*#__PURE__*/function (_React$Component) {
         href: "https://laurelisthompson.github.io/",
         target: "_blank"
       }, "Portfolio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://laurelisthompson.github.io/",
+        href: "https://github.com/laurelisthompson",
         target: "_blank"
       }, "GitHub"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://laurelisthompson.github.io/",
+        href: "https://www.linkedin.com/in/laurelisthompson/",
         target: "_blank"
       }, "LinkedIn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://angel.co/u/laurelisthompson",

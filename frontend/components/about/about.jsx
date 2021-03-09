@@ -57,8 +57,8 @@ class AboutContainer extends React.Component {
                     <div class="profile-upper-tabs">
                         <button class="selected-button">About Giva</button>
                         <a href="https://laurelisthompson.github.io/" target="_blank">Portfolio</a>
-                        <a href="https://laurelisthompson.github.io/" target="_blank">GitHub</a>
-                        <a href="https://laurelisthompson.github.io/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/laurelisthompson" target="_blank">GitHub</a>
+                        <a href="https://www.linkedin.com/in/laurelisthompson/" target="_blank">LinkedIn</a>
                         <a href="https://angel.co/u/laurelisthompson" target="_blank">AngelList</a>
                     </div>
                 </nav>
@@ -121,8 +121,8 @@ class AboutContainer extends React.Component {
                         <div class="profile-upper-tabs">
                             <button class="selected-button">About Giva</button>
                             <a href="https://laurelisthompson.github.io/" target="_blank">Portfolio</a>
-                            <a href="https://laurelisthompson.github.io/" target="_blank">GitHub</a>
-                            <a href="https://laurelisthompson.github.io/" target="_blank">LinkedIn</a>
+                            <a href="https://github.com/laurelisthompson" target="_blank">GitHub</a>
+                            <a href="https://www.linkedin.com/in/laurelisthompson/" target="_blank">LinkedIn</a>
                             <a href="https://angel.co/u/laurelisthompson" target="_blank">AngelList</a>
                         </div>
                     </nav>
