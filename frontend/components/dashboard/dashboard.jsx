@@ -28,11 +28,20 @@ const Dashboard = ({ currentUser, logout }) => {
                         </div>
                     </div>
                 </div>
-                <div class="profile-dropdown">
-                    <button class="lend-dropbtn">Profile</button>
-                    <div class="dropdown-content">
-                        <Link to={'/profile'}>Profile</Link>
-                        <button onClick={logout}>Sign Out</button>
+                <div>
+                    <div class="about-dropdown">
+                        <Link to={'/about'}>
+                            <button class="about-dropbtn">
+                                About
+                            </button>
+                        </Link>
+                    </div>
+                    <div class="profile-dropdown">
+                        <button class="lend-dropbtn">Profile</button>
+                        <div class="dropdown-content">
+                            <Link to={'/profile'}>Profile</Link>
+                            <button onClick={logout}>Sign Out</button>
+                        </div>
                     </div>
                 </div>
             </nav>

@@ -30,8 +30,13 @@ const Profile = ({ currentUser, logout }) => {
                         </div>
                     </div>
                 </div>
-                <div class="profile-dropdown">
-                    <button onClick={logout}>Log Out</button>
+                <div>
+                    <div class="about-dropdown">
+                        <button class="about-dropbtn">About</button>
+                    </div>
+                    <div class="profile-dropdown">
+                        <button onClick={logout}>Log Out</button>
+                    </div>
                 </div>
             </nav>
             <nav class="profile-nav">

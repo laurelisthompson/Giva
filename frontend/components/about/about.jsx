@@ -38,6 +38,13 @@ class AboutContainer extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <div class="about-dropdown">
+                        <Link to={'/about'}>
+                            <button class="about-dropbtn">
+                                About
+                            </button>
+                        </Link>
+                    </div>
                     <div class="profile-dropdown">
                         <button class="lend-dropbtn">Profile</button>
                         <div class="dropdown-content">
@@ -94,21 +101,12 @@ class AboutContainer extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <div class="nav-button-right">
-                                <button class="giva-btn">Borrow</button>
-                            </div>
                             <div class="about-dropdown">
-                                <button class="about-dropbtn">About</button>
-                                <div class="dropdown-content">
-                                    <button>About Us</button>
-                                    <button>How Kiva Works</button>
-                                    <button>Where Kiva Works</button>
-                                    <button>Impact</button>
-                                    <button>Leadership</button>
-                                    <button>Finances</button>
-                                    <button>Press</button>
-                                    <button>Due diligence</button>
-                                </div>
+                                <Link to={'/about'}>
+                                    <button class="about-dropbtn">
+                                        About
+                                    </button>
+                                </Link>
                             </div>
                             <div class="nav-button-right">
                                 <Link to={"/signin"}>

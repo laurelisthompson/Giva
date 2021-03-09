@@ -28,20 +28,11 @@ const Greeting = ({ currentUser, logout }) => {
                     </div>
                 </div>
                 <div>
-                    <div class="nav-button-right">
-                        <button class="giva-btn">Borrow</button>
-                    </div>
                     <div class="about-dropdown">
                         <Link to={'/about'}>
-                        <button class="about-dropbtn">
-                            About
-                        </button>
-                            {/* <div class="dropdown-content">
-                                <a href="https://laurelisthompson.github.io/" target="_blank">Portfolio</a>
-                                <a href="https://github.com/laurelisthompson" target="_blank">Github</a>
-                                <a href="https://www.linkedin.com/in/laurelisthompson/" target="_blank">LinkedIn</a>
-                                <a href="https://angel.co/u/laurelisthompson" target="_blank">AngelList</a>
-                            </div> */}
+                            <button class="about-dropbtn">
+                                About
+                            </button>
                         </Link>
                     </div>
                     <div class="nav-button-right">
@@ -154,11 +145,6 @@ const Greeting = ({ currentUser, logout }) => {
         </div>
     );
 
-    // const dashboardLinks = () => (
-
-    // )
-
-    // return currentUser ? dashboardLinks() : sessionLinks
     return sessionLinks();
 };
 
