@@ -39,21 +39,13 @@ const Profile = ({ currentUser, logout }) => {
                         </Link>
                     </div>
                     <div class="profile-dropdown">
-                        {/* <button class="lend-dropbtn">Profile</button> */}
-                        {/* <div class="dropdown-content"> */}
-                            <Link to={'/profile'}>
-                                <button onClick={logout}>Sign Out</button>
-                            </Link>
-                        {/* </div> */}
+                        <button onClick={logout} class="lend-dropbtn">Sign Out</button>
                     </div>
                 </div>
             </nav>
             <nav class="profile-nav">
                 <div class="profile-upper-tabs">
                     <button>Profile</button>
-                    <button>My teams</button>
-                    <button>Messages</button>
-                    <button>Settings</button>
                 </div>
             </nav>
             <div>
