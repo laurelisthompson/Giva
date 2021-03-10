@@ -35,7 +35,7 @@ class DomesticLoanIndex extends React.Component {
                                     <Link to={'/loans/education'}>Education</Link>
                                     <Link to={'/loans/refugee'}>Refugee</Link>
                                     <Link to={'/loans/eco'}>Eco-friendly</Link>
-                                    <Link to={'/loans/domestic'}>Kiva U.S.</Link>
+                                    <Link to={'/loans/domestic'}>Giva U.S.</Link>
                                     <Link to={'/loans/livestock'}>Livestock</Link>
                                     <Link to={'/loans/arts'}>Arts</Link>
                                     <Link to={'/loans'}>View All</Link>
@@ -62,8 +62,8 @@ class DomesticLoanIndex extends React.Component {
                 </nav>
                 <div class="loan-page">
                     <div class="loan-headings">
-                        <p><Link to={'/loans'}>All Loans</Link> - Kiva U.S.</p>
-                        <h1>Kiva U.S.</h1>
+                        <p><Link to={'/loans'}>All Loans</Link> - Giva U.S.</p>
+                        <h1>Giva U.S.</h1>
                         <span>
                             Small businesses create 2 out of every 3 new jobs in the U.S. Support
                             financially excluded and socially impactful borrowers with these 0%
@@ -115,7 +115,7 @@ class DomesticLoanIndex extends React.Component {
                                         <Link to={'/loans/education'}>Education</Link>
                                         <Link to={'/loans/refugee'}>Refugee</Link>
                                         <Link to={'/loans/eco'}>Eco-friendly</Link>
-                                        <Link to={'/loans/domestic'}>Kiva U.S.</Link>
+                                        <Link to={'/loans/domestic'}>Giva U.S.</Link>
                                         <Link to={'/loans/livestock'}>Livestock</Link>
                                         <Link to={'/loans/arts'}>Arts</Link>
                                         <Link to={'/loans'}>View All</Link>
@@ -140,7 +140,7 @@ class DomesticLoanIndex extends React.Component {
                     </nav>
                     <div class="loan-page">
                         <div class="loan-headings">
-                            <p><Link to={'/loans'}>All Loans</Link> - Kiva U.S.</p>
+                            <p><Link to={'/loans'}>All Loans</Link> - Giva U.S.</p>
                             <h1>Kiva U.S.</h1>
                             <span>
                                 Small businesses create 2 out of every 3 new jobs in the U.S. Support
@@ -174,7 +174,7 @@ class DomesticLoanIndex extends React.Component {
                 </div>
             );
     };
-            
+
 }
 
 export default DomesticLoanIndex;

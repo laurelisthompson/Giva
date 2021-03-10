@@ -36,7 +36,7 @@ class LoanIndex extends React.Component {
                                     <Link to={'/loans/education'}>Education</Link>
                                     <Link to={'/loans/refugee'}>Refugee</Link>
                                     <Link to={'/loans/eco'}>Eco-friendly</Link>
-                                    <Link to={'/loans/domestic'}>Kiva U.S.</Link>
+                                    <Link to={'/loans/domestic'}>Giva U.S.</Link>
                                     <Link to={'/loans/livestock'}>Livestock</Link>
                                     <Link to={'/loans/arts'}>Arts</Link>
                                     <Link to={'/loans'}>View All</Link>
@@ -111,7 +111,7 @@ class LoanIndex extends React.Component {
                                         <Link to={'/loans/education'}>Education</Link>
                                         <Link to={'/loans/refugee'}>Refugee</Link>
                                         <Link to={'/loans/eco'}>Eco-friendly</Link>
-                                        <Link to={'/loans/domestic'}>Kiva U.S.</Link>
+                                        <Link to={'/loans/domestic'}>Giva U.S.</Link>
                                         <Link to={'/loans/livestock'}>Livestock</Link>
                                         <Link to={'/loans/arts'}>Arts</Link>
                                         <Link to={'/loans'}>View All</Link>
