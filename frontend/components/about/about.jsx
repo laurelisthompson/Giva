@@ -67,6 +67,9 @@ class AboutContainer extends React.Component {
                     </div>
                 </nav>
                 <div>
+                    <img src="{window.aboutGiva}" alt="about giva background"/>
+                </div>
+                <div>
                     <h1>About This Project</h1>
                     <p>Giva is a single page web app clone of the loan</p>
                     <p>website <a href="https://www.kiva.org/" target="_blank">Kiva</a>, and was created by <a href="https://laurelisthompson.github.io/" target="_blank">Lauren Thompson</a>.</p>
@@ -129,6 +132,9 @@ class AboutContainer extends React.Component {
                             <a href="https://angel.co/u/laurelisthompson" target="_blank">AngelList</a>
                         </div>
                     </nav>
+                    <div>
+                        <img src="{window.aboutGiva}" alt="about giva background" />
+                    </div>
                     <div>
                         <h1>About This Project</h1>
                         <p>Giva is a single page web app clone of the loan</p>
