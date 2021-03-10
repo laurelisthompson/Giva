@@ -69,10 +69,9 @@ class AboutContainer extends React.Component {
                 <div>
                     <h1>About This Project</h1>
                     <p>Giva is a single page web app clone of the loan</p>
-                    <p>website kiva, and was created by Lauren Thompson.</p>
+                    <p>website <a href="https://www.kiva.org/" target="_blank">Kiva</a>, and was created by <a href="https://laurelisthompson.github.io/" target="_blank">Lauren Thompson</a>.</p>
                     <p>Giva was built with a Ruby on Rails backend and a</p>
                     <p>React/Redux frontend.</p>
-                    <button></button>
                 </div>
             </div>
         ) : (
@@ -133,10 +132,9 @@ class AboutContainer extends React.Component {
                     <div>
                         <h1>About This Project</h1>
                         <p>Giva is a single page web app clone of the loan</p>
-                        <p>website kiva, and was created by Lauren Thompson.</p>
+                        <p>website <a href="https://www.kiva.org/" target="_blank">Kiva</a>, and was created by <a href="https://laurelisthompson.github.io/" target="_blank">Lauren Thompson</a>.</p>
                         <p>Giva was built with a Ruby on Rails backend and a</p>
                         <p>React/Redux frontend.</p>
-                        <button></button>
                     </div>
                 </div>
             );
