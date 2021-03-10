@@ -38,18 +38,22 @@ class AboutContainer extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div class="about-dropdown">
-                        <Link to={'/about'}>
-                            <button class="about-dropbtn">
-                                About
-                            </button>
-                        </Link>
-                    </div>
-                    <div class="profile-dropdown">
-                        <button class="lend-dropbtn">Profile</button>
-                        <div class="dropdown-content">
-                            <Link to={'/profile'}>Profile</Link>
-                            <button onClick={logout}>Sign Out</button>
+                    <div>
+                        <div class="about-dropdown">
+                            <Link to={'/about'}>
+                                <button class="about-dropbtn">
+                                    About
+                                </button>
+                            </Link>
+                        </div>
+                        <div class="profile-dropdown">
+                            <Link to={'/profile'}>
+                                <button class="lend-dropbtn">Profile</button>
+                            </Link>
+                            <div class="dropdown-content">
+                                <Link to={'/profile'}>Profile</Link>
+                                <button onClick={logout}>Sign Out</button>
+                            </div>
                         </div>
                     </div>
                 </nav>

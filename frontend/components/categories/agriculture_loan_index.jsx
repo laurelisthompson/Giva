@@ -50,9 +50,11 @@ class AgricultureLoanIndex extends React.Component {
                             </Link>
                         </div>
                         <div class="profile-dropdown">
-                            <button class="lend-dropbtn">Profile</button>
+                            <Link to={'/profile'}>
+                                <button class="lend-dropbtn">Profile</button>
+                            </Link>
                             <div class="dropdown-content">
-                                {/* <Link to={'/profile'}>Profile</Link> */}
+                                <Link to={'/profile'}>Profile</Link>
                                 <button onClick={logout}>Sign Out</button>
                             </div>
                         </div>

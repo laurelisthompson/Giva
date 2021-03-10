@@ -32,10 +32,19 @@ const Profile = ({ currentUser, logout }) => {
                 </div>
                 <div>
                     <div class="about-dropdown">
-                        <button class="about-dropbtn">About</button>
+                        <Link to={'/about'}>
+                            <button class="about-dropbtn">
+                                About
+                                </button>
+                        </Link>
                     </div>
                     <div class="profile-dropdown">
-                        <button onClick={logout}>Log Out</button>
+                        {/* <button class="lend-dropbtn">Profile</button> */}
+                        {/* <div class="dropdown-content"> */}
+                            <Link to={'/profile'}>
+                                <button onClick={logout}>Sign Out</button>
+                            </Link>
+                        {/* </div> */}
                     </div>
                 </div>
             </nav>
