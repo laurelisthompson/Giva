@@ -10,4 +10,24 @@
     align-items: center;
     font-family: PostGrotesk,Arial,Helvetica,sans-serif;
     font-size: 16px;
+
+    .selected-button {
+        color: #4EAF4E;
+        border-bottom: 1px solid #4EAF4E;
+        padding-bottom: 2px;
+    }
+
+    button, a {
+        margin-right: 40px;
+    }
+
+    button:hover, a:hover {
+        color: #4EAF4E;
+        border-bottom: 1px solid #4EAF4E;
+        padding-bottom: 2px;
+    }
+
+    button {
+        margin-left: 25px;
+    }
 }

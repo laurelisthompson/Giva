@@ -35,7 +35,7 @@ const Profile = ({ currentUser, logout }) => {
                         <Link to={'/about'}>
                             <button class="about-dropbtn">
                                 About
-                                </button>
+                            </button>
                         </Link>
                     </div>
                     <div class="profile-dropdown">
@@ -45,7 +45,7 @@ const Profile = ({ currentUser, logout }) => {
             </nav>
             <nav class="profile-nav">
                 <div class="profile-upper-tabs">
-                    <button>Profile</button>
+                    <button class="selected-button">Profile</button>
                 </div>
             </nav>
             <div>
