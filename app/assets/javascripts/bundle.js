@@ -1386,7 +1386,7 @@ var DomesticLoanIndex = /*#__PURE__*/function (_React$Component) {
         "class": "loan-headings"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: '/loans'
-      }, "All Loans"), " - Giva U.S."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Kiva U.S."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Small businesses create 2 out of every 3 new jobs in the U.S. Support financially excluded and socially impactful borrowers with these 0% interest loans.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "All Loans"), " - Giva U.S."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Giva U.S."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Small businesses create 2 out of every 3 new jobs in the U.S. Support financially excluded and socially impactful borrowers with these 0% interest loans.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "loan-flex"
       }, loans.map(function (loan) {
         if (loan.type_category == "Domestic") return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
