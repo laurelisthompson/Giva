@@ -60,36 +60,38 @@ class LivestockLoanIndex extends React.Component {
                         </div>
                     </div>
                 </nav>
-                <div class="loan-headings">
-                    <p><Link to={'/loans'}>All Loans</Link> - Livestock</p>
-                    <h1>Livestock</h1>
-                    <span>
-                        Cows, pigs and other animals have the potential to dramatically increase
-                        farming incomes, but the initial cost can be a barrier. Help farmers invest
-                        in their futures.
-                    </span>
-                </div>
-                <div class="loan-flex">
-                    {loans.map(loan => {
-                        if (loan.type_category == "Livestock") return (
-                            <div class="loans">
-                                <div class="loan-img">
-                                    <img src={loan.thumbnailUrl} />
+                <div class="loan-page">
+                    <div class="loan-headings">
+                        <p><Link to={'/loans'}>All Loans</Link> - Livestock</p>
+                        <h1>Livestock</h1>
+                        <span>
+                            Cows, pigs and other animals have the potential to dramatically increase
+                            farming incomes, but the initial cost can be a barrier. Help farmers invest
+                            in their futures.
+                        </span>
+                    </div>
+                    <div class="loan-flex">
+                        {loans.map(loan => {
+                            if (loan.type_category == "Livestock") return (
+                                <div class="loans">
+                                    <div class="loan-img">
+                                        <img src={loan.thumbnailUrl} />
+                                    </div>
+                                    <h1>{loan.loan_name}</h1>
+                                    <p class="loan-loc">{loan.location}</p>
+                                    <p class="loan-des">{loan.loan_description}</p>
+                                    <div class="progress-container">
+                                        <div class="current-progress"></div>
+                                    </div>
+                                    <p class="loan-amt">${loan.total_amount}</p>
+                                    <div class="btn">
+                                        <button class="price-btn">$25</button>
+                                        <button class="lend-btn">Lend Now</button>
+                                    </div>
                                 </div>
-                                <h1>{loan.loan_name}</h1>
-                                <p class="loan-loc">{loan.location}</p>
-                                <p class="loan-des">{loan.loan_description}</p>
-                                <div class="progress-container">
-                                    <div class="current-progress"></div>
-                                </div>
-                                <p class="loan-amt">${loan.total_amount}</p>
-                                <div class="btn">
-                                    <button class="price-btn">$25</button>
-                                    <button class="lend-btn">Lend Now</button>
-                                </div>
-                            </div>
-                        )
-                    })}
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         ) : (
@@ -136,36 +138,37 @@ class LivestockLoanIndex extends React.Component {
                             </div>
                         </div>
                     </nav>
-                    <div class="loan-headings">
-                        <p><Link to={'/loans'}>All Loans</Link> - Livestock</p>
-                        <h1>Livestock</h1>
-                        <span>
-                            Cows, pigs and other animals have the potential to dramatically increase
-                            farming incomes, but the initial cost can be a barrier. Help farmers invest
-                            in their futures.
-                        </span>
-                    </div>
-                    <div class="loan-flex">
-                        {loans.map(loan => {
-                            if (loan.type_category == "Livestock") return (
-                                <div class="loans">
-                                    <div class="loan-img">
-                                        <img src={loan.thumbnailUrl} />
+                    <div class="loan-page">
+                        <div class="loan-headings">
+                            <p><Link to={'/loans'}>All Loans</Link> - Livestock</p>
+                            <h1>Livestock</h1>
+                            <span>
+                                Cows, pigs and other animals have the potential to dramatically increase
+                                farming incomes, but the initial cost can be a barrier. Help farmers invest
+                                in their futures.</span>
+                        </div>
+                        <div class="loan-flex">
+                            {loans.map(loan => {
+                                if (loan.type_category == "Livestock") return (
+                                    <div class="loans">
+                                        <div class="loan-img">
+                                            <img src={loan.thumbnailUrl} />
+                                        </div>
+                                        <h1>{loan.loan_name}</h1>
+                                        <p class="loan-loc">{loan.location}</p>
+                                        <p class="loan-des">{loan.loan_description}</p>
+                                        <div class="progress-container">
+                                            <div class="current-progress"></div>
+                                        </div>
+                                        <p class="loan-amt">${loan.total_amount}</p>
+                                        <div class="btn">
+                                            <button class="price-btn">$25</button>
+                                            <button class="lend-btn">Lend Now</button>
+                                        </div>
                                     </div>
-                                    <h1>{loan.loan_name}</h1>
-                                    <p class="loan-loc">{loan.location}</p>
-                                    <p class="loan-des">{loan.loan_description}</p>
-                                    <div class="progress-container">
-                                        <div class="current-progress"></div>
-                                    </div>
-                                    <p class="loan-amt">${loan.total_amount}</p>
-                                    <div class="btn">
-                                        <button class="price-btn">$25</button>
-                                        <button class="lend-btn">Lend Now</button>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
         );

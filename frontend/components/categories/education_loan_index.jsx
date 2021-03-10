@@ -60,37 +60,39 @@ class EducationLoanIndex extends React.Component {
                         </div>
                     </div>
                 </nav>
-                <div class="loan-headings">
-                    <p><Link to={'/loans'}>All Loans</Link> - Education</p>
-                    <h1>Education</h1>
-                    <span>
-                        Help underprivileged and marginalized students attend vocational school,
-                        university or other higher education institutions and give them a chance
-                        to reach their full potential. The economic returns for higher education
-                        graduates are a 17% increase in earnings.
-                    </span>
-                </div>
-                <div class="loan-flex">
-                    {loans.map(loan => {
-                        if (loan.type_category == "Education") return (
-                            <div class="loans">
-                                <div class="loan-img">
-                                    <img src={loan.thumbnailUrl} />
+                <div class="loan-page">
+                    <div class="loan-headings">
+                        <p><Link to={'/loans'}>All Loans</Link> - Education</p>
+                        <h1>Education</h1>
+                        <span>
+                            Help underprivileged and marginalized students attend vocational school,
+                            university or other higher education institutions and give them a chance
+                            to reach their full potential. The economic returns for higher education
+                            graduates are a 17% increase in earnings.
+                        </span>
+                    </div>
+                    <div class="loan-flex">
+                        {loans.map(loan => {
+                            if (loan.type_category == "Education") return (
+                                <div class="loans">
+                                    <div class="loan-img">
+                                        <img src={loan.thumbnailUrl} />
+                                    </div>
+                                    <h1>{loan.loan_name}</h1>
+                                    <p class="loan-loc">{loan.location}</p>
+                                    <p class="loan-des">{loan.loan_description}</p>
+                                    <div class="progress-container">
+                                        <div class="current-progress"></div>
+                                    </div>
+                                    <p class="loan-amt">${loan.total_amount}</p>
+                                    <div class="btn">
+                                        <button class="price-btn">$25</button>
+                                        <button class="lend-btn">Lend Now</button>
+                                    </div>
                                 </div>
-                                <h1>{loan.loan_name}</h1>
-                                <p class="loan-loc">{loan.location}</p>
-                                <p class="loan-des">{loan.loan_description}</p>
-                                <div class="progress-container">
-                                    <div class="current-progress"></div>
-                                </div>
-                                <p class="loan-amt">${loan.total_amount}</p>
-                                <div class="btn">
-                                    <button class="price-btn">$25</button>
-                                    <button class="lend-btn">Lend Now</button>
-                                </div>
-                            </div>
-                        )
-                    })}
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         ) : (
@@ -137,37 +139,38 @@ class EducationLoanIndex extends React.Component {
                             </div>
                         </div>
                     </nav>
-                    <div class="loan-headings">
-                        <p><Link to={'/loans'}>All Loans</Link> - Education</p>
-                        <h1>Education</h1>
-                        <span>
-                            Help underprivileged and marginalized students attend vocational school,
-                            university or other higher education institutions and give them a chance
-                            to reach their full potential. The economic returns for higher education
-                            graduates are a 17% increase in earnings.
-                    </span>
-                    </div>
-                    <div class="loan-flex">
-                        {loans.map(loan => {
-                            if (loan.type_category == "Education") return (
-                                <div class="loans">
-                                    <div class="loan-img">
-                                        <img src={loan.thumbnailUrl} />
+                    <div class="loan-page">
+                        <div class="loan-headings">
+                            <p><Link to={'/loans'}>All Loans</Link> - Education</p>
+                            <h1>Education</h1>
+                            <span>
+                                Help underprivileged and marginalized students attend vocational school,
+                                university or other higher education institutions and give them a chance
+                                to reach their full potential. The economic returns for higher education
+                                graduates are a 17% increase in earnings.</span>
+                        </div>
+                        <div class="loan-flex">
+                            {loans.map(loan => {
+                                if (loan.type_category == "Education") return (
+                                    <div class="loans">
+                                        <div class="loan-img">
+                                            <img src={loan.thumbnailUrl} />
+                                        </div>
+                                        <h1>{loan.loan_name}</h1>
+                                        <p class="loan-loc">{loan.location}</p>
+                                        <p class="loan-des">{loan.loan_description}</p>
+                                        <div class="progress-container">
+                                            <div class="current-progress"></div>
+                                        </div>
+                                        <p class="loan-amt">${loan.total_amount}</p>
+                                        <div class="btn">
+                                            <button class="price-btn">$25</button>
+                                            <button class="lend-btn">Lend Now</button>
+                                        </div>
                                     </div>
-                                    <h1>{loan.loan_name}</h1>
-                                    <p class="loan-loc">{loan.location}</p>
-                                    <p class="loan-des">{loan.loan_description}</p>
-                                    <div class="progress-container">
-                                        <div class="current-progress"></div>
-                                    </div>
-                                    <p class="loan-amt">${loan.total_amount}</p>
-                                    <div class="btn">
-                                        <button class="price-btn">$25</button>
-                                        <button class="lend-btn">Lend Now</button>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
             );

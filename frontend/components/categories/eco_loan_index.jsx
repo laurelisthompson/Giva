@@ -60,37 +60,39 @@ class EcoLoanIndex extends React.Component {
                         </div>
                     </div>
                 </nav>
-                <div class="loan-headings">
-                    <p><Link to={'/loans'}>All Loans</Link> - Eco-friendly</p>
-                    <h1>Eco-friendly</h1>
-                    <span>
-                        Protecting the environment and creating economic growth don’t always
-                        go hand in hand, but by supporting these loans you give people access
-                        to products that reduce pollution and provide sustainable energy, and
-                        support businesses that promote recycling.
-                    </span>
-                </div>
-                <div class="loan-flex">
-                    {loans.map(loan => {
-                        if (loan.type_category == "Eco-friendly") return (
-                            <div class="loans">
-                                <div class="loan-img">
-                                    <img src={loan.thumbnailUrl} />
+                <div class="loan-page">
+                    <div class="loan-headings">
+                        <p><Link to={'/loans'}>All Loans</Link> - Eco-friendly</p>
+                        <h1>Eco-friendly</h1>
+                        <span>
+                            Protecting the environment and creating economic growth don’t always
+                            go hand in hand, but by supporting these loans you give people access
+                            to products that reduce pollution and provide sustainable energy, and
+                            support businesses that promote recycling.
+                        </span>
+                    </div>
+                    <div class="loan-flex">
+                        {loans.map(loan => {
+                            if (loan.type_category == "Eco-friendly") return (
+                                <div class="loans">
+                                    <div class="loan-img">
+                                        <img src={loan.thumbnailUrl} />
+                                    </div>
+                                    <h1>{loan.loan_name}</h1>
+                                    <p class="loan-loc">{loan.location}</p>
+                                    <p class="loan-des">{loan.loan_description}</p>
+                                    <div class="progress-container">
+                                        <div class="current-progress"></div>
+                                    </div>
+                                    <p class="loan-amt">${loan.total_amount}</p>
+                                    <div class="btn">
+                                        <button class="price-btn">$25</button>
+                                        <button class="lend-btn">Lend Now</button>
+                                    </div>
                                 </div>
-                                <h1>{loan.loan_name}</h1>
-                                <p class="loan-loc">{loan.location}</p>
-                                <p class="loan-des">{loan.loan_description}</p>
-                                <div class="progress-container">
-                                    <div class="current-progress"></div>
-                                </div>
-                                <p class="loan-amt">${loan.total_amount}</p>
-                                <div class="btn">
-                                    <button class="price-btn">$25</button>
-                                    <button class="lend-btn">Lend Now</button>
-                                </div>
-                            </div>
-                        )
-                    })}
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         ) : (
@@ -137,37 +139,39 @@ class EcoLoanIndex extends React.Component {
                             </div>
                         </div>
                     </nav>
-                    <div class="loan-headings">
-                        <p><Link to={'/loans'}>All Loans</Link> - Eco-friendly</p>
-                        <h1>Eco-friendly</h1>
-                        <span>
-                            Protecting the environment and creating economic growth don’t always
-                            go hand in hand, but by supporting these loans you give people access
-                            to products that reduce pollution and provide sustainable energy, and
-                            support businesses that promote recycling.
-                    </span>
-                    </div>
-                    <div class="loan-flex">
-                        {loans.map(loan => {
-                            if (loan.type_category == "Eco-friendly") return (
-                                <div class="loans">
-                                    <div class="loan-img">
-                                        <img src={loan.thumbnailUrl} />
+                    <div class="loan-page">
+                        <div class="loan-headings">
+                            <p><Link to={'/loans'}>All Loans</Link> - Eco-friendly</p>
+                            <h1>Eco-friendly</h1>
+                            <span>
+                                Protecting the environment and creating economic growth don’t always
+                                go hand in hand, but by supporting these loans you give people access
+                                to products that reduce pollution and provide sustainable energy, and
+                                support businesses that promote recycling.
+                        </span>
+                        </div>
+                        <div class="loan-flex">
+                            {loans.map(loan => {
+                                if (loan.type_category == "Eco-friendly") return (
+                                    <div class="loans">
+                                        <div class="loan-img">
+                                            <img src={loan.thumbnailUrl} />
+                                        </div>
+                                        <h1>{loan.loan_name}</h1>
+                                        <p class="loan-loc">{loan.location}</p>
+                                        <p class="loan-des">{loan.loan_description}</p>
+                                        <div class="progress-container">
+                                            <div class="current-progress"></div>
+                                        </div>
+                                        <p class="loan-amt">${loan.total_amount}</p>
+                                        <div class="btn">
+                                            <button class="price-btn">$25</button>
+                                            <button class="lend-btn">Lend Now</button>
+                                        </div>
                                     </div>
-                                    <h1>{loan.loan_name}</h1>
-                                    <p class="loan-loc">{loan.location}</p>
-                                    <p class="loan-des">{loan.loan_description}</p>
-                                    <div class="progress-container">
-                                        <div class="current-progress"></div>
-                                    </div>
-                                    <p class="loan-amt">${loan.total_amount}</p>
-                                    <div class="btn">
-                                        <button class="price-btn">$25</button>
-                                        <button class="lend-btn">Lend Now</button>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
             );

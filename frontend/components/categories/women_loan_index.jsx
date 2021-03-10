@@ -60,36 +60,38 @@ class WomenLoanIndex extends React.Component {
                         </div>
                     </div>
                 </nav>
-                <div class="loan-headings">
-                    <p><Link to={'/loans'}>All Loans</Link> - Women</p>
-                    <h1>Women</h1>
-                    <span>
-                        Worldwide, women have much less economic opportunity, security, and freedom.
-                        Support women starting their own businesses, going to school, and investing
-                        in the health of their communities and families.
-                    </span>
-                </div>
-                <div class="loan-flex">
-                    {loans.map(loan => {
-                        if (loan.type_category == "Women") return (
-                            <div class="loans">
-                                <div class="loan-img">
-                                    <img src={loan.thumbnailUrl} />
+                <div class="loan-page">
+                    <div class="loan-headings">
+                        <p><Link to={'/loans'}>All Loans</Link> - Women</p>
+                        <h1>Women</h1>
+                        <span>
+                            Worldwide, women have much less economic opportunity, security, and freedom.
+                            Support women starting their own businesses, going to school, and investing
+                            in the health of their communities and families.
+                        </span>
+                    </div>
+                    <div class="loan-flex">
+                        {loans.map(loan => {
+                            if (loan.type_category == "Women") return (
+                                <div class="loans">
+                                    <div class="loan-img">
+                                        <img src={loan.thumbnailUrl} />
+                                    </div>
+                                    <h1>{loan.loan_name}</h1>
+                                    <p class="loan-loc">{loan.location}</p>
+                                    <p class="loan-des">{loan.loan_description}</p>
+                                    <div class="progress-container">
+                                        <div class="current-progress"></div>
+                                    </div>
+                                    <p class="loan-amt">${loan.total_amount}</p>
+                                    <div class="btn">
+                                        <button class="price-btn">$25</button>
+                                        <button class="lend-btn">Lend Now</button>
+                                    </div>
                                 </div>
-                                <h1>{loan.loan_name}</h1>
-                                <p class="loan-loc">{loan.location}</p>
-                                <p class="loan-des">{loan.loan_description}</p>
-                                <div class="progress-container">
-                                    <div class="current-progress"></div>
-                                </div>
-                                <p class="loan-amt">${loan.total_amount}</p>
-                                <div class="btn">
-                                    <button class="price-btn">$25</button>
-                                    <button class="lend-btn">Lend Now</button>
-                                </div>
-                            </div>
-                        )
-                    })}
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         ) : (
@@ -136,36 +138,37 @@ class WomenLoanIndex extends React.Component {
                             </div>
                         </div>
                     </nav>
-                    <div class="loan-headings">
-                        <p><Link to={'/loans'}>All Loans</Link> - Women</p>
-                        <h1>Women</h1>
-                        <span>
-                            Worldwide, women have much less economic opportunity, security, and freedom.
-                            Support women starting their own businesses, going to school, and investing
-                            in the health of their communities and families.
-                    </span>
-                    </div>
-                    <div class="loan-flex">
-                        {loans.map(loan => {
-                            if (loan.type_category == "Women") return (
-                                <div class="loans">
-                                    <div class="loan-img">
-                                        <img src={loan.thumbnailUrl} />
+                    <div class="loan-page">
+                        <div class="loan-headings">
+                            <p><Link to={'/loans'}>All Loans</Link> - Women</p>
+                            <h1>Women</h1>
+                            <span>
+                                Worldwide, women have much less economic opportunity, security, and freedom.
+                                Support women starting their own businesses, going to school, and investing
+                                in the health of their communities and families.</span>
+                        </div>
+                        <div class="loan-flex">
+                            {loans.map(loan => {
+                                if (loan.type_category == "Women") return (
+                                    <div class="loans">
+                                        <div class="loan-img">
+                                            <img src={loan.thumbnailUrl} />
+                                        </div>
+                                        <h1>{loan.loan_name}</h1>
+                                        <p class="loan-loc">{loan.location}</p>
+                                        <p class="loan-des">{loan.loan_description}</p>
+                                        <div class="progress-container">
+                                            <div class="current-progress"></div>
+                                        </div>
+                                        <p class="loan-amt">${loan.total_amount}</p>
+                                        <div class="btn">
+                                            <button class="price-btn">$25</button>
+                                            <button class="lend-btn">Lend Now</button>
+                                        </div>
                                     </div>
-                                    <h1>{loan.loan_name}</h1>
-                                    <p class="loan-loc">{loan.location}</p>
-                                    <p class="loan-des">{loan.loan_description}</p>
-                                    <div class="progress-container">
-                                        <div class="current-progress"></div>
-                                    </div>
-                                    <p class="loan-amt">${loan.total_amount}</p>
-                                    <div class="btn">
-                                        <button class="price-btn">$25</button>
-                                        <button class="lend-btn">Lend Now</button>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
         );

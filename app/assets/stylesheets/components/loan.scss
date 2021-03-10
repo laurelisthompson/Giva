@@ -1,9 +1,24 @@
+.loan-page {
+    position: absolute;
+    // justify-content: center;
+    left: 50%;
+    transform: translate(-43%,0);
+    width: 1200px;
+    justify-content: center;
+    margin: 10px 10px 10px 10px;
+    z-index: -50;
+}
+
 .loan-flex {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
     margin-left: 40px;
+}
+
+.loans:hover {
+    box-shadow: 1px 1px 2px rgb(231, 231, 231);
 }
 
 .loans {
