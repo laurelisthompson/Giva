@@ -11,6 +11,7 @@ class SessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoUserSubmit = this.handleDemoUserSubmit.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
     };
 
     update(field) {
@@ -44,6 +45,10 @@ class SessionForm extends React.Component {
         };
         this.props.processForm(user);
     };
+
+    componentDidMount() {
+        this.props.removeErrors();
+    }
 
     render() {
         if (this.props.formType === 'sign in') {
