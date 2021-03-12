@@ -100,11 +100,14 @@ class SessionForm extends React.Component {
                     <nav class="login-nav">
                         <h1>Giva</h1>
                     </nav>
+                    <div>
+                        <ul class="signup-error-messages">{this.renderErrors()}</ul>
+                    </div>
                     <div class="signup-form">
                         <form onSubmit={this.handleSubmit} class="signup-form-box">
                             <p class="signup-title">{'Create a new account below'}</p>
                             <p class="signup-title">or {this.props.navLink}</p>
-                            <ul class="error-messages">{this.renderErrors()}</ul>
+                            
                             <div>
                                 <label>First name
                                 <br />

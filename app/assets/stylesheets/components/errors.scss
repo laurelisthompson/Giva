@@ -1,3 +1,14 @@
 .error-styling {
     color: #D84937;
 }
+
+.signup-error-messages {
+    margin-left: 400px;
+    margin-top: 208px;
+}
+
+.signup-error-messages li {
+    margin-bottom: 85px;
+    position: relative;
+    z-index: 50;
+}
