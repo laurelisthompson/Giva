@@ -86,6 +86,63 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/lender_actions.js":
+/*!********************************************!*\
+  !*** ./frontend/actions/lender_actions.js ***!
+  \********************************************/
+/*! exports provided: RECEIVE_ALL_LENDING_TRANSACTIONS, RECEIVE_LENDING_TRANSACTION, fetchAllLendingTransactions, fetchLendingTransaction, createLendingTransaction */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_LENDING_TRANSACTIONS", function() { return RECEIVE_ALL_LENDING_TRANSACTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_LENDING_TRANSACTION", function() { return RECEIVE_LENDING_TRANSACTION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllLendingTransactions", function() { return fetchAllLendingTransactions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchLendingTransaction", function() { return fetchLendingTransaction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLendingTransaction", function() { return createLendingTransaction; });
+/* harmony import */ var _util_lender_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/lender_api_util */ "./frontend/util/lender_api_util.js");
+
+var RECEIVE_ALL_LENDING_TRANSACTIONS = 'RECEIVE_ALL_LENDING_TRANSACTIONS';
+var RECEIVE_LENDING_TRANSACTION = 'RECEIVE_LENDING_TRANSACTION';
+
+var receiveAllLendingTransactions = function receiveAllLendingTransactions(lendingTransactions) {
+  return {
+    type: RECEIVE_ALL_LENDING_TRANSACTIONS,
+    lendingTransactions: lendingTransactions
+  };
+};
+
+var receiveLendingTransaction = function receiveLendingTransaction(lendingTransaction) {
+  return {
+    type: RECEIVE_LENDING_TRANSACTION,
+    lendingTransation: lendingTransation
+  };
+};
+
+var fetchAllLendingTransactions = function fetchAllLendingTransactions() {
+  return function (dispatch) {
+    return _util_lender_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllLendingTransactions"]().then(function (payload) {
+      return dispatch(receiveAllLendingTransactions(payload));
+    });
+  };
+};
+var fetchLendingTransaction = function fetchLendingTransaction(lendingTransactionId) {
+  return function (dispatch) {
+    return _util_lender_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchLendingTransaction"](lendingTransactionId).then(function (lendingTransactionId) {
+      return dispatch(receiveLendingTransaction(lendingTransactionId));
+    });
+  };
+};
+var createLendingTransaction = function createLendingTransaction(lendingTransactionId) {
+  return function (dispatch) {
+    return _util_lender_api_util__WEBPACK_IMPORTED_MODULE_0__["createLendingTransaction"](lendingTransation).then(function (newLendingTransaction) {
+      return dispatch(receiveLendingTransaction(newLendingTransaction));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/loan_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/loan_actions.js ***!
@@ -4033,7 +4090,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _loans_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loans_reducer */ "./frontend/reducers/loans_reducer.js");
 /* harmony import */ var _lenders_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lenders_reducer */ "./frontend/reducers/lenders_reducer.js");
-/* harmony import */ var _lenders_reducer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_lenders_reducer__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -4071,21 +4127,34 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 /*!**********************************************!*\
   !*** ./frontend/reducers/lenders_reducer.js ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// const { RECEIVE_LENDER } = require("../actions/lender_actions");
-// const lendersReducer = (state = {}, action) => {
-//     Object.freeze(state);
-//     let newState = Object.assign({}, state)
-//     switch (action.type) {
-//         case RECEIVE_LENDER:
-//             return Object.assign({}, state, action.lending_amount);
-//         default:
-//             return state;
-//     }
-// };
-// export default lendersReducer;
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/lender_actions */ "./frontend/actions/lender_actions.js");
+
+
+var lendingTransationsReducer = function lendingTransationsReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+  var newState = Object.assign({}, oldState);
+
+  switch (action.type) {
+    case _actions_lender_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_LENDING_TRANSACTIONS"]:
+      return action.lendingTransactions;
+
+    case _actions_lender_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LENDING_TRANSACTION"]:
+      newState[action.lendingTransaction.id] = action.lendingTransaction;
+      return newState;
+
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (lendingTransactionsReducer);
 
 /***/ }),
 
@@ -4289,6 +4358,36 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/lender_api_util.js":
+/*!******************************************!*\
+  !*** ./frontend/util/lender_api_util.js ***!
+  \******************************************/
+/*! exports provided: fetchAllLendingTransactions, createLendingTransaction */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllLendingTransactions", function() { return fetchAllLendingTransactions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createLendingTransaction", function() { return createLendingTransaction; });
+// import { $CombinedState } from "redux"
+var fetchAllLendingTransactions = function fetchAllLendingTransactions() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/lenders'
+  });
+};
+var createLendingTransaction = function createLendingTransaction(lendingTransation) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/lenders',
+    data: {
+      lendingTransation: lendingTransation
+    }
+  });
+};
 
 /***/ }),
 

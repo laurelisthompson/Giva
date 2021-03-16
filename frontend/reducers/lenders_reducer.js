@@ -1,15 +1,23 @@
-// const { RECEIVE_LENDER } = require("../actions/lender_actions");
+import {
+    RECEIVE_ALL_LENDING_TRANSACTIONS,
+    RECEIVE_LENDING_TRANSACTION
+} from '../actions/lender_actions';
 
-// const lendersReducer = (state = {}, action) => {
-//     Object.freeze(state);
-//     let newState = Object.assign({}, state)
+const lendingTransationsReducer = (oldState = {}, action) => {
+    Object.freeze(oldState);
 
-//     switch (action.type) {
-//         case RECEIVE_LENDER:
-//             return Object.assign({}, state, action.lending_amount);
-//         default:
-//             return state;
-//     }
-// };
+    let newState = Object.assign({}, oldState);
 
-// export default lendersReducer;
+    switch (action.type) {
+        case RECEIVE_ALL_LENDING_TRANSACTIONS:
+            return action.lendingTransactions;
+        case RECEIVE_LENDING_TRANSACTION:
+            newState[action.lendingTransaction.id] = action.lendingTransaction;
+            return newState;
+
+        default:
+            return oldState;
+    }
+}
+
+export default lendingTransactionsReducer;

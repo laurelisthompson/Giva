@@ -1,13 +1,33 @@
-// import * as APIUtil from '../util/lender_api_util';
+import * as APIUtil from '../util/lender_api_util';
 
-// export const RECEIVE_LENDER = 'RECEIVE_LENDER';
+export const RECEIVE_ALL_LENDING_TRANSACTIONS = 'RECEIVE_ALL_LENDING_TRANSACTIONS';
+export const RECEIVE_LENDING_TRANSACTION = 'RECEIVE_LENDING_TRANSACTION'
 
-// export const receiveLender = payload => ({
-//     type: RECEIVE_LENDER,
-//     lending_amount: payload.loan_amount
-// });
+const receiveAllLendingTransactions = (lendingTransactions) => {
+    return {
+        type: RECEIVE_ALL_LENDING_TRANSACTIONS,
+        lendingTransactions
+    }
+}
 
-// export const createLender = lending_amount => dispatch => {
-//     return APIUtil.createLender(lending_amount)
-//         .then(payload => dispatch(receiveLender(payload)))
-// };
+const receiveLendingTransaction = (lendingTransaction) => {
+    return {
+        type: RECEIVE_LENDING_TRANSACTION,
+        lendingTransation
+    }
+}
+
+export const fetchAllLendingTransactions = () => (dispatch) => {
+    return APIUtil.fetchAllLendingTransactions()
+        .then((payload) => dispatch(receiveAllLendingTransactions(payload)));
+}
+
+export const fetchLendingTransaction = (lendingTransactionId) => (dispatch) => {
+    return APIUtil.fetchLendingTransaction(lendingTransactionId)
+        .then((lendingTransactionId) => dispatch(receiveLendingTransaction(lendingTransactionId)));
+}
+
+export const createLendingTransaction = (lendingTransactionId) => (dispatch) => {
+    return APIUtil.createLendingTransaction(lendingTransation)
+        .then((newLendingTransaction) => dispatch(receiveLendingTransaction(newLendingTransaction)));
+}
