@@ -3346,9 +3346,17 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(LoanIndex);
 
   function LoanIndex(props) {
+    var _this;
+
     _classCallCheck(this, LoanIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      userId: _this.props.currentUser.id,
+      loanId: _this.props.match.params.loanId
+    };
+    _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(LoanIndex, [{
@@ -3357,8 +3365,25 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllLoans();
     }
   }, {
+    key: "handleAddLoan",
+    value: function handleAddLoan(path) {
+      var _this2 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var newLendingTransaction = {
+          userId: _this2.state.userId,
+          loanId: _this2.state.loanId
+        };
+
+        _this2.props.createLendingTransaction(newLendingTransaction);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           loans = _this$props.loans,
           logout = _this$props.logout;
@@ -3442,7 +3467,8 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           "class": "price-btn"
         }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          "class": "lend-btn"
+          "class": "lend-btn",
+          onClick: _this3.handleAddLoan
         }, "Lend Now")));
       })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         "class": "site-nav"
@@ -3544,20 +3570,21 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
-/* harmony import */ var _loan_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loan_index */ "./frontend/components/loan/loan_index.jsx");
+/* harmony import */ var _util_lender_api_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/lender_api_util */ "./frontend/util/lender_api_util.js");
+/* harmony import */ var _loan_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loan_index */ "./frontend/components/loan/loan_index.jsx");
 
 
 
 
-var mSTP = function mSTP(state) {
+
+var mSTP = function mSTP(state, ownProps) {
   return {
     loans: Object.values(state.entities.loans),
-    //.map(loan => {
-    //loan.receivedAmount = {
-    //}
-    //map over lenders and and filter by loan id equal to loan.id, sum up total amount, return loan at end
-    //})
-    session: state.session
+    currentUser: state.entities.users[state.session.id],
+    //added to replace session: state.session
+    lendingTransactions: Object.values(state.entities.lendingTransactions) //added
+    // session: state.session,
+
   };
 };
 
@@ -3578,11 +3605,14 @@ var mDTP = function mDTP(dispatch) {
       return logout;
     }(function () {
       return dispatch(logout());
-    })
+    }),
+    createLendingTransaction: function createLendingTransaction(lendingTransaction) {
+      return dispatch(Object(_util_lender_api_util__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_loan_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_loan_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 

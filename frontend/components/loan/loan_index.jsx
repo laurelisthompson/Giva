@@ -5,11 +5,25 @@ import { bindActionCreators } from 'redux';
 class LoanIndex extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            userId: this.props.currentUser.id,
+            loanId: this.props.match.params.loanId,
+        }
+
+        this.handleAddLoan = this.handleAddLoan.bind(this);
     };
 
     componentDidMount() {
         this.props.fetchAllLoans()
     };
+
+    handleAddLoan(path) {
+        return e => {
+            e.preventDefault();
+            let newLendingTransaction = {userId: this.state.userId, loanId: this.state.loanId}
+            this.props.createLendingTransaction(newLendingTransaction)
+        }
+    }
 
     render() {
         const { loans, logout } = this.props;
@@ -82,7 +96,7 @@ class LoanIndex extends React.Component {
                                     <p class="loan-amt">${loan.total_amount}</p>
                                     <div class="btn">
                                         <button class="price-btn">$25</button>
-                                        <button class="lend-btn">Lend Now</button>
+                                        <button class="lend-btn" onClick={this.handleAddLoan}>Lend Now</button>
                                     </div>
                                 </div>
                             )
