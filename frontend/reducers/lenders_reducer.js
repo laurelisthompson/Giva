@@ -3,7 +3,7 @@ import {
     RECEIVE_LENDING_TRANSACTION
 } from '../actions/lender_actions';
 
-const lendingTransationsReducer = (oldState = {}, action) => {
+const lendingTransactionsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
 
     let newState = Object.assign({}, oldState);

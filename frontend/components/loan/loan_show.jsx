@@ -13,7 +13,6 @@ class LoanShow extends React.Component {
         const { loan } = this.props;
         return (
             <div>
-                <h1>Show page</h1>
                 <img src={loan.thumbnailUrl} />
                 <div>
                     <h1>{loan.loan_name}</h1>
