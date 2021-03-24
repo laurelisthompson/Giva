@@ -14,18 +14,18 @@ class Profile extends React.Component {
     render() {
         return (
         <div>
-            <nav class="site-nav">
+            <nav className="site-nav">
                 <div>
-                    <div class="lend-dropdown">
+                    <div className="lend-dropdown">
                         <Link to={"/dashboard"}>
-                            <button class="lend-dropbtn" type="button">
+                            <button className="lend-dropbtn" type="button">
                                 Giva
                             </button>
                         </Link>
                     </div>
-                    <div class="lend-dropdown">
-                        <button class="lend-dropbtn">Lend</button>
-                        <div class="dropdown-content">
+                    <div className="lend-dropdown">
+                        <button className="lend-dropbtn">Lend</button>
+                        <div className="dropdown-content">
                             <h1>Categories</h1>
                             <Link to={'/loans/women'}>Women</Link>
                             <Link to={'/loans/agriculture'}>Agriculture</Link>
@@ -40,21 +40,21 @@ class Profile extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <div class="about-dropdown">
+                    <div className="about-dropdown">
                         <Link to={'/about'}>
-                            <button class="about-dropbtn">
+                            <button className="about-dropbtn">
                                 About
                             </button>
                         </Link>
                     </div>
-                    <div class="profile-dropdown">
-                        <button onClick={logout} class="lend-dropbtn">Sign Out</button>
+                    <div className="profile-dropdown">
+                        <button onClick={logout} className="lend-dropbtn">Sign Out</button>
                     </div>
                 </div>
             </nav>
-            <nav class="profile-nav">
-                <div class="profile-upper-tabs">
-                    <button class="selected-button">Profile</button>
+            <nav className="profile-nav">
+                <div className="profile-upper-tabs">
+                    <button className="selected-button">Profile</button>
                 </div>
             </nav>
             <div>

@@ -31,19 +31,19 @@ class LoanIndex extends React.Component {
 
         return currentUser && lendingTransactions && loans ? (
             <div>
-                <nav class="site-nav">
+                <nav className="site-nav">
                     <div>
                         <div>
-                            <div class="lend-dropdown">
+                            <div className="lend-dropdown">
                                 <Link to={"/dashboard"}>
-                                    <button class="lend-dropbtn" type="button">
+                                    <button className="lend-dropbtn" type="button">
                                         Giva
                                     </button>
                                 </Link>
                             </div>
-                            <div class="lend-dropdown">
-                                <button class="lend-dropbtn">Lend</button>
-                                <div class="dropdown-content">
+                            <div className="lend-dropdown">
+                                <button className="lend-dropbtn">Lend</button>
+                                <div className="dropdown-content">
                                     <h1>Categories</h1>
                                     <Link to={'/loans/women'}>Women</Link>
                                     <Link to={'/loans/agriculture'}>Agriculture</Link>
@@ -59,44 +59,44 @@ class LoanIndex extends React.Component {
                         </div>
                     </div>
                     <div>
-                        <div class="about-dropdown">
+                        <div className="about-dropdown">
                             <Link to={'/about'}>
-                                <button class="about-dropbtn">About</button>
+                                <button className="about-dropbtn">About</button>
                             </Link>
                         </div>
-                        <div class="profile-dropdown">
-                            <button class="lend-dropbtn">Profile</button>
-                            <div class="dropdown-content">
+                        <div className="profile-dropdown">
+                            <button className="lend-dropbtn">Profile</button>
+                            <div className="dropdown-content">
                                 <Link to={'/profile'}>Profile</Link>
                                 <button onClick={logout}>Sign Out</button>
                             </div>
                         </div>
                     </div>
                 </nav>
-                <div class="loan-page">
-                    <div class="loan-headings">
-                        <h1 class="index-header">Make a loan, change a life</h1>
+                <div className="loan-page">
+                    <div className="loan-headings">
+                        <h1 className="index-header">Make a loan, change a life</h1>
                         <span>
                             Each Giva loan helps people build a better future for themselves and their families.
                         </span>
                     </div>
-                    <div class="loan-flex">
+                    <div className="loan-flex">
                         {loans.map(loan => {
                             return (
-                                <div class="loans">
-                                    <div class="loan-img">
+                                <div className="loans">
+                                    <div className="loan-img">
                                         <img src={loan.thumbnailUrl} />
                                     </div>
                                     <h1>{loan.loan_name}</h1>
-                                    <p class="loan-loc">{loan.location}</p>
-                                    <p class="loan-des">{loan.loan_description}</p>
-                                    <div class="progress-container">
-                                        <div class="current-progress"></div>
+                                    <p className="loan-loc">{loan.location}</p>
+                                    <p className="loan-des">{loan.loan_description}</p>
+                                    <div className="progress-container">
+                                        <div className="current-progress"></div>
                                     </div>
-                                    <p class="loan-amt">${loan.total_amount}</p>
-                                    <div class="btn">
-                                        <button class="price-btn">$25</button>
-                                        <button class="lend-btn" onClick={this.handleAddLoan(loan.id)}>Lend Now</button>
+                                    <p className="loan-amt">${loan.total_amount}</p>
+                                    <div className="btn">
+                                        <button className="price-btn">$25</button>
+                                        <button className="lend-btn" onClick={this.handleAddLoan(loan.id)}>Lend Now</button>
                                     </div>
                                 </div>
                             )
@@ -106,19 +106,19 @@ class LoanIndex extends React.Component {
             </div>
         ) : (
                 <div>
-                    <nav class="site-nav">
+                    <nav className="site-nav">
                         <div>
                             <div>
-                                <div class="lend-dropdown">
+                                <div className="lend-dropdown">
                                     <Link to={"/dashboard"}>
-                                        <button class="lend-dropbtn" type="button">
+                                        <button className="lend-dropbtn" type="button">
                                             Giva
                                     </button>
                                     </Link>
                                 </div>
-                                <div class="lend-dropdown">
-                                    <button class="lend-dropbtn">Lend</button>
-                                    <div class="dropdown-content">
+                                <div className="lend-dropdown">
+                                    <button className="lend-dropbtn">Lend</button>
+                                    <div className="dropdown-content">
                                         <h1>Categories</h1>
                                         <Link to={'/loans/women'}>Women</Link>
                                         <Link to={'/loans/agriculture'}>Agriculture</Link>
@@ -134,44 +134,44 @@ class LoanIndex extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <div class="about-dropdown">
+                            <div className="about-dropdown">
                                 <Link to={'/about'}>
-                                    <button class="about-dropbtn">About</button>
+                                    <button className="about-dropbtn">About</button>
                                 </Link>
                             </div>
-                            <div class="nav-button-right">
+                            <div className="nav-button-right">
                                 <Link to={"/signin"}>
-                                    <button class="giva-btn" type="button">
+                                    <button className="giva-btn" type="button">
                                         Sign in
                             </button>
                                 </Link>
                             </div>
                         </div>
                     </nav>
-                    <div class="loan-page">
-                        <div class="loan-headings">
-                            <h1 class="index-header">Make a loan, change a life</h1>
+                    <div className="loan-page">
+                        <div className="loan-headings">
+                            <h1 className="index-header">Make a loan, change a life</h1>
                             <span>
                                 Each Giva loan helps people build a better future for themselves and their families.
                         </span>
                         </div>
-                        <div class="loan-flex">
+                        <div className="loan-flex">
                             {loans.map(loan => {
                                 return (
-                                    <div class="loans">
-                                        <div class="loan-img">
+                                    <div className="loans">
+                                        <div className="loan-img">
                                             <img src={loan.thumbnailUrl} />
                                         </div>
                                         <h1>{loan.loan_name}</h1>
-                                        <p class="loan-loc">{loan.location}</p>
-                                        <p class="loan-des">{loan.loan_description}</p>
-                                        <div class="progress-container">
-                                            <div class="current-progress"></div>
+                                        <p className="loan-loc">{loan.location}</p>
+                                        <p className="loan-des">{loan.loan_description}</p>
+                                        <div className="progress-container">
+                                            <div className="current-progress"></div>
                                         </div>
-                                        <p class="loan-amt">${loan.total_amount}</p>
-                                        <div class="btn">
-                                            <button class="price-btn">$25</button>
-                                            <button class="lend-btn">Lend Now</button>
+                                        <p className="loan-amt">${loan.total_amount}</p>
+                                        <div className="btn">
+                                            <button className="price-btn">$25</button>
+                                            <button className="lend-btn">Lend Now</button>
                                         </div>
                                     </div>
                                 )
