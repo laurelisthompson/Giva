@@ -1,13 +1,13 @@
 import {
     RECEIVE_ALL_LENDING_TRANSACTIONS,
-    RECEIVE_LENDING_TRANSACTION
+    RECEIVE_LENDING_TRANSACTION,
 } from '../actions/lender_actions';
 
-const lendingTransactionsReducer = (oldState = {}, action) => {
+const lendingReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
 
     let newState = Object.assign({}, oldState);
-
+    debugger
     switch (action.type) {
         case RECEIVE_ALL_LENDING_TRANSACTIONS:
             return action.lendingTransactions;
@@ -20,4 +20,4 @@ const lendingTransactionsReducer = (oldState = {}, action) => {
     }
 }
 
-export default lendingTransactionsReducer;
+export default lendingReducer;

@@ -5,31 +5,31 @@ import { bindActionCreators } from 'redux';
 class LoanIndex extends React.Component {
     constructor(props) {
         super(props);
+        console.log(this.props);
         this.state = {
             userId: this.props.currentUser.id,
-            loanId: this.props.match.params.loanId,
         }
 
         this.handleAddLoan = this.handleAddLoan.bind(this);
     };
 
     componentDidMount() {
-        this.props.fetchAllLoans()
+        this.props.fetchAllLoans();
     };
 
-    handleAddLoan(path) {
+    handleAddLoan(loanId) {
         return e => {
             e.preventDefault();
-            let newLendingTransaction = {userId: this.state.userId, loanId: this.state.loanId}
+            let newLendingTransaction = {userId: this.state.userId, loanId: loanId }
             this.props.createLendingTransaction(newLendingTransaction)
         }
     }
 
     render() {
-        const { loans, logout } = this.props;
-        const loggedIn = Boolean(this.props.session.id);
+        const { loans, logout, lendingTransactions, currentUser} = this.props;
+        // const loggedIn = Boolean(this.props.session.id);
 
-        return loggedIn ? (
+        return currentUser && lendingTransactions && loans ? (
             <div>
                 <nav class="site-nav">
                     <div>
@@ -96,7 +96,7 @@ class LoanIndex extends React.Component {
                                     <p class="loan-amt">${loan.total_amount}</p>
                                     <div class="btn">
                                         <button class="price-btn">$25</button>
-                                        <button class="lend-btn" onClick={this.handleAddLoan}>Lend Now</button>
+                                        <button class="lend-btn" onClick={this.handleAddLoan(loan.id)}>Lend Now</button>
                                     </div>
                                 </div>
                             )

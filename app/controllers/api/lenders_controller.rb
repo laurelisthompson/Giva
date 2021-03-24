@@ -11,13 +11,13 @@ class Api::LendersController < ApplicationController
     end
 
     def create
-        @loan = Loan.find(params[:lending_transaction][:loan_id])
+        @loan = Loan.find(params[:lendingTransaction][:loanId])
         @user = current_user
 
-        @lending_transaction = Lender.new(user_id: @user.id, loan_id: @loan.id)
-
+        @lending_transaction = Lender.new(user_id: @user.id, loan_id: @loan.id, loan_amount: 25)
+        
         if @lending_transaction.save
-            render: show
+            render :show
         else
             render json: @lending_transaction.errors.full_messages, status: 422
         end
@@ -25,6 +25,6 @@ class Api::LendersController < ApplicationController
 
     private
     def lenders_params
-        params.require(:lending_transaction).permit(:user_id, :loan_id, :loan_amount)
+        params.require(:lendingTransaction).permit(:userId, :loanId, :loan_amount)
     end
 end

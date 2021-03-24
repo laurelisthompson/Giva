@@ -7,10 +7,10 @@ export const fetchAllLendingTransactions = () => {
     })
 };
 
-export const createLendingTransaction = (lendingTransation) => {
+export const createLendingTransaction = (lendingTransaction) => {
     return $.ajax({
         method: 'POST',
         url: 'api/lenders',
-        data: { lendingTransation: lendingTransation }
+        data: { lendingTransaction: lendingTransaction }
     })
 };

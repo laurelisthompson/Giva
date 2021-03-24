@@ -113,9 +113,10 @@ var receiveAllLendingTransactions = function receiveAllLendingTransactions(lendi
 };
 
 var receiveLendingTransaction = function receiveLendingTransaction(lendingTransaction) {
+  debugger;
   return {
     type: RECEIVE_LENDING_TRANSACTION,
-    lendingTransation: lendingTransation
+    lendingTransaction: lendingTransaction
   };
 };
 
@@ -133,10 +134,10 @@ var fetchLendingTransaction = function fetchLendingTransaction(lendingTransactio
     });
   };
 };
-var createLendingTransaction = function createLendingTransaction(lendingTransactionId) {
+var createLendingTransaction = function createLendingTransaction(lendingTransaction) {
   return function (dispatch) {
-    return _util_lender_api_util__WEBPACK_IMPORTED_MODULE_0__["createLendingTransaction"](lendingTransation).then(function (newLendingTransaction) {
-      return dispatch(receiveLendingTransaction(newLendingTransaction));
+    return _util_lender_api_util__WEBPACK_IMPORTED_MODULE_0__["createLendingTransaction"](lendingTransaction).then(function (lendingTransaction) {
+      return dispatch(receiveLendingTransaction(lendingTransaction));
     });
   };
 };
@@ -297,7 +298,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _categories_livestock_loan_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./categories/livestock_loan_container */ "./frontend/components/categories/livestock_loan_container.js");
 /* harmony import */ var _categories_arts_loan_container__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./categories/arts_loan_container */ "./frontend/components/categories/arts_loan_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _about_about_container__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./about/about_container */ "./frontend/components/about/about_container.js");
+/* harmony import */ var _about_about_container__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./about/about_container */ "./frontend/components/about/about_container.js");
 
 
 
@@ -378,7 +379,7 @@ var App = function App() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/about",
-    component: _about_about_container__WEBPACK_IMPORTED_MODULE_19__["default"]
+    component: _about_about_container__WEBPACK_IMPORTED_MODULE_18__["default"]
   })));
 };
 
@@ -3351,9 +3352,9 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, LoanIndex);
 
     _this = _super.call(this, props);
+    console.log(_this.props);
     _this.state = {
-      userId: _this.props.currentUser.id,
-      loanId: _this.props.match.params.loanId
+      userId: _this.props.currentUser.id
     };
     _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
     return _this;
@@ -3366,14 +3367,14 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleAddLoan",
-    value: function handleAddLoan(path) {
+    value: function handleAddLoan(loanId) {
       var _this2 = this;
 
       return function (e) {
         e.preventDefault();
         var newLendingTransaction = {
           userId: _this2.state.userId,
-          loanId: _this2.state.loanId
+          loanId: loanId
         };
 
         _this2.props.createLendingTransaction(newLendingTransaction);
@@ -3386,9 +3387,11 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
 
       var _this$props = this.props,
           loans = _this$props.loans,
-          logout = _this$props.logout;
-      var loggedIn = Boolean(this.props.session.id);
-      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          logout = _this$props.logout,
+          lendingTransactions = _this$props.lendingTransactions,
+          currentUser = _this$props.currentUser; // const loggedIn = Boolean(this.props.session.id);
+
+      return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         "class": "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "lend-dropdown"
@@ -3468,7 +3471,7 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
           "class": "price-btn"
         }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           "class": "lend-btn",
-          onClick: _this3.handleAddLoan
+          onClick: _this3.handleAddLoan(loan.id)
         }, "Lend Now")));
       })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         "class": "site-nav"
@@ -3582,7 +3585,7 @@ var mSTP = function mSTP(state, ownProps) {
     loans: Object.values(state.entities.loans),
     currentUser: state.entities.users[state.session.id],
     //added to replace session: state.session
-    lendingTransactions: Object.values(state.entities.lendingTransactions) //added
+    lendingTransactions: Object.values(state.entities.lenders) //added
     // session: state.session,
 
   };
@@ -3608,6 +3611,9 @@ var mDTP = function mDTP(dispatch) {
     }),
     createLendingTransaction: function createLendingTransaction(lendingTransaction) {
       return dispatch(Object(_util_lender_api_util__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+    },
+    fetchAllLendingTransactions: function fetchAllLendingTransactions() {
+      return dispatch(Object(_util_lender_api_util__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
     }
   };
 };
@@ -4243,8 +4249,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  loans: _loans_reducer__WEBPACK_IMPORTED_MODULE_2__["default"] // lenders: lendersReducer
-
+  loans: _loans_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  lenders: _lenders_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -4282,11 +4288,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/lender_actions */ "./frontend/actions/lender_actions.js");
 
 
-var lendingTransactionsReducer = function lendingTransactionsReducer() {
+var lendingReducer = function lendingReducer() {
   var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
   var newState = Object.assign({}, oldState);
+  debugger;
 
   switch (action.type) {
     case _actions_lender_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_LENDING_TRANSACTIONS"]:
@@ -4301,7 +4308,7 @@ var lendingTransactionsReducer = function lendingTransactionsReducer() {
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (lendingTransactionsReducer);
+/* harmony default export */ __webpack_exports__["default"] = (lendingReducer);
 
 /***/ }),
 
@@ -4526,12 +4533,12 @@ var fetchAllLendingTransactions = function fetchAllLendingTransactions() {
     url: 'api/lenders'
   });
 };
-var createLendingTransaction = function createLendingTransaction(lendingTransation) {
+var createLendingTransaction = function createLendingTransaction(lendingTransaction) {
   return $.ajax({
     method: 'POST',
     url: 'api/lenders',
     data: {
-      lendingTransation: lendingTransation
+      lendingTransaction: lendingTransaction
     }
   });
 };
