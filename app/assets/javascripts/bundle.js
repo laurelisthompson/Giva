@@ -3376,6 +3376,7 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
           userId: _this2.state.userId,
           loanId: loanId
         };
+        debugger;
 
         _this2.props.createLendingTransaction(newLendingTransaction);
       };
@@ -3573,7 +3574,7 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
-/* harmony import */ var _util_lender_api_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/lender_api_util */ "./frontend/util/lender_api_util.js");
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
 /* harmony import */ var _loan_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loan_index */ "./frontend/components/loan/loan_index.jsx");
 
 
@@ -3586,7 +3587,6 @@ var mSTP = function mSTP(state, ownProps) {
     currentUser: state.entities.users[state.session.id],
     //added to replace session: state.session
     lendingTransactions: Object.values(state.entities.lenders) //added
-    // session: state.session,
 
   };
 };
@@ -3610,10 +3610,10 @@ var mDTP = function mDTP(dispatch) {
       return dispatch(logout());
     }),
     createLendingTransaction: function createLendingTransaction(lendingTransaction) {
-      return dispatch(Object(_util_lender_api_util__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
     },
     fetchAllLendingTransactions: function fetchAllLendingTransactions() {
-      return dispatch(Object(_util_lender_api_util__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
     }
   };
 };
@@ -3818,6 +3818,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ //change to actions
 
  // const mSTP = ({ entities: { users }, session }) => {
 //     return {

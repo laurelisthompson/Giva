@@ -21,6 +21,7 @@ class LoanIndex extends React.Component {
         return e => {
             e.preventDefault();
             let newLendingTransaction = {userId: this.state.userId, loanId: loanId }
+            debugger
             this.props.createLendingTransaction(newLendingTransaction)
         }
     }
