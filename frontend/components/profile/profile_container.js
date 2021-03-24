@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { logout } from '../../actions/session_actions';
-import { fetchAllLendingTransactions } from '../../util/lender_api_util'; //change to actions
+import { fetchAllLendingTransactions } from '../../actions/lender_actions'; 
 import Profile from './profile';
 
 // const mSTP = ({ entities: { users }, session }) => {

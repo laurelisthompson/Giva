@@ -3813,12 +3813,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _util_lender_api_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/lender_api_util */ "./frontend/util/lender_api_util.js");
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
 /* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./profile */ "./frontend/components/profile/profile.jsx");
 
 
 
- //change to actions
 
  // const mSTP = ({ entities: { users }, session }) => {
 //     return {
@@ -3848,7 +3847,7 @@ var mDTP = function mDTP(dispatch) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
     },
     fetchAllLendingTransactions: function fetchAllLendingTransactions() {
-      return dispatch(Object(_util_lender_api_util__WEBPACK_IMPORTED_MODULE_3__["fetchAllLendingTransactions"])());
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_3__["fetchAllLendingTransactions"])());
     } //added
 
   };
