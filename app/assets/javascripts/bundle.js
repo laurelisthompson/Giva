@@ -113,7 +113,6 @@ var receiveAllLendingTransactions = function receiveAllLendingTransactions(lendi
 };
 
 var receiveLendingTransaction = function receiveLendingTransaction(lendingTransaction) {
-  debugger;
   return {
     type: RECEIVE_LENDING_TRANSACTION,
     lendingTransaction: lendingTransaction
@@ -3376,7 +3375,6 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
           userId: _this2.state.userId,
           loanId: loanId
         };
-        debugger;
 
         _this2.props.createLendingTransaction(newLendingTransaction);
       };
@@ -4293,7 +4291,6 @@ var lendingReducer = function lendingReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(oldState);
   var newState = Object.assign({}, oldState);
-  debugger;
 
   switch (action.type) {
     case _actions_lender_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_LENDING_TRANSACTIONS"]:
@@ -4597,7 +4594,6 @@ var Auth = function Auth(_ref) {
       path = _ref.path,
       loggedIn = _ref.loggedIn,
       exact = _ref.exact;
-  //debugger
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: path,
     exact: exact,
@@ -4614,7 +4610,6 @@ var Protected = function Protected(_ref2) {
       path = _ref2.path,
       loggedIn = _ref2.loggedIn,
       exact = _ref2.exact;
-  //debugger
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: path,
     exact: exact,

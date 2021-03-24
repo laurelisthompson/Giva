@@ -7,7 +7,6 @@ const lendingReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
 
     let newState = Object.assign({}, oldState);
-    debugger
     switch (action.type) {
         case RECEIVE_ALL_LENDING_TRANSACTIONS:
             return action.lendingTransactions;

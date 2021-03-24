@@ -11,7 +11,6 @@ const receiveAllLendingTransactions = (lendingTransactions) => {
 }
 
 const receiveLendingTransaction = (lendingTransaction) => {
-    debugger
     return {
         type: RECEIVE_LENDING_TRANSACTION,
         lendingTransaction
