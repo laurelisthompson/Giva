@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 class LoanIndex extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
         this.state = {
             userId: this.props.currentUser.id,
         }

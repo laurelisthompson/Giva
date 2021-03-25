@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { logout } from '../../actions/session_actions';
 import { fetchAllLendingTransactions } from '../../actions/lender_actions'; 
+import { fetchAllLoans } from '../../actions/loan_actions';
 import Profile from './profile';
 
 // const mSTP = ({ entities: { users }, session }) => {
@@ -17,19 +18,19 @@ const getLoans = (lendingTransactions=[]) => {
 }
 
 const mSTP = (state) => {
-    let lendingTransactions = Object.values(state.entities.loans);
-
     return {
-        currentUser: state.entities.users[state.session.id],
-        loans: getLoans(lendingTransactions),
-        lendingTransactions: lendingTransactions,
+        loans: Object.values(state.entities.loans),
+        lenders: Object.values(state.entities.lenders),
+        currentUser: state.entities.users[state.session.id], //added to replace session: state.session
+        lendingTransactions: Object.values(state.entities.lenders), //added
     }
 }
 
 const mDTP = dispatch => {
     return {
         logout: () => dispatch(logout()),
-        fetchAllLendingTransactions: () => dispatch(fetchAllLendingTransactions()), //added
+        fetchAllLendingTransactions: () => dispatch(fetchAllLendingTransactions()),
+        fetchAllLoans: () => dispatch(fetchAllLoans()),
     }
 };
 

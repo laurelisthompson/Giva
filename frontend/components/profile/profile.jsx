@@ -4,14 +4,17 @@ import { Link } from 'react-router-dom';
 class Profile extends React.Component {
     constructor(props) {
         super(props);
-        this.props.logout();
+        // this.props.logout();
     }
 
     componentDidMount() {
-        this.props.fetchAllLendingTransactions()
+        this.props.fetchAllLendingTransactions();
+        this.props.fetchAllLoans();
     }
 
     render() {
+        const { loans, logout, lenders, currentUser } = this.props;
+        
         return (
         <div>
             <nav className="site-nav">
@@ -60,6 +63,35 @@ class Profile extends React.Component {
             <div>
                 <h1 className="profile-title">Recent loans</h1>
             </div>
+                <div className="loan-flex">
+                    {loans.map(loan => {
+                        return (
+                            <div className="loans">
+                                <div className="loan-img">
+                                    <img src={loan.thumbnailUrl} />
+                                </div>
+                                <h1>{loan.loan_name}</h1>
+                                <p className="loan-loc">{loan.location}</p>
+                                <p className="loan-des">{loan.loan_description}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+                {/* <div className="loan-flex">
+                    {lenders.map(transaction => {
+                        let trId = transaction.loanId;
+                        if (transaction.userId == currentUser.id) return (
+                            <div className="loans">
+                                <div className="loan-img">
+                                    <img src={loans.trId.thumbnailUrl} />
+                                </div>
+                                <h1>{loans.trId.loan_name}</h1>
+                                <p className="loan-loc">{loans.trId.location}</p>
+                                <p className="loan-des">{loans.trId.loan_description}</p>
+                            </div>
+                        )
+                    })}
+                </div> */}
         </div>
         )
     }

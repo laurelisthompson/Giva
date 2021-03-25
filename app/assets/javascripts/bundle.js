@@ -3351,7 +3351,6 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, LoanIndex);
 
     _this = _super.call(this, props);
-    console.log(_this.props);
     _this.state = {
       userId: _this.props.currentUser.id
     };
@@ -3663,25 +3662,25 @@ var Profile = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Profile);
 
   function Profile(props) {
-    var _this;
-
     _classCallCheck(this, Profile);
 
-    _this = _super.call(this, props);
-
-    _this.props.logout();
-
-    return _this;
+    return _super.call(this, props); // this.props.logout();
   }
 
   _createClass(Profile, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAllLendingTransactions();
+      this.props.fetchAllLoans();
     }
   }, {
     key: "render",
     value: function render() {
+      var _this$props = this.props,
+          loans = _this$props.loans,
+          logout = _this$props.logout,
+          lenders = _this$props.lenders,
+          currentUser = _this$props.currentUser;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3734,7 +3733,21 @@ var Profile = /*#__PURE__*/function (_React$Component) {
         className: "selected-button"
       }, "Profile"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "profile-title"
-      }, "Recent loans")));
+      }, "Recent loans")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "loan-flex"
+      }, loans.map(function (loan) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "loans"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "loan-img"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: loan.thumbnailUrl
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, loan.loan_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "loan-loc"
+        }, loan.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "loan-des"
+        }, loan.loan_description));
+      })));
     }
   }]);
 
@@ -3812,7 +3825,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
-/* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./profile */ "./frontend/components/profile/profile.jsx");
+/* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
+/* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./profile */ "./frontend/components/profile/profile.jsx");
+
 
 
 
@@ -3831,11 +3846,13 @@ var getLoans = function getLoans() {
 };
 
 var mSTP = function mSTP(state) {
-  var lendingTransactions = Object.values(state.entities.loans);
   return {
+    loans: Object.values(state.entities.loans),
+    lenders: Object.values(state.entities.lenders),
     currentUser: state.entities.users[state.session.id],
-    loans: getLoans(lendingTransactions),
-    lendingTransactions: lendingTransactions
+    //added to replace session: state.session
+    lendingTransactions: Object.values(state.entities.lenders) //added
+
   };
 };
 
@@ -3846,12 +3863,14 @@ var mDTP = function mDTP(dispatch) {
     },
     fetchAllLendingTransactions: function fetchAllLendingTransactions() {
       return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_3__["fetchAllLendingTransactions"])());
-    } //added
-
+    },
+    fetchAllLoans: function fetchAllLoans() {
+      return dispatch(Object(_actions_loan_actions__WEBPACK_IMPORTED_MODULE_4__["fetchAllLoans"])());
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_profile__WEBPACK_IMPORTED_MODULE_4__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_profile__WEBPACK_IMPORTED_MODULE_5__["default"]));
 
 /***/ }),
 
