@@ -308,7 +308,7 @@ loan27 = Loan.create(
     location: "Hogwarts",
     type_category: "Domestic",
     loan_description: "Such a beautiful place it is, to be with friends. Dobby is happy to be with his friend, Harry Potter.",
-    total_amount: 3,
+    total_amount: 25,
     loan_length: 900,
     deadline: "2025-12-01")
 loan27photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/dobby.jpeg')

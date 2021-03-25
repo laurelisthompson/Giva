@@ -8,6 +8,7 @@ const mSTP = (state, ownProps) => {
         loans: Object.values(state.entities.loans),
         currentUser: state.entities.users[state.session.id], //added to replace session: state.session
         lendingTransactions: Object.values(state.entities.lenders), //added
+        session: state.session,
     }
 };
 

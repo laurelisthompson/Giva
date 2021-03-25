@@ -827,33 +827,7 @@ var AgricultureLoanIndex = /*#__PURE__*/function (_React$Component) {
         className: "loan-headings"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: '/loans'
-      }, "All Loans"), " - Agriculture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Agriculture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Farmers face many challenges like unpredictable weather and market prices, and are often forced to choose between investing in their crops and fulfilling basic needs for their families. Your support keeps their crops growing and their livelihoods stable.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "loan-flex"
-      }, loans.map(function (loan) {
-        if (loan.type_category == "Agriculture") return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "loans"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "loan-img"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: loan.thumbnailUrl
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, loan.loan_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "loan-loc"
-        }, loan.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "loan-des"
-        }, loan.loan_description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "progress-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "current-progress"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "loan-amt"
-        }, "$", loan.total_amount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "btn"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "price-btn"
-        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "lend-btn"
-        }, "Lend Now")));
-      })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+      }, "All Loans"), " - Agriculture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Agriculture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Farmers face many challenges like unpredictable weather and market prices, and are often forced to choose between investing in their crops and fulfilling basic needs for their families. Your support keeps their crops growing and their livelihoods stable.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lend-dropdown"
@@ -3351,9 +3325,6 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, LoanIndex);
 
     _this = _super.call(this, props);
-    _this.state = {
-      userId: _this.props.currentUser.id
-    };
     _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -3371,7 +3342,7 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         e.preventDefault();
         var newLendingTransaction = {
-          userId: _this2.state.userId,
+          userId: _this2.props.session.id,
           loanId: loanId
         };
 
@@ -3583,8 +3554,9 @@ var mSTP = function mSTP(state, ownProps) {
     loans: Object.values(state.entities.loans),
     currentUser: state.entities.users[state.session.id],
     //added to replace session: state.session
-    lendingTransactions: Object.values(state.entities.lenders) //added
-
+    lendingTransactions: Object.values(state.entities.lenders),
+    //added
+    session: state.session
   };
 };
 

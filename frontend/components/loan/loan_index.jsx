@@ -5,9 +5,6 @@ import { bindActionCreators } from 'redux';
 class LoanIndex extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            userId: this.props.currentUser.id,
-        }
 
         this.handleAddLoan = this.handleAddLoan.bind(this);
     };
@@ -19,7 +16,7 @@ class LoanIndex extends React.Component {
     handleAddLoan(loanId) {
         return e => {
             e.preventDefault();
-            let newLendingTransaction = {userId: this.state.userId, loanId: loanId }
+            let newLendingTransaction = {userId: this.props.session.id, loanId: loanId }
             this.props.createLendingTransaction(newLendingTransaction)
         }
     }

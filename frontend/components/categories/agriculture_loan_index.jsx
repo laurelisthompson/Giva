@@ -71,28 +71,6 @@ class AgricultureLoanIndex extends React.Component {
                             support keeps their crops growing and their livelihoods stable.
                         </span>
                     </div>
-                    <div className="loan-flex">
-                        {loans.map(loan => {
-                            if (loan.type_category == "Agriculture") return (
-                                <div className="loans">
-                                    <div className="loan-img">
-                                        <img src={loan.thumbnailUrl} />
-                                    </div>
-                                    <h1>{loan.loan_name}</h1>
-                                    <p className="loan-loc">{loan.location}</p>
-                                    <p className="loan-des">{loan.loan_description}</p>
-                                    <div className="progress-container">
-                                        <div className="current-progress"></div>
-                                    </div>
-                                    <p className="loan-amt">${loan.total_amount}</p>
-                                    <div className="btn">
-                                        <button className="price-btn">$25</button>
-                                        <button className="lend-btn">Lend Now</button>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>
                 </div>
             </div>
         ) : (
