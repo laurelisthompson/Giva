@@ -22,20 +22,20 @@ class Profile extends React.Component {
             this.setState({loading: false})
         } else {
             if (!this.props.lenders.length && this.state.loading) {
-                this.setState({loanMessage: "You do not have any loans", loading: false})
+                this.setState({loanMessage: "You do not have any loans. Go loan to some of your favorite characters and help them accomplish their missions!", loading: false})
             }
         }
     }
 
     buildLenderData(loan) {
         return (
-            <div className="loans">
-                <div className="loan-img">
+            <div className="profile-loans">
+                <div className="profile-loan-img">
                     <img src={loan.thumbnailUrl} />
                 </div>
                 <h1>{loan.loan_name}</h1>
-                <p className="loan-loc">{loan.location}</p>
-                <p className="loan-des">{loan.loan_description}</p>
+                <p className="profile-loan-loc">{loan.location}</p>
+                <p className="profile-loan-des">{loan.loan_description}</p>
             </div>
         )
     }
@@ -91,9 +91,9 @@ class Profile extends React.Component {
             <div>
                 <h1 className="profile-title">Recent loans</h1>
             </div>
-            <div className="loan-flex">
+            <div className="profile-loan-flex">
                 {
-                !this.props.lenders.length ? <p>{this.state.loanMessage}</p> : 
+                !this.props.lenders.length ? <p className="profile-message">{this.state.loanMessage}</p> : 
                 loans.map(this.buildLenderData)
                 }
             </div>
@@ -101,62 +101,5 @@ class Profile extends React.Component {
         )
     }
 }
-
-// const Profile = ({ currentUser, logout }) => {
-
-//     const profileLink = () => (
-//         <div>
-//             <nav class="site-nav">
-//                 <div>
-//                     <div class="lend-dropdown">
-//                         <Link to={"/dashboard"}>
-//                             <button class="lend-dropbtn" type="button">
-//                                 Giva
-//                             </button>
-//                         </Link>
-//                     </div>
-//                     <div class="lend-dropdown">
-//                         <button class="lend-dropbtn">Lend</button>
-//                         <div class="dropdown-content">
-//                             <h1>Categories</h1>
-//                             <Link to={'/loans/women'}>Women</Link>
-//                             <Link to={'/loans/agriculture'}>Agriculture</Link>
-//                             <Link to={'/loans/education'}>Education</Link>
-//                             <Link to={'/loans/refugee'}>Refugee</Link>
-//                             <Link to={'/loans/eco'}>Eco-friendly</Link>
-//                             <Link to={'/loans/domestic'}>Giva U.S.</Link>
-//                             <Link to={'/loans/livestock'}>Livestock</Link>
-//                             <Link to={'/loans/arts'}>Arts</Link>
-//                             <Link to={'/loans'}>View All</Link>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div>
-//                     <div class="about-dropdown">
-//                         <Link to={'/about'}>
-//                             <button class="about-dropbtn">
-//                                 About
-//                             </button>
-//                         </Link>
-//                     </div>
-//                     <div class="profile-dropdown">
-//                         <button onClick={logout} class="lend-dropbtn">Sign Out</button>
-//                     </div>
-//                 </div>
-//             </nav>
-//             <nav class="profile-nav">
-//                 <div class="profile-upper-tabs">
-//                     <button class="selected-button">Profile</button>
-//                 </div>
-//             </nav>
-//             <div>
-//                 <h1 className="profile-title">Recent loans</h1>
-//             </div>
-//         </div>
-//     );
-
-
-//     return profileLink();
-// };
 
 export default Profile;

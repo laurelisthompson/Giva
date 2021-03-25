@@ -3517,9 +3517,11 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
           className: "btn"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
-        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/signin"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "lend-btn"
-        }, "Lend Now")));
+        }, "Lend Now"))));
       }))));
     }
   }]);
@@ -3664,7 +3666,7 @@ var Profile = /*#__PURE__*/function (_React$Component) {
       } else {
         if (!this.props.lenders.length && this.state.loading) {
           this.setState({
-            loanMessage: "You do not have any loans",
+            loanMessage: "You do not have any loans. Go loan to some of your favorite characters and help them accomplish their missions!",
             loading: false
           });
         }
@@ -3674,15 +3676,15 @@ var Profile = /*#__PURE__*/function (_React$Component) {
     key: "buildLenderData",
     value: function buildLenderData(loan) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "loans"
+        className: "profile-loans"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "loan-img"
+        className: "profile-loan-img"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: loan.thumbnailUrl
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, loan.loan_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "loan-loc"
+        className: "profile-loan-loc"
       }, loan.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "loan-des"
+        className: "profile-loan-des"
       }, loan.loan_description));
     }
   }, {
@@ -3746,66 +3748,15 @@ var Profile = /*#__PURE__*/function (_React$Component) {
       }, "Profile"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "profile-title"
       }, "Recent loans")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "loan-flex"
-      }, !this.props.lenders.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.loanMessage) : loans.map(this.buildLenderData)));
+        className: "profile-loan-flex"
+      }, !this.props.lenders.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "profile-message"
+      }, this.state.loanMessage) : loans.map(this.buildLenderData)));
     }
   }]);
 
   return Profile;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // const Profile = ({ currentUser, logout }) => {
-//     const profileLink = () => (
-//         <div>
-//             <nav class="site-nav">
-//                 <div>
-//                     <div class="lend-dropdown">
-//                         <Link to={"/dashboard"}>
-//                             <button class="lend-dropbtn" type="button">
-//                                 Giva
-//                             </button>
-//                         </Link>
-//                     </div>
-//                     <div class="lend-dropdown">
-//                         <button class="lend-dropbtn">Lend</button>
-//                         <div class="dropdown-content">
-//                             <h1>Categories</h1>
-//                             <Link to={'/loans/women'}>Women</Link>
-//                             <Link to={'/loans/agriculture'}>Agriculture</Link>
-//                             <Link to={'/loans/education'}>Education</Link>
-//                             <Link to={'/loans/refugee'}>Refugee</Link>
-//                             <Link to={'/loans/eco'}>Eco-friendly</Link>
-//                             <Link to={'/loans/domestic'}>Giva U.S.</Link>
-//                             <Link to={'/loans/livestock'}>Livestock</Link>
-//                             <Link to={'/loans/arts'}>Arts</Link>
-//                             <Link to={'/loans'}>View All</Link>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div>
-//                     <div class="about-dropdown">
-//                         <Link to={'/about'}>
-//                             <button class="about-dropbtn">
-//                                 About
-//                             </button>
-//                         </Link>
-//                     </div>
-//                     <div class="profile-dropdown">
-//                         <button onClick={logout} class="lend-dropbtn">Sign Out</button>
-//                     </div>
-//                 </div>
-//             </nav>
-//             <nav class="profile-nav">
-//                 <div class="profile-upper-tabs">
-//                     <button class="selected-button">Profile</button>
-//                 </div>
-//             </nav>
-//             <div>
-//                 <h1 className="profile-title">Recent loans</h1>
-//             </div>
-//         </div>
-//     );
-//     return profileLink();
-// };
-
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Profile);
 

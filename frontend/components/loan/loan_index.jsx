@@ -139,7 +139,7 @@ class LoanIndex extends React.Component {
                                 <Link to={"/signin"}>
                                     <button className="giva-btn" type="button">
                                         Sign in
-                            </button>
+                                    </button>
                                 </Link>
                             </div>
                         </div>
@@ -167,7 +167,9 @@ class LoanIndex extends React.Component {
                                         <p className="loan-amt">${loan.total_amount}</p>
                                         <div className="btn">
                                             <button className="price-btn">$25</button>
-                                            <button className="lend-btn">Lend Now</button>
+                                            <Link to={"/signin"}>
+                                                <button className="lend-btn">Lend Now</button>
+                                            </Link>
                                         </div>
                                     </div>
                                 )
