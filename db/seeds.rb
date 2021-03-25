@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Loan.destroy_all
+Lender.destroy_all
 
 User.create(
     first_name: "Demo",
@@ -362,7 +363,7 @@ loan32 = Loan.create(
     location: "Hogwarts",
     type_category: "Domestic",
     loan_description: "AMAZING! This is just like magic!",
-    total_amount: 8290,
+    total_amount: 8200,
     loan_length: 50,
     deadline: "2020-12-01")
 loan32photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/gilderoy_lockhart.jpeg')
@@ -373,7 +374,7 @@ loan33 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Arts",
     loan_description: "What have I done?",
-    total_amount: 2840,
+    total_amount: 2850,
     loan_length: 12,
     deadline: "2020-12-01")
 loan33photo = open('https://giva-seeding.s3.amazonaws.com/starwars/anakin_skywalker.jpeg')
@@ -439,7 +440,7 @@ loan39 = Loan.create(
     location: "Middle Earth",
     type_category: "Livestock",
     loan_description: "This huge fire moon lighting our path. I wish I could show you...",
-    total_amount: rand(500..8000),
+    total_amount: 700,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan39photo = open('https://giva-seeding.s3.amazonaws.com/lotr/kili.jpeg')
@@ -450,7 +451,7 @@ loan40 = Loan.create(
     location: "Hogwarts",
     type_category: "Women",
     loan_description: "I never really gave up on you. Not really.",
-    total_amount: rand(500..8000),
+    total_amount: 3500,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan40photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/ginny-weasley.jpeg')
@@ -461,7 +462,7 @@ loan41 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Education",
     loan_description: "You’re going to find that many of the truths we cling to depend greatly on our own point of view.",
-    total_amount: rand(500..8000),
+    total_amount: 4700,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan41photo = open('https://giva-seeding.s3.amazonaws.com/starwars/obi_wan_kenobi.png')
@@ -472,7 +473,7 @@ loan42 = Loan.create(
     location: "Hogwarts",
     type_category: "Arts",
     loan_description: "The Cloak of Invisibility. Together, they make the Deathly Hallows. Together, they make one master of death.",
-    total_amount: rand(500..8000),
+    total_amount: 1050,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan42photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/xenophilius_lovegood.jpeg')
@@ -483,7 +484,7 @@ loan43 = Loan.create(
     location: "Middle Earth",
     type_category: "Agriculture",
     loan_description: "But I thought I’d have a look and see how Mrs. Cotton was keeping, and you, Rosie.",
-    total_amount: rand(500..8000),
+    total_amount: 4300,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan43photo = open('https://giva-seeding.s3.amazonaws.com/lotr/rosie_cotton.jpeg')
@@ -494,7 +495,7 @@ loan44 = Loan.create(
     location: "Hogwarts",
     type_category: "Livestock",
     loan_description: "How's yer brother Charlie? I liked him a lot — great with animals.",
-    total_amount: rand(500..8000),
+    total_amount: 3600,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan44photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/charlie_weasley.jpeg')
@@ -505,7 +506,7 @@ loan45 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Education",
     loan_description: "It's a trap!",
-    total_amount: rand(500..8000),
+    total_amount: 6050,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan45photo = open('https://giva-seeding.s3.amazonaws.com/starwars/admiral_ackbar.jpeg')
@@ -516,7 +517,7 @@ loan46 = Loan.create(
     location: "Middle Earth",
     type_category: "Refugees",
     loan_description: "If by my life or death I can protect you, I will.",
-    total_amount: rand(500..8000),
+    total_amount: 4030,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan46photo = open('https://giva-seeding.s3.amazonaws.com/lotr/aragorn.png')
@@ -527,7 +528,7 @@ loan47 = Loan.create(
     location: "Middle Earth",
     type_category: "Agriculture",
     loan_description: "Do you really mean to start before the break of day?",
-    total_amount: rand(500..8000),
+    total_amount: 1300,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan47photo = open('https://giva-seeding.s3.amazonaws.com/lotr/pippin.jpeg')
@@ -538,7 +539,7 @@ loan48 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Livestock",
     loan_description: "RWGWGWARAHHHHWWGRW.",
-    total_amount: rand(500..8000),
+    total_amount: 1375,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan48photo = open('https://giva-seeding.s3.amazonaws.com/starwars/chewbacca.jpeg')
@@ -549,7 +550,7 @@ loan49 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Arts",
     loan_description: "I’ll take good care of her. She won’t get a scratch.",
-    total_amount: rand(500..8000),
+    total_amount: 3650,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan49photo = open('https://giva-seeding.s3.amazonaws.com/starwars/lando_calrissian.jpeg')
@@ -560,7 +561,7 @@ loan50 = Loan.create(
     location: "Middle Earth",
     type_category: "Education",
     loan_description: "All we have to do is decide what to do with the time that is given to us.",
-    total_amount: rand(500..8000),
+    total_amount: 1000,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan50photo = open('https://giva-seeding.s3.amazonaws.com/lotr/gandalf.jpeg')
@@ -571,7 +572,7 @@ loan52 = Loan.create(
     location: "Hogwarts",
     type_category: "Arts",
     loan_description: "Mischief Managed.",
-    total_amount: rand(500..8000),
+    total_amount: 1925,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan52photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/george_weasley.jpeg')
@@ -582,7 +583,7 @@ loan53 = Loan.create(
     location: "Florin",
     type_category: "Domestic",
     loan_description: "I just want you to feel you're doing well.",
-    total_amount: rand(500..8000),
+    total_amount: 1875,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan53photo = open('https://giva-seeding.s3.amazonaws.com/princessbride/fezzik.png')
@@ -593,7 +594,7 @@ loan54 = Loan.create(
     location: "Hogwarts",
     type_category: "Domestic",
     loan_description: "Happiness can be found, even in the darkest of times, if one only remembers to turn on the light.",
-    total_amount: rand(500..8000),
+    total_amount: 4100,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan54photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/albus-dumbledore.jpeg')
@@ -604,7 +605,7 @@ loan55 = Loan.create(
     location: "Middle Earth",
     type_category: "Domestic",
     loan_description: "Let this be the hour when we draw swords together.",
-    total_amount: rand(500..8000),
+    total_amount: 6950,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan55photo = open('https://giva-seeding.s3.amazonaws.com/lotr/king_theoden.jpeg')
@@ -615,7 +616,7 @@ loan56 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Refugees",
     loan_description: "[beep beep beep boop]",
-    total_amount: rand(500..8000),
+    total_amount: 3400,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan56photo = open('https://giva-seeding.s3.amazonaws.com/starwars/r2d2.jpeg')
@@ -626,7 +627,7 @@ loan57 = Loan.create(
     location: "Middle Earth",
     type_category: "Agriculture",
     loan_description: "At your service.",
-    total_amount: rand(500..8000),
+    total_amount: 7150,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan57photo = open('https://giva-seeding.s3.amazonaws.com/lotr/fili.jpeg')
@@ -637,7 +638,7 @@ loan58 = Loan.create(
     location: "Middle Earth",
     type_category: "Eco-friendly",
     loan_description: "Let them come. There is one Dwarf yet in Moria who still draws breath.",
-    total_amount: rand(500..8000),
+    total_amount: 7550,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan58photo = open('https://giva-seeding.s3.amazonaws.com/lotr/gimli.png')
@@ -648,7 +649,7 @@ loan59 = Loan.create(
     location: "Hogwarts",
     type_category: "Arts",
     loan_description: "My mum always said things we lose have a way of coming back to us in the end. If not always in the ways we expect",
-    total_amount: rand(500..8000),
+    total_amount: 5700,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan59photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/luna-lovegood.jpeg')
@@ -659,7 +660,7 @@ loan60 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Agriculture",
     loan_description: "Have you seen Luke this morning?",
-    total_amount: rand(500..8000),
+    total_amount: 3275,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan60photo = open('https://giva-seeding.s3.amazonaws.com/starwars/uncle_owen.jpeg')
@@ -670,7 +671,7 @@ loan61 = Loan.create(
     location: "Hogwarts",
     type_category: "Refugees",
     loan_description: "Always.",
-    total_amount: rand(500..8000),
+    total_amount: 3750,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan61photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/severus_snape.jpeg')
@@ -681,7 +682,7 @@ loan62 = Loan.create(
     location: "Hogwarts",
     type_category: "Arts",
     loan_description: "Where is he? Where's my Won-Won? Has he been asking for me?",
-    total_amount: rand(500..8000),
+    total_amount: 2750,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan62photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/lavender-brown.jpeg')
@@ -692,7 +693,7 @@ loan63 = Loan.create(
     location: "Middle Earth",
     type_category: "Agriculture",
     loan_description: "Our people, our people. I would have followed you, my brother... my captain... my king.",
-    total_amount: rand(500..8000),
+    total_amount: 5850,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan63photo = open('https://giva-seeding.s3.amazonaws.com/lotr/boromir.jpeg')
@@ -703,7 +704,7 @@ loan64 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Women",
     loan_description: "My place is with my people.",
-    total_amount: rand(500..8000),
+    total_amount: 2075,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan64photo = open('https://giva-seeding.s3.amazonaws.com/starwars/padme_amidala.png')
@@ -714,7 +715,7 @@ loan65 = Loan.create(
     location: "Middle Earth",
     type_category: "Education",
     loan_description: "Our list of allies grows thin.",
-    total_amount: rand(500..8000),
+    total_amount: 925,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan65photo = open('https://giva-seeding.s3.amazonaws.com/lotr/elrond.jpeg')
@@ -725,7 +726,7 @@ loan66 = Loan.create(
     location: "Middle Earth",
     type_category: "Arts",
     loan_description: "Great! Where are we going?",
-    total_amount: rand(500..8000),
+    total_amount: 2800,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan66photo = open('https://giva-seeding.s3.amazonaws.com/lotr/merry.jpeg')
@@ -736,7 +737,7 @@ loan67 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Eco-friendly",
     loan_description: "[be ba be bo o oww]",
-    total_amount: rand(500..8000),
+    total_amount: 5625,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan67photo = open('https://giva-seeding.s3.amazonaws.com/starwars/bb8.jpeg')
@@ -747,7 +748,7 @@ loan68 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Eco-friendly",
     loan_description: "I want to learn the ways of the Force, and become a Jedi like my father.",
-    total_amount: rand(500..8000),
+    total_amount: 2425,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan68photo = open('https://giva-seeding.s3.amazonaws.com/starwars/luke_skywalker.jpeg')
@@ -758,7 +759,7 @@ loan69 = Loan.create(
     location: "Hogwarts",
     type_category: "Agriculture",
     loan_description: "The thing is, it helps when people stand up to them. It gives everyone hope.",
-    total_amount: rand(500..8000),
+    total_amount: 3675,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan69photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/neville-longbottom.jpeg')
@@ -769,7 +770,7 @@ loan70 = Loan.create(
     location: "Florin",
     type_category: "Livestock",
     loan_description: "As you wish.",
-    total_amount: rand(500..8000),
+    total_amount: 5425,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan70photo = open('https://giva-seeding.s3.amazonaws.com/princessbride/westley.jpeg')
@@ -780,7 +781,7 @@ loan71 = Loan.create(
     location: "Florin",
     type_category: "Women",
     loan_description: "It comes to this. I love Westley. I always have. I know now, I always will.",
-    total_amount: rand(500..8000),
+    total_amount: 500,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan71photo = open('https://giva-seeding.s3.amazonaws.com/princessbride/buttercup.png')
@@ -791,7 +792,7 @@ loan72 = Loan.create(
     location: "Hogwarts",
     type_category: "Education",
     loan_description: "Bravery doesn't forgive stupidity.",
-    total_amount: rand(500..8000),
+    total_amount: 3500,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan72photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/minerva-mcgonagall.jpeg')
@@ -802,7 +803,7 @@ loan73 = Loan.create(
     location: "Middle Earth",
     type_category: "Refugees",
     loan_description: "Go back to your books and your archair, plant your trees, watch them grow. If more people valued home above gold this world would be a merrier place.",
-    total_amount: rand(500..8000),
+    total_amount: 5000,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan73photo = open('https://giva-seeding.s3.amazonaws.com/lotr/thorin_oakenshield.jpeg')
@@ -813,7 +814,7 @@ loan74 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Domestic",
     loan_description: "Why doesn't anyone listen to me?",
-    total_amount: rand(500..8000),
+    total_amount: 5300,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan74photo = open('https://giva-seeding.s3.amazonaws.com/starwars/c3po.jpeg')
@@ -824,7 +825,7 @@ loan75 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Arts",
     loan_description: "Because it's the right thing to do.",
-    total_amount: rand(500..8000),
+    total_amount: 2825,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan75photo = open('https://giva-seeding.s3.amazonaws.com/starwars/finn.jpeg')
@@ -835,7 +836,7 @@ loan76 = Loan.create(
     location: "Middle Earth",
     type_category: "Domestic",
     loan_description: "I do not doubt his heart, only the reach of his arm.",
-    total_amount: rand(500..8000),
+    total_amount: 6325,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan76photo = open('https://giva-seeding.s3.amazonaws.com/lotr/eomer.png')
@@ -846,7 +847,7 @@ loan77 = Loan.create(
     location: "Hogwarts",
     type_category: "Livestock",
     loan_description: "What’s comin’ will come, an’ we’ll meet it when it does.",
-    total_amount: rand(500..8000),
+    total_amount: 5600,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan77photo = open('https://giva-seeding.s3.amazonaws.com/harrypotter/rubeus-hagrid.jpeg')
@@ -857,7 +858,7 @@ loan78 = Loan.create(
     location: "Middle Earth",
     type_category: "Arts",
     loan_description: "Shall I describe it to you? Or would you like me to find you a box?",
-    total_amount: rand(500..8000),
+    total_amount: 7900,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan78photo = open('https://giva-seeding.s3.amazonaws.com/lotr/legolas.jpeg')
@@ -868,7 +869,7 @@ loan79 = Loan.create(
     location: "Middle Earth",
     type_category: "Agriculture",
     loan_description: "There's some good in this world, Mr. Frodo, and it's worth fighting for",
-    total_amount: rand(500..8000),
+    total_amount: 2550,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan79photo = open('https://giva-seeding.s3.amazonaws.com/lotr/samwise_gamgee.jpeg')
@@ -879,7 +880,7 @@ loan80 = Loan.create(
     location: "Middle Earth",
     type_category: "Agriculture",
     loan_description: "We never say anything unless it is worth taking a long time to say.",
-    total_amount: rand(500..8000),
+    total_amount: 1875,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan80photo = open('https://giva-seeding.s3.amazonaws.com/lotr/treebeard.png')
@@ -890,7 +891,7 @@ loan81 = Loan.create(
     location: "Middle Earth",
     type_category: "Agriculture",
     loan_description: "Good Sméagol always helps.",
-    total_amount: rand(500..8000),
+    total_amount: 4125,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan81photo = open('https://giva-seeding.s3.amazonaws.com/lotr/smeagol.jpeg')
@@ -901,7 +902,7 @@ loan82 = Loan.create(
     location: "A Galaxy Far Far Away",
     type_category: "Domestic",
     loan_description: "Be careful not to choke on your convictions.",
-    total_amount: rand(500..8000),
+    total_amount: 1600,
     loan_length: rand(1..18),
     deadline: "2020-12-01")
 loan82photo = open('https://giva-seeding.s3.amazonaws.com/starwars/darth_vader.jpeg')
