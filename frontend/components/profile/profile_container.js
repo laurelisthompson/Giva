@@ -11,16 +11,19 @@ import Profile from './profile';
 //     };
 // };
 
-const getLoans = (lendingTransactions=[]) => {
-    return lendingTransactions.map((lendingTransactions) => {
-        return lendingTransactions.lendingTransaction
-    })
-}
+// const getLoans = (lendingTransactions=[]) => {
+//     return lendingTransactions.map((lendingTransactions) => {
+//         return lendingTransactions.lendingTransaction
+//     })
+// }
 
 const mSTP = (state) => {
+    let lenders = Object.values(state.entities.lenders);
+    let userLoanIds = lenders.map(lender => lender.loanId || -1);
+    let loans = userLoanIds.map(loanId => state.entities.loans[loanId] || {})
     return {
-        loans: Object.values(state.entities.loans),
-        lenders: Object.values(state.entities.lenders),
+        loans,
+        lenders,
         currentUser: state.entities.users[state.session.id], //added to replace session: state.session
         lendingTransactions: Object.values(state.entities.lenders), //added
     }

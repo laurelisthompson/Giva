@@ -3634,9 +3634,18 @@ var Profile = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Profile);
 
   function Profile(props) {
+    var _this;
+
     _classCallCheck(this, Profile);
 
-    return _super.call(this, props); // this.props.logout();
+    _this = _super.call(this, props); // this.props.logout();
+
+    _this.buildLenderData = _this.buildLenderData.bind(_assertThisInitialized(_this));
+    _this.state = {
+      loading: true,
+      loanMessage: "Loading..."
+    };
+    return _this;
   }
 
   _createClass(Profile, [{
@@ -3644,6 +3653,37 @@ var Profile = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchAllLendingTransactions();
       this.props.fetchAllLoans();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevProps.lenders.length !== this.props.lenders.length) {
+        this.setState({
+          loading: false
+        });
+      } else {
+        if (!this.props.lenders.length && this.state.loading) {
+          this.setState({
+            loanMessage: "You do not have any loans",
+            loading: false
+          });
+        }
+      }
+    }
+  }, {
+    key: "buildLenderData",
+    value: function buildLenderData(loan) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "loans"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "loan-img"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: loan.thumbnailUrl
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, loan.loan_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "loan-loc"
+      }, loan.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "loan-des"
+      }, loan.loan_description));
     }
   }, {
     key: "render",
@@ -3707,19 +3747,7 @@ var Profile = /*#__PURE__*/function (_React$Component) {
         className: "profile-title"
       }, "Recent loans")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loan-flex"
-      }, loans.map(function (loan) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "loans"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "loan-img"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: loan.thumbnailUrl
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, loan.loan_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "loan-loc"
-        }, loan.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: "loan-des"
-        }, loan.loan_description));
-      })));
+      }, !this.props.lenders.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.loanMessage) : loans.map(this.buildLenderData)));
     }
   }]);
 
@@ -3809,18 +3837,23 @@ __webpack_require__.r(__webpack_exports__);
 //         currentUser: users[session.id]
 //     };
 // };
-
-var getLoans = function getLoans() {
-  var lendingTransactions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  return lendingTransactions.map(function (lendingTransactions) {
-    return lendingTransactions.lendingTransaction;
-  });
-};
+// const getLoans = (lendingTransactions=[]) => {
+//     return lendingTransactions.map((lendingTransactions) => {
+//         return lendingTransactions.lendingTransaction
+//     })
+// }
 
 var mSTP = function mSTP(state) {
+  var lenders = Object.values(state.entities.lenders);
+  var userLoanIds = lenders.map(function (lender) {
+    return lender.loanId || -1;
+  });
+  var loans = userLoanIds.map(function (loanId) {
+    return state.entities.loans[loanId] || {};
+  });
   return {
-    loans: Object.values(state.entities.loans),
-    lenders: Object.values(state.entities.lenders),
+    loans: loans,
+    lenders: lenders,
     currentUser: state.entities.users[state.session.id],
     //added to replace session: state.session
     lendingTransactions: Object.values(state.entities.lenders) //added

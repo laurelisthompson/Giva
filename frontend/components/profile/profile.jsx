@@ -5,11 +5,39 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         // this.props.logout();
+        this.buildLenderData = this.buildLenderData.bind(this);
+        this.state = {
+            loading: true,
+            loanMessage: "Loading..."
+        }
     }
 
     componentDidMount() {
         this.props.fetchAllLendingTransactions();
         this.props.fetchAllLoans();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.lenders.length !== this.props.lenders.length) {
+            this.setState({loading: false})
+        } else {
+            if (!this.props.lenders.length && this.state.loading) {
+                this.setState({loanMessage: "You do not have any loans", loading: false})
+            }
+        }
+    }
+
+    buildLenderData(loan) {
+        return (
+            <div className="loans">
+                <div className="loan-img">
+                    <img src={loan.thumbnailUrl} />
+                </div>
+                <h1>{loan.loan_name}</h1>
+                <p className="loan-loc">{loan.location}</p>
+                <p className="loan-des">{loan.loan_description}</p>
+            </div>
+        )
     }
 
     render() {
@@ -63,35 +91,12 @@ class Profile extends React.Component {
             <div>
                 <h1 className="profile-title">Recent loans</h1>
             </div>
-                <div className="loan-flex">
-                    {loans.map(loan => {
-                        return (
-                            <div className="loans">
-                                <div className="loan-img">
-                                    <img src={loan.thumbnailUrl} />
-                                </div>
-                                <h1>{loan.loan_name}</h1>
-                                <p className="loan-loc">{loan.location}</p>
-                                <p className="loan-des">{loan.loan_description}</p>
-                            </div>
-                        )
-                    })}
-                </div>
-                {/* <div className="loan-flex">
-                    {lenders.map(transaction => {
-                        let trId = transaction.loanId;
-                        if (transaction.userId == currentUser.id) return (
-                            <div className="loans">
-                                <div className="loan-img">
-                                    <img src={loans.trId.thumbnailUrl} />
-                                </div>
-                                <h1>{loans.trId.loan_name}</h1>
-                                <p className="loan-loc">{loans.trId.location}</p>
-                                <p className="loan-des">{loans.trId.loan_description}</p>
-                            </div>
-                        )
-                    })}
-                </div> */}
+            <div className="loan-flex">
+                {
+                !this.props.lenders.length ? <p>{this.state.loanMessage}</p> : 
+                loans.map(this.buildLenderData)
+                }
+            </div>
         </div>
         )
     }
