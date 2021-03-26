@@ -1,3 +1,6 @@
-# Giva
+# Description
 
-Giva is an application that allows the user to help fund small loans for your favorite characters from books and movies. The application utilizes a Rails/PostgreSQL backend and React.js and Redux for the frontend.
+Giva is a single page web app clone of the loan website [kiva](https://www.kiva.org/) that allows users to contribute to crowdfunded loans. 
+Check out the live site [here](https://giva-a.herokuapp.com/#/)!
+
+![](/app/assets/images/)
