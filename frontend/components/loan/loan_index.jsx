@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-
+ 
 class LoanIndex extends React.Component {
     constructor(props) {
         super(props);
@@ -23,7 +23,6 @@ class LoanIndex extends React.Component {
 
     render() {
         const { loans, logout, lendingTransactions, currentUser} = this.props;
-        // const loggedIn = Boolean(this.props.session.id);
 
         return currentUser && lendingTransactions && loans ? (
             <div>

@@ -4,17 +4,26 @@ import { Link } from 'react-router-dom';
 class ArtsLoanIndex extends React.Component {
     constructor(props) {
         super(props);
+
+        this.handleAddLoan = this.handleAddLoan.bind(this);
     };
 
     componentDidMount() {
-        this.props.fetchAllLoans()
+        this.props.fetchAllLoans();
     };
 
-    render() {
-        const { loans, logout } = this.props;
-        const loggedIn = Boolean(this.props.session.id);
+    handleAddLoan(loanId) {
+        return e => {
+            e.preventDefault();
+            let newLendingTransaction = { userId: this.props.session.id, loanId: loanId }
+            this.props.createLendingTransaction(newLendingTransaction)
+        }
+    }
 
-        return loggedIn ? (
+    render() {
+        const { loans, logout, lendingTransactions, currentUser } = this.props;
+
+        return currentUser && lendingTransactions && loans ? (
             <div>
                 <nav className="site-nav">
                     <div>
@@ -85,7 +94,7 @@ class ArtsLoanIndex extends React.Component {
                                     <p className="loan-amt">${loan.total_amount}</p>
                                     <div className="btn">
                                         <button className="price-btn">$25</button>
-                                        <button className="lend-btn">Lend Now</button>
+                                        <button className="lend-btn" onClick={this.handleAddLoan(loan.id)}>Lend Now</button>
                                     </div>
                                 </div>
                             )
@@ -162,7 +171,9 @@ class ArtsLoanIndex extends React.Component {
                                         <p className="loan-amt">${loan.total_amount}</p>
                                         <div className="btn">
                                             <button className="price-btn">$25</button>
-                                            <button className="lend-btn">Lend Now</button>
+                                            <Link to={"/signin"}>
+                                                <button className="lend-btn">Lend Now</button>
+                                            </Link>
                                         </div>
                                     </div>
                                 )

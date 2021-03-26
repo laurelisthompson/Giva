@@ -673,14 +673,20 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
-/* harmony import */ var _agriculture_loan_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./agriculture_loan_index */ "./frontend/components/categories/agriculture_loan_index.jsx");
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
+/* harmony import */ var _agriculture_loan_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./agriculture_loan_index */ "./frontend/components/categories/agriculture_loan_index.jsx");
 
 
 
 
-var mSTP = function mSTP(state) {
+
+var mSTP = function mSTP(state, ownProps) {
   return {
     loans: Object.values(state.entities.loans),
+    currentUser: state.entities.users[state.session.id],
+    //added to replace session: state.session
+    lendingTransactions: Object.values(state.entities.lenders),
+    //added
     session: state.session
   };
 };
@@ -702,11 +708,17 @@ var mDTP = function mDTP(dispatch) {
       return logout;
     }(function () {
       return dispatch(logout());
-    })
+    }),
+    createLendingTransaction: function createLendingTransaction(lendingTransaction) {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+    },
+    fetchAllLendingTransactions: function fetchAllLendingTransactions() {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_agriculture_loan_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_agriculture_loan_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -753,9 +765,13 @@ var AgricultureLoanIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(AgricultureLoanIndex);
 
   function AgricultureLoanIndex(props) {
+    var _this;
+
     _classCallCheck(this, AgricultureLoanIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(AgricultureLoanIndex, [{
@@ -764,13 +780,31 @@ var AgricultureLoanIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllLoans();
     }
   }, {
+    key: "handleAddLoan",
+    value: function handleAddLoan(loanId) {
+      var _this2 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var newLendingTransaction = {
+          userId: _this2.props.session.id,
+          loanId: loanId
+        };
+
+        _this2.props.createLendingTransaction(newLendingTransaction);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           loans = _this$props.loans,
-          logout = _this$props.logout;
-      var loggedIn = Boolean(this.props.session.id);
-      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          logout = _this$props.logout,
+          lendingTransactions = _this$props.lendingTransactions,
+          currentUser = _this$props.currentUser;
+      return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lend-dropdown"
@@ -827,7 +861,34 @@ var AgricultureLoanIndex = /*#__PURE__*/function (_React$Component) {
         className: "loan-headings"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: '/loans'
-      }, "All Loans"), " - Agriculture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Agriculture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Farmers face many challenges like unpredictable weather and market prices, and are often forced to choose between investing in their crops and fulfilling basic needs for their families. Your support keeps their crops growing and their livelihoods stable.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+      }, "All Loans"), " - Agriculture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Agriculture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Farmers face many challenges like unpredictable weather and market prices, and are often forced to choose between investing in their crops and fulfilling basic needs for their families. Your support keeps their crops growing and their livelihoods stable.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "loan-flex"
+      }, loans.map(function (loan) {
+        if (loan.type_category == "Agriculture") return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "loans"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "loan-img"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: loan.thumbnailUrl
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, loan.loan_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "loan-loc"
+        }, loan.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "loan-des"
+        }, loan.loan_description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "progress-container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "current-progress"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "loan-amt"
+        }, "$", loan.total_amount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "btn"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "price-btn"
+        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "lend-btn",
+          onClick: _this3.handleAddLoan(loan.id)
+        }, "Lend Now")));
+      })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lend-dropdown"
@@ -902,9 +963,11 @@ var AgricultureLoanIndex = /*#__PURE__*/function (_React$Component) {
           className: "btn"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
-        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/signin"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "lend-btn"
-        }, "Lend Now")));
+        }, "Lend Now"))));
       }))));
     }
   }]);
@@ -927,14 +990,20 @@ var AgricultureLoanIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
-/* harmony import */ var _arts_loan_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./arts_loan_index */ "./frontend/components/categories/arts_loan_index.jsx");
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
+/* harmony import */ var _arts_loan_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./arts_loan_index */ "./frontend/components/categories/arts_loan_index.jsx");
 
 
 
 
-var mSTP = function mSTP(state) {
+
+var mSTP = function mSTP(state, ownProps) {
   return {
     loans: Object.values(state.entities.loans),
+    currentUser: state.entities.users[state.session.id],
+    //added to replace session: state.session
+    lendingTransactions: Object.values(state.entities.lenders),
+    //added
     session: state.session
   };
 };
@@ -956,11 +1025,17 @@ var mDTP = function mDTP(dispatch) {
       return logout;
     }(function () {
       return dispatch(logout());
-    })
+    }),
+    createLendingTransaction: function createLendingTransaction(lendingTransaction) {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+    },
+    fetchAllLendingTransactions: function fetchAllLendingTransactions() {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_arts_loan_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_arts_loan_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -1007,9 +1082,13 @@ var ArtsLoanIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ArtsLoanIndex);
 
   function ArtsLoanIndex(props) {
+    var _this;
+
     _classCallCheck(this, ArtsLoanIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ArtsLoanIndex, [{
@@ -1018,13 +1097,31 @@ var ArtsLoanIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllLoans();
     }
   }, {
+    key: "handleAddLoan",
+    value: function handleAddLoan(loanId) {
+      var _this2 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var newLendingTransaction = {
+          userId: _this2.props.session.id,
+          loanId: loanId
+        };
+
+        _this2.props.createLendingTransaction(newLendingTransaction);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           loans = _this$props.loans,
-          logout = _this$props.logout;
-      var loggedIn = Boolean(this.props.session.id);
-      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          logout = _this$props.logout,
+          lendingTransactions = _this$props.lendingTransactions,
+          currentUser = _this$props.currentUser;
+      return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lend-dropdown"
@@ -1105,7 +1202,8 @@ var ArtsLoanIndex = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
         }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "lend-btn"
+          className: "lend-btn",
+          onClick: _this3.handleAddLoan(loan.id)
         }, "Lend Now")));
       })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
@@ -1182,9 +1280,11 @@ var ArtsLoanIndex = /*#__PURE__*/function (_React$Component) {
           className: "btn"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
-        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/signin"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "lend-btn"
-        }, "Lend Now")));
+        }, "Lend Now"))));
       }))));
     }
   }]);
@@ -1207,14 +1307,20 @@ var ArtsLoanIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
-/* harmony import */ var _domestic_loan_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./domestic_loan_index */ "./frontend/components/categories/domestic_loan_index.jsx");
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
+/* harmony import */ var _domestic_loan_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./domestic_loan_index */ "./frontend/components/categories/domestic_loan_index.jsx");
 
 
 
 
-var mSTP = function mSTP(state) {
+
+var mSTP = function mSTP(state, ownProps) {
   return {
     loans: Object.values(state.entities.loans),
+    currentUser: state.entities.users[state.session.id],
+    //added to replace session: state.session
+    lendingTransactions: Object.values(state.entities.lenders),
+    //added
     session: state.session
   };
 };
@@ -1236,11 +1342,17 @@ var mDTP = function mDTP(dispatch) {
       return logout;
     }(function () {
       return dispatch(logout());
-    })
+    }),
+    createLendingTransaction: function createLendingTransaction(lendingTransaction) {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+    },
+    fetchAllLendingTransactions: function fetchAllLendingTransactions() {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_domestic_loan_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_domestic_loan_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -1287,9 +1399,13 @@ var DomesticLoanIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(DomesticLoanIndex);
 
   function DomesticLoanIndex(props) {
+    var _this;
+
     _classCallCheck(this, DomesticLoanIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(DomesticLoanIndex, [{
@@ -1298,13 +1414,31 @@ var DomesticLoanIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllLoans();
     }
   }, {
+    key: "handleAddLoan",
+    value: function handleAddLoan(loanId) {
+      var _this2 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var newLendingTransaction = {
+          userId: _this2.props.session.id,
+          loanId: loanId
+        };
+
+        _this2.props.createLendingTransaction(newLendingTransaction);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           loans = _this$props.loans,
-          logout = _this$props.logout;
-      var loggedIn = Boolean(this.props.session.id);
-      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          logout = _this$props.logout,
+          lendingTransactions = _this$props.lendingTransactions,
+          currentUser = _this$props.currentUser;
+      return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lend-dropdown"
@@ -1385,7 +1519,8 @@ var DomesticLoanIndex = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
         }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "lend-btn"
+          className: "lend-btn",
+          onClick: _this3.handleAddLoan(loan.id)
         }, "Lend Now")));
       })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
@@ -1462,9 +1597,11 @@ var DomesticLoanIndex = /*#__PURE__*/function (_React$Component) {
           className: "btn"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
-        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/signin"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "lend-btn"
-        }, "Lend Now")));
+        }, "Lend Now"))));
       }))));
     }
   }]);
@@ -1487,14 +1624,20 @@ var DomesticLoanIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
-/* harmony import */ var _eco_loan_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./eco_loan_index */ "./frontend/components/categories/eco_loan_index.jsx");
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
+/* harmony import */ var _eco_loan_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./eco_loan_index */ "./frontend/components/categories/eco_loan_index.jsx");
 
 
 
 
-var mSTP = function mSTP(state) {
+
+var mSTP = function mSTP(state, ownProps) {
   return {
     loans: Object.values(state.entities.loans),
+    currentUser: state.entities.users[state.session.id],
+    //added to replace session: state.session
+    lendingTransactions: Object.values(state.entities.lenders),
+    //added
     session: state.session
   };
 };
@@ -1516,11 +1659,17 @@ var mDTP = function mDTP(dispatch) {
       return logout;
     }(function () {
       return dispatch(logout());
-    })
+    }),
+    createLendingTransaction: function createLendingTransaction(lendingTransaction) {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+    },
+    fetchAllLendingTransactions: function fetchAllLendingTransactions() {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_eco_loan_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_eco_loan_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -1567,9 +1716,13 @@ var EcoLoanIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(EcoLoanIndex);
 
   function EcoLoanIndex(props) {
+    var _this;
+
     _classCallCheck(this, EcoLoanIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(EcoLoanIndex, [{
@@ -1578,13 +1731,31 @@ var EcoLoanIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllLoans();
     }
   }, {
+    key: "handleAddLoan",
+    value: function handleAddLoan(loanId) {
+      var _this2 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var newLendingTransaction = {
+          userId: _this2.props.session.id,
+          loanId: loanId
+        };
+
+        _this2.props.createLendingTransaction(newLendingTransaction);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           loans = _this$props.loans,
-          logout = _this$props.logout;
-      var loggedIn = Boolean(this.props.session.id);
-      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          logout = _this$props.logout,
+          lendingTransactions = _this$props.lendingTransactions,
+          currentUser = _this$props.currentUser;
+      return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lend-dropdown"
@@ -1665,7 +1836,8 @@ var EcoLoanIndex = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
         }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "lend-btn"
+          className: "lend-btn",
+          onClick: _this3.handleAddLoan(loan.id)
         }, "Lend Now")));
       })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
@@ -1742,9 +1914,11 @@ var EcoLoanIndex = /*#__PURE__*/function (_React$Component) {
           className: "btn"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
-        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/signin"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "lend-btn"
-        }, "Lend Now")));
+        }, "Lend Now"))));
       }))));
     }
   }]);
@@ -1767,14 +1941,20 @@ var EcoLoanIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
-/* harmony import */ var _education_loan_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./education_loan_index */ "./frontend/components/categories/education_loan_index.jsx");
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
+/* harmony import */ var _education_loan_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./education_loan_index */ "./frontend/components/categories/education_loan_index.jsx");
 
 
 
 
-var mSTP = function mSTP(state) {
+
+var mSTP = function mSTP(state, ownProps) {
   return {
     loans: Object.values(state.entities.loans),
+    currentUser: state.entities.users[state.session.id],
+    //added to replace session: state.session
+    lendingTransactions: Object.values(state.entities.lenders),
+    //added
     session: state.session
   };
 };
@@ -1796,11 +1976,17 @@ var mDTP = function mDTP(dispatch) {
       return logout;
     }(function () {
       return dispatch(logout());
-    })
+    }),
+    createLendingTransaction: function createLendingTransaction(lendingTransaction) {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+    },
+    fetchAllLendingTransactions: function fetchAllLendingTransactions() {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_education_loan_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_education_loan_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -1847,9 +2033,13 @@ var EducationLoanIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(EducationLoanIndex);
 
   function EducationLoanIndex(props) {
+    var _this;
+
     _classCallCheck(this, EducationLoanIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(EducationLoanIndex, [{
@@ -1858,13 +2048,31 @@ var EducationLoanIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllLoans();
     }
   }, {
+    key: "handleAddLoan",
+    value: function handleAddLoan(loanId) {
+      var _this2 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var newLendingTransaction = {
+          userId: _this2.props.session.id,
+          loanId: loanId
+        };
+
+        _this2.props.createLendingTransaction(newLendingTransaction);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           loans = _this$props.loans,
-          logout = _this$props.logout;
-      var loggedIn = Boolean(this.props.session.id);
-      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          logout = _this$props.logout,
+          lendingTransactions = _this$props.lendingTransactions,
+          currentUser = _this$props.currentUser;
+      return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lend-dropdown"
@@ -1945,7 +2153,8 @@ var EducationLoanIndex = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
         }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "lend-btn"
+          className: "lend-btn",
+          onClick: _this3.handleAddLoan(loan.id)
         }, "Lend Now")));
       })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
@@ -2022,9 +2231,11 @@ var EducationLoanIndex = /*#__PURE__*/function (_React$Component) {
           className: "btn"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
-        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/signin"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "lend-btn"
-        }, "Lend Now")));
+        }, "Lend Now"))));
       }))));
     }
   }]);
@@ -2047,14 +2258,20 @@ var EducationLoanIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
-/* harmony import */ var _livestock_loan_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./livestock_loan_index */ "./frontend/components/categories/livestock_loan_index.jsx");
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
+/* harmony import */ var _livestock_loan_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./livestock_loan_index */ "./frontend/components/categories/livestock_loan_index.jsx");
 
 
 
 
-var mSTP = function mSTP(state) {
+
+var mSTP = function mSTP(state, ownProps) {
   return {
     loans: Object.values(state.entities.loans),
+    currentUser: state.entities.users[state.session.id],
+    //added to replace session: state.session
+    lendingTransactions: Object.values(state.entities.lenders),
+    //added
     session: state.session
   };
 };
@@ -2076,11 +2293,17 @@ var mDTP = function mDTP(dispatch) {
       return logout;
     }(function () {
       return dispatch(logout());
-    })
+    }),
+    createLendingTransaction: function createLendingTransaction(lendingTransaction) {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+    },
+    fetchAllLendingTransactions: function fetchAllLendingTransactions() {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_livestock_loan_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_livestock_loan_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -2127,9 +2350,13 @@ var LivestockLoanIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(LivestockLoanIndex);
 
   function LivestockLoanIndex(props) {
+    var _this;
+
     _classCallCheck(this, LivestockLoanIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(LivestockLoanIndex, [{
@@ -2138,13 +2365,31 @@ var LivestockLoanIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllLoans();
     }
   }, {
+    key: "handleAddLoan",
+    value: function handleAddLoan(loanId) {
+      var _this2 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var newLendingTransaction = {
+          userId: _this2.props.session.id,
+          loanId: loanId
+        };
+
+        _this2.props.createLendingTransaction(newLendingTransaction);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           loans = _this$props.loans,
-          logout = _this$props.logout;
-      var loggedIn = Boolean(this.props.session.id);
-      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          logout = _this$props.logout,
+          lendingTransactions = _this$props.lendingTransactions,
+          currentUser = _this$props.currentUser;
+      return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lend-dropdown"
@@ -2225,7 +2470,8 @@ var LivestockLoanIndex = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
         }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "lend-btn"
+          className: "lend-btn",
+          onClick: _this3.handleAddLoan(loan.id)
         }, "Lend Now")));
       })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
@@ -2302,9 +2548,11 @@ var LivestockLoanIndex = /*#__PURE__*/function (_React$Component) {
           className: "btn"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
-        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/signin"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "lend-btn"
-        }, "Lend Now")));
+        }, "Lend Now"))));
       }))));
     }
   }]);
@@ -2327,14 +2575,20 @@ var LivestockLoanIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
-/* harmony import */ var _refugee_loan_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./refugee_loan_index */ "./frontend/components/categories/refugee_loan_index.jsx");
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
+/* harmony import */ var _refugee_loan_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./refugee_loan_index */ "./frontend/components/categories/refugee_loan_index.jsx");
 
 
 
 
-var mSTP = function mSTP(state) {
+
+var mSTP = function mSTP(state, ownProps) {
   return {
     loans: Object.values(state.entities.loans),
+    currentUser: state.entities.users[state.session.id],
+    //added to replace session: state.session
+    lendingTransactions: Object.values(state.entities.lenders),
+    //added
     session: state.session
   };
 };
@@ -2356,11 +2610,17 @@ var mDTP = function mDTP(dispatch) {
       return logout;
     }(function () {
       return dispatch(logout());
-    })
+    }),
+    createLendingTransaction: function createLendingTransaction(lendingTransaction) {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+    },
+    fetchAllLendingTransactions: function fetchAllLendingTransactions() {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_refugee_loan_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_refugee_loan_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -2407,9 +2667,13 @@ var RefugeeLoanIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(RefugeeLoanIndex);
 
   function RefugeeLoanIndex(props) {
+    var _this;
+
     _classCallCheck(this, RefugeeLoanIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(RefugeeLoanIndex, [{
@@ -2418,13 +2682,31 @@ var RefugeeLoanIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllLoans();
     }
   }, {
+    key: "handleAddLoan",
+    value: function handleAddLoan(loanId) {
+      var _this2 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var newLendingTransaction = {
+          userId: _this2.props.session.id,
+          loanId: loanId
+        };
+
+        _this2.props.createLendingTransaction(newLendingTransaction);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           loans = _this$props.loans,
-          logout = _this$props.logout;
-      var loggedIn = Boolean(this.props.session.id);
-      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          logout = _this$props.logout,
+          lendingTransactions = _this$props.lendingTransactions,
+          currentUser = _this$props.currentUser;
+      return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lend-dropdown"
@@ -2505,7 +2787,8 @@ var RefugeeLoanIndex = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
         }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "lend-btn"
+          className: "lend-btn",
+          onClick: _this3.handleAddLoan(loan.id)
         }, "Lend Now")));
       })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
@@ -2582,9 +2865,11 @@ var RefugeeLoanIndex = /*#__PURE__*/function (_React$Component) {
           className: "btn"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
-        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/signin"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "lend-btn"
-        }, "Lend Now")));
+        }, "Lend Now"))));
       }))));
     }
   }]);
@@ -2607,16 +2892,20 @@ var RefugeeLoanIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/loan_actions */ "./frontend/actions/loan_actions.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/lender_actions */ "./frontend/actions/lender_actions.js");
 /* harmony import */ var _women_loan_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./women_loan_index */ "./frontend/components/categories/women_loan_index.jsx");
 
 
 
 
 
-var mSTP = function mSTP(state) {
+var mSTP = function mSTP(state, ownProps) {
   return {
     loans: Object.values(state.entities.loans),
+    currentUser: state.entities.users[state.session.id],
+    //added to replace session: state.session
+    lendingTransactions: Object.values(state.entities.lenders),
+    //added
     session: state.session
   };
 };
@@ -2626,8 +2915,24 @@ var mDTP = function mDTP(dispatch) {
     fetchAllLoans: function fetchAllLoans() {
       return dispatch(Object(_actions_loan_actions__WEBPACK_IMPORTED_MODULE_1__["fetchAllLoans"])());
     },
-    logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
+    logout: function (_logout) {
+      function logout() {
+        return _logout.apply(this, arguments);
+      }
+
+      logout.toString = function () {
+        return _logout.toString();
+      };
+
+      return logout;
+    }(function () {
+      return dispatch(logout());
+    }),
+    createLendingTransaction: function createLendingTransaction(lendingTransaction) {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["createLendingTransaction"])(lendingTransaction));
+    },
+    fetchAllLendingTransactions: function fetchAllLendingTransactions() {
+      return dispatch(Object(_actions_lender_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllLendingTransactions"])());
     }
   };
 };
@@ -2679,9 +2984,13 @@ var WomenLoanIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(WomenLoanIndex);
 
   function WomenLoanIndex(props) {
+    var _this;
+
     _classCallCheck(this, WomenLoanIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(WomenLoanIndex, [{
@@ -2690,13 +2999,31 @@ var WomenLoanIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchAllLoans();
     }
   }, {
+    key: "handleAddLoan",
+    value: function handleAddLoan(loanId) {
+      var _this2 = this;
+
+      return function (e) {
+        e.preventDefault();
+        var newLendingTransaction = {
+          userId: _this2.props.session.id,
+          loanId: loanId
+        };
+
+        _this2.props.createLendingTransaction(newLendingTransaction);
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$props = this.props,
           loans = _this$props.loans,
-          logout = _this$props.logout;
-      var loggedIn = Boolean(this.props.session.id);
-      return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+          logout = _this$props.logout,
+          lendingTransactions = _this$props.lendingTransactions,
+          currentUser = _this$props.currentUser;
+      return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lend-dropdown"
@@ -2777,7 +3104,8 @@ var WomenLoanIndex = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
         }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "lend-btn"
+          className: "lend-btn",
+          onClick: _this3.handleAddLoan(loan.id)
         }, "Lend Now")));
       })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
@@ -2854,9 +3182,11 @@ var WomenLoanIndex = /*#__PURE__*/function (_React$Component) {
           className: "btn"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "price-btn"
-        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, "$25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/signin"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "lend-btn"
-        }, "Lend Now")));
+        }, "Lend Now"))));
       }))));
     }
   }]);
@@ -3358,8 +3688,7 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
           loans = _this$props.loans,
           logout = _this$props.logout,
           lendingTransactions = _this$props.lendingTransactions,
-          currentUser = _this$props.currentUser; // const loggedIn = Boolean(this.props.session.id);
-
+          currentUser = _this$props.currentUser;
       return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

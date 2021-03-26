@@ -4,17 +4,26 @@ import { Link } from 'react-router-dom';
 class AgricultureLoanIndex extends React.Component {
     constructor(props) {
         super(props);
+
+        this.handleAddLoan = this.handleAddLoan.bind(this);
     };
 
     componentDidMount() {
-        this.props.fetchAllLoans()
+        this.props.fetchAllLoans();
     };
 
-    render() {
-        const { loans, logout } = this.props;
-        const loggedIn = Boolean(this.props.session.id);
+    handleAddLoan(loanId) {
+        return e => {
+            e.preventDefault();
+            let newLendingTransaction = { userId: this.props.session.id, loanId: loanId }
+            this.props.createLendingTransaction(newLendingTransaction)
+        }
+    }
 
-        return loggedIn ? (
+    render() {
+        const { loans, logout, lendingTransactions, currentUser } = this.props;
+
+        return currentUser && lendingTransactions && loans ? (
             <div>
                 <nav className="site-nav">
                     <div>
@@ -71,6 +80,28 @@ class AgricultureLoanIndex extends React.Component {
                             support keeps their crops growing and their livelihoods stable.
                         </span>
                     </div>
+                    <div className="loan-flex">
+                        {loans.map(loan => {
+                            if (loan.type_category == "Agriculture") return (
+                                <div className="loans">
+                                    <div className="loan-img">
+                                        <img src={loan.thumbnailUrl} />
+                                    </div>
+                                    <h1>{loan.loan_name}</h1>
+                                    <p className="loan-loc">{loan.location}</p>
+                                    <p className="loan-des">{loan.loan_description}</p>
+                                    <div className="progress-container">
+                                        <div className="current-progress"></div>
+                                    </div>
+                                    <p className="loan-amt">${loan.total_amount}</p>
+                                    <div className="btn">
+                                        <button className="price-btn">$25</button>
+                                        <button className="lend-btn" onClick={this.handleAddLoan(loan.id)}>Lend Now</button>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         ) : (
@@ -126,7 +157,7 @@ class AgricultureLoanIndex extends React.Component {
                                 market prices, and are often forced to choose between investing
                                 in their crops and fulfilling basic needs for their families. Your
                                 support keeps their crops growing and their livelihoods stable.
-                        </span>
+                            </span>
                         </div>
                         <div className="loan-flex">
                             {loans.map(loan => {
@@ -144,7 +175,9 @@ class AgricultureLoanIndex extends React.Component {
                                         <p className="loan-amt">${loan.total_amount}</p>
                                         <div className="btn">
                                             <button className="price-btn">$25</button>
-                                            <button className="lend-btn">Lend Now</button>
+                                            <Link to={"/signin"}>
+                                                <button className="lend-btn">Lend Now</button>
+                                            </Link>
                                         </div>
                                     </div>
                                 )
