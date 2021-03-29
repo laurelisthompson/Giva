@@ -6,8 +6,8 @@ import LoanIndex from './loan_index';
 const mSTP = (state, ownProps) => {
     return {
         loans: Object.values(state.entities.loans),
-        currentUser: state.entities.users[state.session.id], //added to replace session: state.session
-        lendingTransactions: Object.values(state.entities.lenders), //added
+        currentUser: state.entities.users[state.session.id], 
+        lendingTransactions: Object.values(state.entities.lenders), 
         session: state.session,
     }
 };

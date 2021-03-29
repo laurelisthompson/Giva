@@ -7,6 +7,7 @@ class LoanIndex extends React.Component {
         super(props);
 
         this.handleAddLoan = this.handleAddLoan.bind(this);
+        this.moveProgressBar = this.moveProgressBar.bind(this);
     };
 
     componentDidMount() {
@@ -17,12 +18,32 @@ class LoanIndex extends React.Component {
         return e => {
             e.preventDefault();
             let newLendingTransaction = {userId: this.props.session.id, loanId: loanId }
-            this.props.createLendingTransaction(newLendingTransaction)
+            this.props.createLendingTransaction(newLendingTransaction);
         }
+    }
+
+    moveProgressBar() {
+        let progress = getProgress();
+        if (progress <= 80) {
+            progress += 10;
+            this.setProgress(progress)
+        } else {
+            alert("Loan Completed!")
+        }
+    }
+
+    getProgress() {
+        return document.getElementById("progress").getAttribute("style", "width");
+    }
+
+    setProgress(value) {
+        document.getElementById("progress").getAttribute("style", "width: " + value + "%");
     }
 
     render() {
         const { loans, logout, lendingTransactions, currentUser} = this.props;
+
+        let progressStyle = { width: '0%' };
 
         return currentUser && lendingTransactions && loans ? (
             <div>
@@ -85,13 +106,14 @@ class LoanIndex extends React.Component {
                                     <h1>{loan.loan_name}</h1>
                                     <p className="loan-loc">{loan.location}</p>
                                     <p className="loan-des">{loan.loan_description}</p>
-                                    <div className="progress-container">
-                                        <div className="current-progress"></div>
+                                    <div id="progress-bar">
+                                        <div id="progress" style={progressStyle}></div>
                                     </div>
                                     <p className="loan-amt">${loan.total_amount}</p>
                                     <div className="btn">
                                         <button className="price-btn">$25</button>
                                         <button className="lend-btn" onClick={this.handleAddLoan(loan.id)}>Lend Now</button>
+                                        {/* <button className="lend-btn" onClick={() => {this.handleAddLoan(loan.id); this.moveProgressBar()}}>Lend Now</button> */}
                                     </div>
                                 </div>
                             )
@@ -160,9 +182,9 @@ class LoanIndex extends React.Component {
                                         <h1>{loan.loan_name}</h1>
                                         <p className="loan-loc">{loan.location}</p>
                                         <p className="loan-des">{loan.loan_description}</p>
-                                        <div className="progress-container">
-                                            <div className="current-progress"></div>
-                                        </div>
+                                        <div id="progress-bar">
+                                            <div id="progress"></div>
+                                        </div> 
                                         <p className="loan-amt">${loan.total_amount}</p>
                                         <div className="btn">
                                             <button className="price-btn">$25</button>

@@ -3656,6 +3656,7 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.handleAddLoan = _this.handleAddLoan.bind(_assertThisInitialized(_this));
+    _this.moveProgressBar = _this.moveProgressBar.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -3680,6 +3681,28 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "moveProgressBar",
+    value: function moveProgressBar() {
+      var progress = getProgress();
+
+      if (progress <= 80) {
+        progress += 10;
+        this.setProgress(progress);
+      } else {
+        alert("Loan Completed!");
+      }
+    }
+  }, {
+    key: "getProgress",
+    value: function getProgress() {
+      return document.getElementById("progress").getAttribute("style", "width");
+    }
+  }, {
+    key: "setProgress",
+    value: function setProgress(value) {
+      document.getElementById("progress").getAttribute("style", "width: " + value + "%");
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -3689,6 +3712,9 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
           logout = _this$props.logout,
           lendingTransactions = _this$props.lendingTransactions,
           currentUser = _this$props.currentUser;
+      var progressStyle = {
+        width: '0%'
+      };
       return currentUser && lendingTransactions && loans ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "site-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3758,9 +3784,10 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
         }, loan.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "loan-des"
         }, loan.loan_description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "progress-container"
+          id: "progress-bar"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "current-progress"
+          id: "progress",
+          style: progressStyle
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "loan-amt"
         }, "$", loan.total_amount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3837,9 +3864,9 @@ var LoanIndex = /*#__PURE__*/function (_React$Component) {
         }, loan.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "loan-des"
         }, loan.loan_description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "progress-container"
+          id: "progress-bar"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "current-progress"
+          id: "progress"
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "loan-amt"
         }, "$", loan.total_amount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3884,9 +3911,7 @@ var mSTP = function mSTP(state, ownProps) {
   return {
     loans: Object.values(state.entities.loans),
     currentUser: state.entities.users[state.session.id],
-    //added to replace session: state.session
     lendingTransactions: Object.values(state.entities.lenders),
-    //added
     session: state.session
   };
 };
